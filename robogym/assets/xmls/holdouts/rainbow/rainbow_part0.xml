@@ -1,0 +1,12 @@
+<mujoco>
+    <asset>
+        <mesh file="rainbow_stacker/part0/0_rainbow_part0_20200427_20200428.stl" name="rainbow0"></mesh>
+        <material name="block_mat" specular="0" shininess="0.5" reflectance="0" rgba="1 0 0 1"/>
+    </asset>
+    <worldbody>
+        <body quat="0.7071 0 -0.7071 0">
+            <geom type="mesh" mesh="rainbow0" material="block_mat"/>
+            <joint type="free"/>
+        </body>
+    </worldbody>
+</mujoco>

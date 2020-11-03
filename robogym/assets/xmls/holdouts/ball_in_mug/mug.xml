@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+    <asset>
+        <mesh file="ycb/025_mug/025_mug1.stl" name="mug1"></mesh>
+        <mesh file="ycb/025_mug/025_mug2.stl" name="mug2"></mesh>
+        <mesh file="ycb/025_mug/025_mug3.stl" name="mug3"></mesh>
+        <mesh file="ycb/025_mug/025_mug4.stl" name="mug4"></mesh>
+        <mesh file="ycb/025_mug/025_mug5.stl" name="mug5"></mesh>
+        <mesh file="ycb/025_mug/025_mug6.stl" name="mug6"></mesh>
+        <mesh file="ycb/025_mug/025_mug7.stl" name="mug7"></mesh>
+        <mesh file="ycb/025_mug/025_mug8.stl" name="mug8"></mesh>
+        <mesh file="ycb/025_mug/025_mug9.stl" name="mug9"></mesh>
+        <mesh file="ycb/025_mug/025_mug10.stl" name="mug10"></mesh>
+        <mesh file="ycb/025_mug/025_mug11.stl" name="mug11"></mesh>
+        <mesh file="ycb/025_mug/025_mug12.stl" name="mug12"></mesh>
+        <mesh file="ycb/025_mug/025_mug13.stl" name="mug13"></mesh>
+        <mesh file="ycb/025_mug/025_mug14.stl" name="mug14"></mesh>
+        <mesh file="ycb/025_mug/025_mug15.stl" name="mug15"></mesh>
+        <mesh file="ycb/025_mug/025_mug16.stl" name="mug16"></mesh>
+        <mesh file="ycb/025_mug/025_mug17.stl" name="mug17"></mesh>
+        <mesh file="ycb/025_mug/025_mug18.stl" name="mug18"></mesh>
+        <mesh file="ycb/025_mug/025_mug19.stl" name="mug19"></mesh>
+        <mesh file="ycb/025_mug/025_mug20.stl" name="mug20"></mesh>
+        <mesh file="ycb/025_mug/025_mug21.stl" name="mug21"></mesh>
+        <mesh file="ycb/025_mug/025_mug22.stl" name="mug22"></mesh>
+        <mesh file="ycb/025_mug/025_mug23.stl" name="mug23"></mesh>
+        <mesh file="ycb/025_mug/025_mug24.stl" name="mug24"></mesh>
+        <mesh file="ycb/025_mug/025_mug25.stl" name="mug25"></mesh>
+        <mesh file="ycb/025_mug/025_mug26.stl" name="mug26"></mesh>
+        <mesh file="ycb/025_mug/025_mug27.stl" name="mug27"></mesh>
+        <mesh file="ycb/025_mug/025_mug28.stl" name="mug28"></mesh>
+        <mesh file="ycb/025_mug/025_mug29.stl" name="mug29"></mesh>
+        <material name="block_mat" rgba="1.0 0 0 1.0" specular="0.25" shininess="0.10" reflectance="0.10"></material>
+    </asset>
+    <worldbody>
+        <body>
+            <geom type="mesh" mesh="mug1" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug2" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug3" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug4" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug5" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug6" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug7" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug8" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug9" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug10" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug11" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug12" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug13" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug14" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug15" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug16" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug17" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug18" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug19" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug20" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug21" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug22" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug23" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug24" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug25" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug26" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug27" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug28" material="block_mat"></geom>
+            <geom type="mesh" mesh="mug29" material="block_mat"></geom>
+            <joint type="free"></joint>
+        </body>
+    </worldbody>
+</mujoco>

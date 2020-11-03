@@ -1,0 +1,8 @@
+<mujoco>
+	<include file="shared.xml"/>
+    <worldbody>
+        <include file="gripper.xml"/>
+    </worldbody>
+
+    <include file="gripper_actuators.xml"/>
+</mujoco>

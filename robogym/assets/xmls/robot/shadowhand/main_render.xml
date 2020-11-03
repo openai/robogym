@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+
+	<include file="assets.xml"/>
+	<include file="joint_position_actuation_render.xml"/> <!-- Joint position servos -->
+
+	<asset>
+		<texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2"
+            width="512" height="512"/>
+        <material name='MatGnd' reflectance='0.5' texture="texplane" texrepeat="1 1" texuniform="true"/>
+	</asset>
+
+
+	<!-- ======= WORLD ======= -->
+    <worldbody>
+
+		<body name="hand_mount" pos="0.06765484  0.06752358 -0.040042">
+			<inertial mass="0.100" pos="0 0 0" diaginertia="0.001 0.001 0.001"/>
+			<joint type="free" limited="false" name="hand_base"/>
+			<include file="chain_render.xml"/>
+
+		</body>
+
+		<body name="annotation:outer_bound" pos="0.089345 0.067583 0.225004">
+			<geom conaffinity="0" contype="0" mass="0" pos="0 0 0" rgba="0.417 0.7203 0.0001 0.1" size="0.089345 0.067583 0.225004" type="box"></geom>
+		</body>
+    </worldbody>
+
+</mujoco>

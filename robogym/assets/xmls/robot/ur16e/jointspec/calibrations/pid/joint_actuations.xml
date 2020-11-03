@@ -1,0 +1,12 @@
+<mujocoinclude>
+    <actuator>
+        <!-- ======= Position Actuators for Arm ======= -->
+        <general gaintype="user" biastype="user" name="ur_actuator_1" joint="robot0:J1" ctrlrange="-6.1959 6.1959" forcerange="-370 370" gainprm="3720 3538.563 0.03 0.17 0.4 0.00"/>   <!-- +/-355 degrees (360 RoM) -->
+        <general gaintype="user" biastype="user" name="ur_actuator_2" joint="robot0:J2" ctrlrange="-6.1959 6.1959" forcerange="-330 330" gainprm="3216.96 10000 0.03 1.0 0.00004 0.00"/>   <!-- +/-355 degrees (360 RoM) -->
+        <general gaintype="user" biastype="user" name="ur_actuator_3" joint="robot0:J3" ctrlrange="-2.8 2.8" forcerange="-150 150" gainprm="2940.27 5516.1466 0.2 0.09756 1 0.00"/>   <!-- +/-160 degrees (to avoid self collision) -->
+        <general gaintype="user" biastype="user" name="ur_actuator_4" joint="robot0:J4" ctrlrange="-6.1959 6.1959" forcerange="-56 56" gainprm="1595.391 7918.61 0.2 0.134 .5 0.00"/>   <!-- +/-355 degrees (360 RoM) -->
+        <general gaintype="user" biastype="user" name="ur_actuator_5" joint="robot0:J5" ctrlrange="-6.1959 6.1959" forcerange="-56 56" gainprm="3211.95 6554.073 0.02 0.169 .5 0.00"/>   <!-- +/-355 degrees (360 RoM) -->
+        <general gaintype="user" biastype="user" name="ur_actuator_6" joint="robot0:J6" ctrlrange="0.872665 5.49778714" forcerange="-92 92" gainprm="5467 5056.478 0.02 0.1327 0.4 0.00"/>   <!-- +/-355 degrees (360 RoM) -->
+        <!-- ====================================== -->
+    </actuator>
+</mujocoinclude>

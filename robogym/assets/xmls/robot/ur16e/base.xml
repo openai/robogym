@@ -1,0 +1,74 @@
+<mujoco>
+    <size njmax="2000" nconmax="500" nuserdata="2000" nuser_actuator="16"/>
+    <option timestep="0.002" impratio="10" cone="elliptic">
+        <flag warmstart="enable" energy="enable" fwdinv="enable"/>
+    </option>
+
+    <include file="shared.xml"/>
+
+    <worldbody>
+        <include file="tcp_mocap.xml"/>
+        <geom name="floor" pos="0.8 0.75 0" size="0.85 0.7 1" type="plane" condim="3"
+              material="floor_mat"/>
+
+        <include file="robot.xml"/>
+        <body pos="1.4508 0.773 0.453" name="table">
+            <geom class="table_viz" name="table" size="0.6075 0.7655 0.03324" type="box" density="2000" solimp=".99 .999 .001" solref="-50000 -100"/>
+        </body>
+
+        <body pos="1.4508 0.773 0.453" name="table_collision">
+            <!-- Position of collision plane: thickness of table + 0.001m = 0.03324 +0.001 = 0.03334. Safety margin is made w.r.t. real table.  -->
+            <geom pos="0 0 0.03334" class="table_collision_plane_viz" name="table_collision_plane" size="0.6075 0.7655 1" type="plane"/>
+        </body>
+
+
+        <include file="URtable.xml"/>
+
+        <include file="backdrop.xml"/>
+
+        <light directional="true" ambient="0.2 0.2 0.2" diffuse="0.8 0.8 0.8"
+               specular="0.1 0.1 0.1" attenuation="0.0 0.0 10.0"
+               castshadow="false" pos="0 0 4" dir="0 0 -1" name="light0"/>
+
+        <body name="robot0:vision_cam_front" pos="2.5933 0.7625 1.543">
+            <camera quat="-0.6367045 -0.252152 -0.3069759 -0.6609029" fovy="28.58257" name="vision_cam_front" pos="0.0008854866 0.0207299 0.0007930994"></camera>
+            <camera quat="-0.6367045 -0.252152 -0.3069759 -0.6609029" fovy="45" name="phys_checks_cam" pos="0.0008854866 0.0207299 0.0007930994"></camera>
+        </body>
+    </worldbody>
+
+    <sensor>
+        <!-- ======= Joint Position Sensors ======= -->
+        <jointpos name="ur_jointPosSensor_1" joint="robot0:J1"/>
+        <jointpos name="ur_jointPosSensor_2" joint="robot0:J2"/>
+        <jointpos name="ur_jointPosSensor_3" joint="robot0:J3"/>
+        <jointpos name="ur_jointPosSensor_4" joint="robot0:J4"/>
+        <jointpos name="ur_jointPosSensor_5" joint="robot0:J5"/>
+        <jointpos name="ur_jointPosSensor_6" joint="robot0:J6"/>
+        <!-- ======== Force/Torque Sensors ========= -->
+        <force name="toolhead_force" site="robot0:grip"/>
+        <torque name="toolhead_torque" site="robot0:grip"/>
+    </sensor>
+
+    <equality>
+        <weld name="mocap_weld" body1="robot0:mocap" body2="robot0:gripper_tcp" solimp="0.9 0.95 0.001" solref="0.02 1"></weld>
+    </equality>
+
+    <visual>
+        <scale constraint=".0001" framewidth="0.025" framelength="0.7"/>
+        <quality shadowsize="8192"/>
+        <headlight diffuse=".4 .4 .4" ambient=".1 .1 .1"/>
+    </visual>
+
+    <!-- The order of the actuators matters for composite robots, since they have to match the robots' expected
+    ordering.
+    + Joint controlled UR needs both: joint_actuations and gripper_actuators
+    + TCP controlled UR needs only: gripper_actuators
+    Since joint_actuations is appended programmatically, we need to add gripper_actuators also programmatically, to
+    guarantee that they are added in the proper order.
+    TODO Investigate if there's a better way, for example enabling/disabling xml tags.
+    -->
+    <!--
+    <include file="joint_actuations.xml"/>
+    <include file="gripper_actuators.xml"/>
+    -->
+</mujoco>

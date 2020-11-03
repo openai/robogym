@@ -1,0 +1,79 @@
+<!--
+Color mappings from old rubik cube faces and color to new OPENAI letters and colors.
+
+| face   | x  | y  | z  | color  | letter | new color |
++========+====+====+====+========+========+===========+
+| top    |  0 |  0 | +1 | red    |   A    | blue      |
+| bottom |  0 |  0 | -1 | orange |   I    | purple    |
+| right  | +1 |  0 |  0 | blue   |   N    | green     |
+| left   | -1 |  0 |  0 | green  |   P    | orange    |
+| front  |  0 | -1 |  0 | yellow |   E    | yellow    |
+| back   |  0 | +1 |  0 | white  |   O    | pink      |
+-->
+<mujoco model="rubik-v1.50">
+    <asset>
+        <!-- colors were picked using color picker on real basler camera images in setup -->
+        <material name="top_background" specular="1" shininess=".3" rgba="0.09 0.12 0.45 1" />
+        <material name="bottom_background" specular="1" shininess=".3" rgba="0.13 0.10 0.27 1" />
+        <material name="front_background" specular="1" shininess=".3" rgba="0.70 0.62 0.09 1" />
+        <material name="back_background" specular="1" shininess=".3" rgba="0.33 0.04 0.02 1" />
+        <material name="right_background" specular="1" shininess=".3" rgba="0.29 0.54 0 1" />
+        <material name="left_background" specular="1" shininess=".3" rgba="0.62 0.33 0 1" />
+
+        <material name="letter" specular="1" shininess=".3" rgba="1 1 1 1" />
+
+        <mesh file="openai_cube/O.stl" name="O" />
+        <mesh file="openai_cube/P.stl" name="P" />
+        <mesh file="openai_cube/E.stl" name="E" />
+        <mesh file="openai_cube/N.stl" name="N" />
+        <mesh file="openai_cube/A.stl" name="A" />
+        <mesh file="openai_cube/I.stl" name="I" />
+    </asset>
+    <compiler angle="radian"/>
+
+    <worldbody>
+        <body name="middle" pos="0.0285 0.0285 0.0285">
+            <geom name="middle" type="box" size="0.0285 0.0285 0.0285" rgba="1 1 1 0" condim="4"/>
+
+            <site name="center" pos="0 0 0" rgba="1 0 0 1" size="0.01 0.01 0.01"></site>
+            <joint name="cube_tx" type="slide" axis="1 0 0" limited="false"/>
+            <joint name="cube_ty" type="slide" axis="0 1 0" limited="false"/>
+            <joint name="cube_tz" type="slide" axis="0 0 1" limited="false"/>
+            <joint name="cube_rot" type="ball" limited="false"/>
+
+            <body name="face_top" pos="0 0 0.0285">
+                <geom name="face_top_bg" type="box" size="0.0285 0.0285 0.00001" material="top_background" />
+                <geom name="A" type="mesh" mesh="A" euler="1.570796 0 1.570796" pos="0 0 -0.0009" material="letter" conaffinity="0" contype="0" />
+            </body>
+
+            <body name="face_bottom" pos="0 0 -0.0285">
+                <geom name="face_bottom_bg" type="box" size="0.0285 0.0285 0.00001" conaffinity="0" contype="0" material="bottom_background"  />
+                <geom name="I" type="mesh" mesh="I" euler="1.570796 0 1.570796" pos="0 0 0.0009" material="letter" conaffinity="0" contype="0" />
+            </body>
+
+            <body name="face_back" pos="0 0.0285 0">
+                <geom name="face_back_bg" type="box" size="0.0285 0.00001 0.0285" conaffinity="0" contype="0" material="back_background" />
+                <geom name="O" type="mesh" mesh="O" euler="0 0 1.570796" pos="0 -0.0009 0" material="letter" conaffinity="0" contype="0" />
+            </body>
+
+            <body name="face_right" pos="0.0285 0 0">
+                <geom name="face_right_bg" type="box" size="0.00001 0.0285 0.0285" conaffinity="0" contype="0" material="right_background"/>
+                <geom name="N" type="mesh" mesh="N" euler="0 0 0" pos="-0.0009 0 0" material="letter" conaffinity="0" contype="0" />
+            </body>
+
+            <body name="face_front" pos="0 -0.0285 0">
+                <geom name="face_front_bg" type="box" size="0.0285 0.00001 0.0285" conaffinity="0" contype="0" material="front_background" />
+                <geom name="E" type="mesh" mesh="E" euler="0 0 -1.570796" pos="0 0.0009 0" material="letter" conaffinity="0" contype="0" />
+            </body>
+
+            <body name="face_left" pos="-0.0285 0 0">
+                <geom name="face_left_bg" type="box" size="0.00001 0.0285 0.0285" conaffinity="0" contype="0" material="left_background" />
+                <geom name="P" type="mesh" mesh="P" euler="0 0 3.14159" pos="0.0009 0 0" material="letter" conaffinity="0" contype="0" />
+            </body>
+        </body>
+        <body name="annotation:outer_bound" pos="0.0285 0.0285 0.0285">
+            <geom conaffinity="0" contype="0" mass="0" pos="0 0 0" rgba="0.417022 0.720324 0.000114 0.1" size="0.0285 0.0285 0.0285" type="box"></geom>
+        </body>
+    </worldbody>
+
+</mujoco>

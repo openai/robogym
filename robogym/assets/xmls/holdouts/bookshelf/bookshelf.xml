@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+    <asset>
+        <mesh file="holdouts/bookshelf/collision/shelf1.stl" name="shelf1" scale="1.5 1.5 1.5"/>
+        <mesh file="holdouts/bookshelf/collision/shelf2.stl" name="shelf2" scale="1.5 1.5 1.5"/>
+        <mesh file="holdouts/bookshelf/collision/shelf3.stl" name="shelf3" scale="1.5 1.5 1.5"/>
+        <mesh file="holdouts/bookshelf/collision/shelf4.stl" name="shelf4" scale="1.5 1.5 1.5"/>
+        <mesh file="holdouts/bookshelf/collision/shelf5.stl" name="shelf5" scale="1.5 1.5 1.5"/>
+        <mesh file="holdouts/bookshelf/collision/shelf6.stl" name="shelf6" scale="1.5 1.5 1.5"/>
+        <mesh file="holdouts/bookshelf/collision/shelf7.stl" name="shelf7" scale="1.5 1.5 1.5"/>
+        <mesh file="holdouts/bookshelf/collision/shelf8.stl" name="shelf8" scale="1.5 1.5 1.5"/>
+        <mesh file="holdouts/bookshelf/collision/shelf9.stl" name="shelf9" scale="1.5 1.5 1.5"/>
+        <mesh file="holdouts/bookshelf/collision/shelf10.stl" name="shelf10" scale="1.5 1.5 1.5"/>
+        <mesh file="holdouts/bookshelf/collision/shelf11.stl" name="shelf11" scale="1.5 1.5 1.5"/>
+        <material name="wood_mat" rgba="0.616 0.341 0.106 1.0" specular="0.25" shininess="0.10" reflectance="0.10"></material>
+    </asset>
+    <worldbody>
+        <body name="shelf">
+            <geom type="mesh" mesh="shelf1" material="wood_mat"/>
+            <geom type="mesh" mesh="shelf2" material="wood_mat"/>
+            <geom type="mesh" mesh="shelf3" material="wood_mat"/>
+            <geom type="mesh" mesh="shelf4" material="wood_mat"/>
+            <geom type="mesh" mesh="shelf5" material="wood_mat"/>
+            <geom type="mesh" mesh="shelf6" material="wood_mat"/>
+            <geom type="mesh" mesh="shelf7" material="wood_mat"/>
+            <geom type="mesh" mesh="shelf8" material="wood_mat"/>
+            <geom type="mesh" mesh="shelf9" material="wood_mat"/>
+            <geom type="mesh" mesh="shelf10" material="wood_mat"/>
+            <geom type="mesh" mesh="shelf11" material="wood_mat"/>
+            <joint type="free"></joint>
+        </body>
+    </worldbody>
+</mujoco>

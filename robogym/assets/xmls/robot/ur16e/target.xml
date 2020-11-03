@@ -1,0 +1,5 @@
+<mujoco>
+    <worldbody>
+        <site name="target_free"/>
+    </worldbody>
+</mujoco>

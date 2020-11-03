@@ -1,0 +1,30 @@
+<mujoco>
+    <asset>
+        <mesh file="rainbow_stacker/part4/0_rainbow_part4_20200427_20200428.stl" name="rainbow0"></mesh>
+        <mesh file="rainbow_stacker/part4/1_rainbow_part4_20200427_20200428.stl" name="rainbow1"></mesh>
+        <mesh file="rainbow_stacker/part4/2_rainbow_part4_20200427_20200428.stl" name="rainbow2"></mesh>
+        <mesh file="rainbow_stacker/part4/3_rainbow_part4_20200427_20200428.stl" name="rainbow3"></mesh>
+        <mesh file="rainbow_stacker/part4/4_rainbow_part4_20200427_20200428.stl" name="rainbow4"></mesh>
+        <mesh file="rainbow_stacker/part4/5_rainbow_part4_20200427_20200428.stl" name="rainbow5"></mesh>
+        <mesh file="rainbow_stacker/part4/6_rainbow_part4_20200427_20200428.stl" name="rainbow6"></mesh>
+        <mesh file="rainbow_stacker/part4/7_rainbow_part4_20200427_20200428.stl" name="rainbow7"></mesh>
+        <mesh file="rainbow_stacker/part4/8_rainbow_part4_20200427_20200428.stl" name="rainbow8"></mesh>
+        <mesh file="rainbow_stacker/part4/9_rainbow_part4_20200427_20200428.stl" name="rainbow9"></mesh>
+        <material name="block_mat" specular="0" shininess="0.5" reflectance="0" rgba="1 0 0 1"/>
+    </asset>
+    <worldbody>
+        <body quat="0.7071 0 -0.7071 0">
+            <geom type="mesh" mesh="rainbow0" material="block_mat"/>
+            <geom type="mesh" mesh="rainbow1" material="block_mat"/>
+            <geom type="mesh" mesh="rainbow2" material="block_mat"/>
+            <geom type="mesh" mesh="rainbow3" material="block_mat"/>
+            <geom type="mesh" mesh="rainbow4" material="block_mat"/>
+            <geom type="mesh" mesh="rainbow5" material="block_mat"/>
+            <geom type="mesh" mesh="rainbow6" material="block_mat"/>
+            <geom type="mesh" mesh="rainbow7" material="block_mat"/>
+            <geom type="mesh" mesh="rainbow8" material="block_mat"/>
+            <geom type="mesh" mesh="rainbow9" material="block_mat"/>
+            <joint type="free"/>
+        </body>
+    </worldbody>
+</mujoco>

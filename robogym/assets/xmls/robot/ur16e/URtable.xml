@@ -1,0 +1,8 @@
+<!-- URtable -->
+<mujoco model="URTable">
+    <body pos="-.08 .262 -.158" euler="0 0 1.5708">
+        <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="URTable_base_link" solimp = "0.99 0.99 1 0.99 6" solref = ".00001 1"/>
+        <geom pos="0.50993 -0.95683 0.63731" quat="0.707105 0.707108 0 0" type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="URTable_backsupport" solimp = "0.99 0.99 1 0.99 6" solref = ".00001 1"/>
+        <geom pos="0 -1.14983 -7.08924e-07" quat="0.707105 0.707108 0 0" type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="URTable_topmount" solimp = "0.99 0.99 1 0.99 6" solref = ".00001 1"/>
+    </body>
+</mujoco>

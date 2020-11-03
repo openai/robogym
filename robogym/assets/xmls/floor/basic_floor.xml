@@ -1,0 +1,8 @@
+<mujoco>
+    <worldbody>
+        <body name="floor" pos="0 0 0">
+            <!-- No joints for the floor as it is immovable -->
+            <geom name="floor" pos="0 0 0" size="1 1 1" type="plane" condim="3"/>
+        </body>
+    </worldbody>
+</mujoco>

@@ -1,0 +1,99 @@
+<?xml version="1.0" ?><!-- See LICENSE.md for legal notices. LICENSE.md must be kept together with this file. --><mujocoinclude>
+    <tendon>
+        <fixed limited="true" name="FFT0" range="0 1.6">
+            <joint coef="1." joint="FFJ1"/>
+            <joint coef="-1." joint="FFJ0"/>
+        </fixed>
+        <fixed damping="0.1" limited="true" name="FFT1" range="0 3.14">
+            <joint coef="1.0" joint="FFJ1"/>
+            <joint coef="1.0" joint="FFJ0"/>
+        </fixed>
+        <spatial limited="true" name="FFT2" range="0 0.080876" rgba="0 1 0 0.5" springlength="0.060007" stiffness="3019.13" width="0.0005">
+            <site site="coupling_FFJ0_tendon_end"/>
+            <geom geom="coupling_FFJ0_pulley" sidesite="coupling_FFJ0_pulley_outside"/>
+            <site site="coupling_FFJ1_between_pulleys"/>
+            <geom geom="coupling_FFJ1_pulley" sidesite="coupling_FFJ1_pulley_inside"/>
+            <site site="coupling_FFJ2_tendon_end"/>
+        </spatial>
+
+        <fixed limited="true" name="MFT0" range="0 1.6">
+            <joint coef="1" joint="MFJ1"/>
+            <joint coef="-1" joint="MFJ0"/>
+        </fixed>
+        <fixed damping="0.1" limited="true" name="MFT1" range="0 3.14">
+            <joint coef="1" joint="MFJ1"/>
+            <joint coef="1" joint="MFJ0"/>
+        </fixed>
+        <spatial limited="true" name="MFT2" range="0 0.074294" rgba="0 1 0 0.5" springlength="0.059349" stiffness="4023.08" width="0.0005">
+            <site site="coupling_MFJ0_tendon_end"/>
+            <geom geom="coupling_MFJ0_pulley" sidesite="coupling_MFJ0_pulley_outside"/>
+            <site site="coupling_MFJ1_between_pulleys"/>
+            <geom geom="coupling_MFJ1_pulley" sidesite="coupling_MFJ1_pulley_inside"/>
+            <site site="coupling_MFJ2_tendon_end"/>
+        </spatial>
+
+        <fixed limited="true" name="RFT0" range="0 1.6">
+            <joint coef="1" joint="RFJ1"/>
+            <joint coef="-1" joint="RFJ0"/>
+        </fixed>
+        <fixed damping="0.1" limited="true" name="RFT1" range="0 3.14">
+            <joint coef="1" joint="RFJ1"/>
+            <joint coef="1" joint="RFJ0"/>
+        </fixed>
+        <spatial limited="true" name="RFT2" range="0 0.076896" rgba="0 1 0 0.5" springlength="0.056161" stiffness="3027.56" width="0.0005">
+            <site site="coupling_RFJ0_tendon_end"/>
+            <geom geom="coupling_RFJ0_pulley" sidesite="coupling_RFJ0_pulley_outside"/>
+            <site site="coupling_RFJ1_between_pulleys"/>
+            <geom geom="coupling_RFJ1_pulley" sidesite="coupling_RFJ1_pulley_inside"/>
+            <site site="coupling_RFJ2_tendon_end"/>
+        </spatial>
+
+        <fixed limited="true" name="LFT0" range="0 1.6">
+            <joint coef="1" joint="LFJ1"/>
+            <joint coef="-1" joint="LFJ0"/>
+        </fixed>
+        <fixed damping="0.1" limited="true" name="LFT1" range="0 3.14">
+            <joint coef="1" joint="LFJ1"/>
+            <joint coef="1" joint="LFJ0"/>
+        </fixed>
+        <spatial limited="true" name="LFT2" range="0 0.089217" rgba="0 1 0 0.5" springlength="0.059417" stiffness="3493.57" width="0.0005">
+            <site site="coupling_LFJ0_tendon_end"/>
+            <geom geom="coupling_LFJ0_pulley" sidesite="coupling_LFJ0_pulley_outside"/>
+            <site site="coupling_LFJ1_between_pulleys"/>
+            <geom geom="coupling_LFJ1_pulley" sidesite="coupling_LFJ1_pulley_inside"/>
+            <site site="coupling_LFJ2_tendon_end"/>
+        </spatial>
+    </tendon>
+    <actuator>
+        <!-- The ctrlrange limits are mostly set according to the limits in Shadow's document (page 8):
+        https://www.shadowrobot.com/wp-content/uploads/shadow_dexterous_hand_technical_specification_E_20190221.pdf
+        With only one exception, 'THJ0': (-90, 0); the sign is reversed in our config.
+        -->
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="-0.4887 0.1396" forcerange="-0.179403 0.179403" joint="WRJ1" gainprm="1.93928 1000.0 0.2 0.0014 0.1 0.003" name="A_WRJ1" user="2038"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="-0.6981 0.4887" forcerange="-0.995821 0.995821" joint="WRJ0" gainprm="11.2903 1000.0 0.2 0.0042 0.1 0.003" name="A_WRJ0" user="2036"/>
+
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="-0.3491 0.3491" forcerange="-0.022214 0.022214" joint="FFJ3" gainprm="0.144914 1000.0 0.2 0.004 0.1 0.003" name="A_FFJ3" user="2004"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="0.0 1.5708" forcerange="-0.154886 0.154886" joint="FFJ2" gainprm="0.446117 1000.0 0.2 0.005 0.1 0.002" name="A_FFJ2" user="2002"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="0.0 3.1416" forcerange="-0.465773 0.465773" gainprm="9.13821 1000.0 0.2 0.001 0.1 0.002" name="A_FFJ1" tendon="FFT1"/>
+
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="-0.3491 0.3491" forcerange="-0.023497 0.023497" joint="MFJ3" gainprm="0.260386 1000.0 0.2 0.0038 0.1 0.003" name="A_MFJ3" user="2010"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="0.0 1.5708" forcerange="-0.333761 0.333761" joint="MFJ2" gainprm="10.6196 1000.0 0.2 0.005 0.1 0.002" name="A_MFJ2" user="2008"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="0.0 3.1416" forcerange="-0.616938 0.616938" gainprm="9.05985 1000.0 0.2 0.001 0.1 0.002" name="A_MFJ1" tendon="MFT1"/>
+
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="-0.3491 0.3491" forcerange="-0.128881 0.128881" joint="RFJ3" gainprm="1.5189 1000.0 0.2 0.0035 0.1 0.003" name="A_RFJ3" user="2016"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="0.0 1.5708" forcerange="-0.408879 0.408879" joint="RFJ2" gainprm="1.99187 1000.0 0.2 0.0047 0.1 0.002" name="A_RFJ2" user="2014"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="0.0 3.1416" forcerange="-0.464343 0.464343" gainprm="9.08001 1000.0 0.2 0.001 0.1 0.002" name="A_RFJ1" tendon="RFT1"/>
+
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="0.0 0.7854" forcerange="-0.211455 0.211455" joint="LFJ4" gainprm="3.94635 1000.0 0.2 0.003 0.1 0.003" name="A_LFJ4" user="2024"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="-0.3491 0.3491" forcerange="-0.198143 0.198143" joint="LFJ3" gainprm="1.97424 1000.0 0.2 0.0034 0.1 0.003" name="A_LFJ3" user="2022"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="0.0 1.5708" forcerange="-0.135135 0.135135" joint="LFJ2" gainprm="0.764681 1000 0.2 0.0038 0.1 0.002" name="A_LFJ2" user="2020"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="0.0 3.1416" forcerange="-0.506173 0.506173" gainprm="9.09757 1000.0 0.2 0.001 0.1 0.002" name="A_LFJ1" tendon="LFT1"/>
+
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="-1.0472 1.0472" forcerange="-0.187289 0.187289" joint="THJ4" gainprm="1.58856 1000.0 0.2 0.0054 0.1 0.003" name="A_THJ4" user="2034"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="0.0 1.2217" forcerange="-0.240256 0.240256" joint="THJ3" gainprm="1.54405 1000.0 0.2 0.0054 0.1 0.003" name="A_THJ3" user="2032"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="-0.2094 0.2094" forcerange="-0.037666 0.037666" joint="THJ2" gainprm="0.359104 1000.0 0.2 0.00435 0.1 0.003" name="A_THJ2" user="2030"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="-0.5236 0.5236" forcerange="-0.16611 0.16611" joint="THJ1" gainprm="2.08578 1000.0 0.2 0.0048 0.1 0.002" name="A_THJ1" user="2028"/>
+        <general gaintype="user" biastype="user" class="asset_class" ctrlrange="-1.5708 0.0" forcerange="-0.206836 0.206836" joint="THJ0" gainprm="2.03772 1000.0 0.2 0.005 0.1 0.002" name="A_THJ0" user="2026"/>
+    </actuator>
+</mujocoinclude>
+

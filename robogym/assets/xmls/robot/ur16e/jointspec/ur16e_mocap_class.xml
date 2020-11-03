@@ -1,0 +1,32 @@
+<mujocoinclude>
+    <default>
+        <default class="ur_jntrange_full">
+            <include file="jointrange_defaults.xml"/>
+            <default class="ur16e_J1">
+                <joint damping="300" armature="100" margin="0.01" frictionloss="10"/>
+            </default>
+
+            <default class="ur16e_J2">
+                <joint damping="300" armature="100" margin="0.01" frictionloss="10"/>
+            </default>
+
+            <default class="ur16e_J3">
+                <joint damping="100" armature="100" margin="0.01" frictionloss="10"/>
+            </default>
+
+            <default class="ur16e_J4">
+                <joint damping="10" armature="100" margin="0.01" frictionloss="10"/>
+            </default>
+
+            <default class="ur16e_J5">
+                <joint damping="10" armature="100" margin="0.01" frictionloss="10"/>
+            </default>
+        </default>
+        <default class="ur_jntrange_wrist">
+            <include file="jointrange_wrist.xml"/>
+            <default class="ur16e_J6">
+                <joint damping="10" armature="100" margin="0.01" frictionloss="10"/>
+            </default>
+        </default>
+    </default>
+</mujocoinclude>

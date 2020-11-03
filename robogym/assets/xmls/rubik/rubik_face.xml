@@ -1,0 +1,35 @@
+<mujoco model="rubik-v1.50">
+	<asset>
+		<texture name='rubik' file="rubik/rubik_slice.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+		<material name="MatRubik" texture="rubik" specular="1" shininess=".3"/>
+	</asset>
+
+	<!--
+		Note: Some properties of this XML (density, frictionloss, armature, damping) are overwritten
+		in code. This is done because the full cube XML is heavily modified at runtime and the
+		same code path is used for locked, face and full cube. Please refer to `dactyl_cube_simple.py`
+		for details.
+	-->
+	<worldbody>
+		<body name="middle" pos=".0285 .0285 .0285">
+			<geom name="middle" type="box" size=".0285 .0285 .0095" material="MatRubik" condim="4"/>
+			<site name="center" pos="0 0 0" rgba="1 0 0 1" size="0.01 0.01 0.01" />
+			<joint name="cube_tx" type="slide" axis="1 0 0" limited="false"/>
+			<joint name="cube_ty" type="slide" axis="0 1 0" limited="false"/>
+			<joint name="cube_tz" type="slide" axis="0 0 1" limited="false"/>
+			<joint name="cube_rot" type="ball" limited="false"/>
+			<body name="top" pos="0 0 .019">
+				<geom name="top" type="box" size=".0285 .0285 .0095" material="MatRubik"  condim="4" friction="0.4 0.005 0.001" />
+				<joint name="face_top" type="hinge" axis="0 0 1" limited="false"/>
+			</body>
+			<body name="bottom" pos="0 0 -.019">
+				<geom name="bottom" type="box" size=".0285 .0285 .0095" material="MatRubik"  condim="4" friction="0.4 0.005 0.001"/>
+				<joint name="face_bottom" type="hinge" axis="0 0 1" limited="false"/>
+			</body>
+		</body>
+		<body name="annotation:outer_bound" pos="0.0285 0.0285 0.0285">
+			<geom conaffinity="0" contype="0" mass="0" pos="0 0 0" rgba="0.417022 0.720324 0.000114 0.1" size="0.0285 0.0285 0.0285" type="box" />
+		</body>
+	</worldbody>
+
+</mujoco>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+    <worldbody>
+        <body>
+            <geom type="box" size="0.025 0.025 0.025"></geom>
+            <joint type="free"></joint>
+        </body>
+    </worldbody>
+</mujoco>

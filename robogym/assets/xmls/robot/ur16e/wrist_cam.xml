@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+	<body name="robot0:wrist_cam" pos="0.0 0.0 0.05965" quat="1 0 0 0">
+		<geom name="robot0:wrist_cam_mesh0" type="mesh" mesh="wrist_cam0" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh1" type="mesh" mesh="wrist_cam1" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh2" type="mesh" mesh="wrist_cam2" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh3" type="mesh" mesh="wrist_cam3" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh4" type="mesh" mesh="wrist_cam4" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh5" type="mesh" mesh="wrist_cam5" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh6" type="mesh" mesh="wrist_cam6" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh7" type="mesh" mesh="wrist_cam7" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh8" type="mesh" mesh="wrist_cam8" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh9" type="mesh" mesh="wrist_cam9" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh10" type="mesh" mesh="wrist_cam10" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh11" type="mesh" mesh="wrist_cam11" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh12" type="mesh" mesh="wrist_cam12" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh13" type="mesh" mesh="wrist_cam13" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_mesh14" type="mesh" mesh="wrist_cam14" material="block_mat" class="no_collision"></geom>
+		<geom name="robot0:wrist_cam_collision_sphere" pos="0.0 -0.068 0.005" type="cylinder" size="0.032 0.045" class="wrist_cam_collision_viz"/>
+	</body>
+</mujoco>

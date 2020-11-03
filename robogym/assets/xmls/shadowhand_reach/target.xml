@@ -1,0 +1,9 @@
+<mujoco>
+    <worldbody>
+        <site name="target_S_fftip"/>
+        <site name="target_S_mftip"/>
+        <site name="target_S_rftip"/>
+        <site name="target_S_lftip"/>
+        <site name="target_S_thtip"/>
+    </worldbody>
+</mujoco>

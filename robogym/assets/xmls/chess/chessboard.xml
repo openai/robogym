@@ -1,0 +1,21 @@
+<mujoco>
+    <asset>
+        <texture
+            name="chessboard_texture" type="2d" builtin="checker"
+            rgb1="0.616 0.341 0.106" rgb2="0.902 0.8 0.671"
+            width="300" height="300">
+        </texture>
+        <material
+            name="chessboard_mat" texture="chessboard_texture" texrepeat="4 4"
+            texuniform="false">
+        </material>
+    </asset>
+    <worldbody>
+        <body name="chessboard">
+            <geom
+                name="chessboard" size="0.16 0.16 0.001" type="box"
+                contype="0" conaffinity="0" material="chessboard_mat">
+            </geom>
+        </body>
+    </worldbody>
+</mujoco>

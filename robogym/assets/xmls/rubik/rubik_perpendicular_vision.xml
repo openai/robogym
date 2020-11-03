@@ -1,0 +1,412 @@
+<mujoco>
+    <default>
+        <default class="cube">
+            <!-- ===== Defaults for small cubelet joints ===== -->
+
+            <!-- ===== Defaults for the cubelet/driver hinge joints ==== -->
+            <!-- Original joint damping/friction very likely to be too strong as we just have many more joints  -->
+            <!-- <joint damping='0.05' armature='0.0001' frictionloss="0.05"/> -->
+            <!-- Setting similar to the original bur probably still to strong:  -->
+            <!-- <joint damping='0.005' armature='0.0001' frictionloss="0.005"/> -->
+
+            <joint damping='0.0005' armature='0.0001' frictionloss="0.0005"/>
+
+            <!-- ===== Defaults for small cubelet geoms ===== -->
+            <!-- Original geom friction settings -->
+            <!-- <geom condim="6" density="842" friction="0.4 0.005 0.001"/> -->
+            <!-- Current settings, making a friction closer to the half of original frictions -->
+            <geom condim="6" density="521" friction="0.2 0.0025 0.0005"/>
+        </default>
+
+        <default class="cubemain">
+            <joint damping='0.0' armature='0.0' frictionloss="0"/>
+        </default>
+
+        <default class="slide">
+            <!-- These joints need "strong" armature to make high stiffness stable -->
+            <joint stiffness="500.0" springref="0" armature="0.01" ref="0" damping="0.005" frictionloss="0.005" limited="true" range="-0.001 0.0002"/>
+        </default>
+
+        <default class="cubelet">
+            <geom type="mesh" mesh="rounded_cube" material="cubelet_material" size="0.01 0.01 0.01" rgba="0 0 0 1" />
+        </default>
+
+        <default class="sticker">
+            <geom type="box" conaffinity="0" contype="0" />
+        </default>
+    </default>
+
+    <!-- Asset part -->
+    <asset>
+        <material name="cubelet_material" specular="1" shininess=".3" rgba="0 0 0 1" />
+        <mesh name="rounded_cube" file="rounded_cubelet.stl" />
+        <!-- sticker -->
+        <material name="sticker_R" specular=".3" shininess="0.3" rgba="0.3843137254901961 0.09411764705882353 0.03529411764705882 1" />
+        <material name="sticker_O" specular=".3" shininess="0.3" rgba="0.5137254901960784 0.2823529411764706 0.01568627450980392 1" />
+        <material name="sticker_Y" specular=".3" shininess="0.3" rgba="0.5019607843137255 0.4549019607843137 0.050980392156862744 1" />
+        <material name="sticker_W" specular=".3" shininess="0.3" rgba="0.596078431372549 0.6196078431372549 0.5607843137254902 1" />
+        <material name="sticker_G" specular=".3" shininess="0.3" rgba="0.00784313725490196 0.3137254901960784 0.19215686274509805 1" />
+        <material name="sticker_B" specular=".3" shininess="0.3" rgba="0.043137254901960784 0.13333333333333333 0.30980392156862746 1" />
+    </asset>
+
+    <worldbody>
+        <body name="middle" childclass="cube" pos="0 0 0">
+            <joint name="cube:tx"  class="cubemain" type="slide" axis="1 0 0" limited="false"/>
+            <joint name="cube:ty"  class="cubemain" type="slide" axis="0 1 0" limited="false"/>
+            <joint name="cube:tz"  class="cubemain" type="slide" axis="0 0 1" limited="false"/>
+            <joint name="cube:rot" class="cubemain" type="ball" limited="false"/>
+
+            <site name="center" pos="0 0 0" rgba="1 0 0 1" size="0.01 0.01 0.01" />
+            <geom  name="center_sphere" pos="0.00 0.00 0.00" type="sphere" size="0.01 0.01 0.01" rgba="0.5 0.5 0.5 1.0"/>
+
+            <!-- 6 cubelets adjacent to center -->
+
+            <body name="body:neg_x">
+                <body name="cubelet:neg_x" pos="-0.01905 0 0">
+                    <!-- Red -->
+                    <geom name="cubelet:neg_x" class="cubelet" />
+                    <geom name="sticker:neg_x" class="sticker" material="sticker_R" size="0.0001 0.008 0.008" pos="-0.01 0.0 0.0"  />
+                </body>
+
+                <joint name="cubelet:driver:neg_x" type="hinge" pos="0 0 0" axis="1 0 0"/>
+            </body>
+
+            <body name="body:pos_x">
+                <body name="cubelet:pos_x" pos="0.01905 0.00 0.00">
+                    <!-- Orange -->
+                    <geom name="cubelet:pos_x" class="cubelet" />
+                    <geom name="sticker:pos_x" class="sticker" material="sticker_O" size="0.0001 0.008 0.008" pos="0.01 0.0 0.0" />
+                </body>
+
+                <joint name="cubelet:driver:pos_x" type="hinge" pos="0 0 0" axis="1 0 0"/>
+            </body>
+
+            <body name="body:neg_y">
+                <body name="cubelet:neg_y" pos="0.00 -0.01905 0.00">
+                    <!-- Green -->
+                    <geom name="cubelet:neg_y" class="cubelet" />
+                    <geom name="sticker:neg_y" class="sticker" material="sticker_G" size="0.008 0.0001 0.008" pos="0.0 -0.01 0.0" />
+                </body>
+                <joint name="cubelet:driver:neg_y" type="hinge" pos="0 0 0" axis="0 1 0"/>
+            </body>
+
+            <body name="body:pos_y">
+                    <!-- Blue -->
+                <body name="cubelet:pos_y" pos="0.00 0.01905 0.00">
+                    <geom name="cubelet:pos_y" class="cubelet" />
+                    <geom name="sticker:pos_y" class="sticker" material="sticker_B" size="0.008 0.0001 0.008" pos="0.0 0.01 0.0" />
+                </body>
+
+                <joint name="cubelet:driver:pos_y" type="hinge" pos="0 0 0" axis="0 1 0"/>
+            </body>
+
+            <body name="body:neg_z">
+                <body name="cubelet:neg_z" pos="0.0 0.0 -0.01905">
+                    <!-- White -->
+                    <geom name="cubelet:neg_z" class="cubelet" />
+                    <geom name="sticker:neg_z" class="sticker" material="sticker_W" size="0.008 0.008 0.0001" pos="0.0 0.0 -0.01" />
+                </body>
+
+                <joint name="cubelet:driver:neg_z" type="hinge" pos="0 0 0" axis="0 0 1"/>
+            </body>
+
+            <body name="body:pos_z">
+                <body name="cubelet:pos_z" pos="0.00 0.00 0.01905">
+                    <!-- Yellow -->
+                    <geom name="cubelet:pos_z" class="cubelet" />
+                    <geom name="sticker:pos_z" class="sticker" material="sticker_Y" size="0.008 0.008 0.0001" pos="0.0 0.0 0.01" />
+                </body>
+
+                <joint name="cubelet:driver:pos_z" type="hinge" pos="0 0 0" axis="0 0 1"/>
+            </body>
+
+            <!-- 20 "moveable" cubelets -->
+            <body name="body:neg_x_pos_y">
+                <body name="cubelet:neg_x_pos_y" pos="-0.01905 0.01905 0.0">
+                    <!-- Red/Blue -->
+                    <geom name="cubelet:neg_x_pos_y" class="cubelet" />
+                    <geom name="sticker:neg_x_pos_y_R" class="sticker" material="sticker_R" size="0.0001 0.008 0.008" pos="-0.01 0.0 0.0" />
+                    <geom name="sticker:neg_x_pos_y_B" class="sticker" material="sticker_B" size="0.008 0.0001 0.008" pos="0.0 0.01 0.0" />
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_pos_y"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_pos_y"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_pos_y"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_pos_y" type="slide" pos="0 0 0" axis="-1 1 0" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_pos_y_pos_z">
+                <!-- Red/Blue/Yellow -->
+                <body name="cubelet:neg_x_pos_y_pos_z"  pos="-0.01905 0.01905 0.01905">
+                    <geom name="cubelet:neg_x_pos_y_pos_z" class="cubelet" />
+                    <geom name="sticker:neg_x_pos_y_pos_z_R" class="sticker" material="sticker_R" size="0.0001 0.008 0.008" pos="-0.01 0.0 0.0" />
+                    <geom name="sticker:neg_x_pos_y_pos_z_B" class="sticker" material="sticker_B" size="0.008 0.0001 0.008" pos="0.0 0.01 0.0" />
+                    <geom name="sticker:neg_x_pos_y_pos_z_Y" class="sticker" material="sticker_Y" size="0.008 0.008 0.0001" pos="0.0 0.0 0.01" />
+                </body>
+                <joint name="cubelet:rotx:neg_x_pos_y_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_pos_y_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_pos_y_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_pos_y_pos_z" type="slide" pos="0 0 0" axis="-1 1 1" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_pos_y_neg_z">
+                <!-- Red/Blue/White -->
+                <body name="cubelet:neg_x_pos_y_neg_z" pos="-0.01905 0.01905 -0.01905">
+                    <geom name="cubelet:neg_x_pos_y_neg_z" class="cubelet" />
+                    <geom name="sticker:neg_x_pos_y_neg_z_R" class="sticker" material="sticker_R" size="0.0001 0.008 0.008" pos="-0.01 0.0 0.0" />
+                    <geom name="sticker:neg_x_pos_y_neg_z_B" class="sticker" material="sticker_B" size="0.008 0.0001 0.008" pos="0.0 0.01 0.0" />
+                    <geom name="sticker:neg_x_pos_y_neg_z_W" class="sticker" material="sticker_W" size="0.008 0.008 0.0001" pos="0.0 0.0 -0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_pos_y_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_pos_y_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_pos_y_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_pos_y_neg_z" type="slide" pos="0 0 0" axis="-1 1 -1" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_neg_y_pos_z" >
+                <!-- Red/Green/Yellow -->
+                <body name="cubelet:neg_x_neg_y_pos_z" pos="-0.01905 -0.01905 0.01905">
+                    <geom name="cubelet:neg_x_neg_y_pos_z" class="cubelet" />
+                    <geom name="sticker:neg_x_neg_y_pos_z_R" class="sticker" material="sticker_R" size="0.0001 0.008 0.008" pos="-0.01 0.0 0.0" />
+                    <geom name="sticker:neg_x_neg_y_pos_z_G" class="sticker" material="sticker_G" size="0.008 0.0001 0.008" pos="0.0 -0.01 0.0" />
+                    <geom name="sticker:neg_x_neg_y_pos_z_Y" class="sticker" material="sticker_Y" size="0.008 0.008 0.0001" pos="0.0 0.0 0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_neg_y_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_neg_y_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_neg_y_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_neg_y_pos_z" type="slide" pos="0 0 0" axis="-1 -1 1" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_neg_y_neg_z">
+                <!-- Red/Green/White -->
+                <body name="cubelet:neg_x_neg_y_neg_z" pos="-0.01905 -0.01905 -0.01905">
+                    <geom name="cubelet:neg_x_neg_y_neg_z" class="cubelet"/>
+                    <geom name="sticker:neg_x_neg_y_neg_z_R" class="sticker" material="sticker_R" size="0.0001 0.008 0.008" pos="-0.01 0.0 0.0" />
+                    <geom name="sticker:neg_x_neg_y_neg_z_G" class="sticker" material="sticker_G" size="0.008 0.0001 0.008" pos="0.0 -0.01 0.0" />
+                    <geom name="sticker:neg_x_neg_y_neg_z_W" class="sticker" material="sticker_W" size="0.008 0.008 0.0001" pos="0.0 0.0 -0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_neg_y_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_neg_y_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_neg_y_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_neg_y_neg_z" type="slide" pos="0 0 0" axis="-1 -1 -1" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_neg_z">
+                <!-- Red/White -->
+                <body name="cubelet:neg_x_neg_z" pos="-0.01905 0.0 -0.01905">
+                    <geom name="cubelet:neg_x_neg_z" class="cubelet" />
+                    <geom name="sticker:neg_x_neg_z_R" class="sticker" material="sticker_R" size="0.0001 0.008 0.008" pos="-0.01 0.0 0.0" />
+                    <geom name="sticker:neg_x_neg_z_W" class="sticker" material="sticker_W" size="0.008 0.008 0.0001" pos="0.0 0.0 -0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_neg_z" type="slide" pos="0 0 0" axis="-1 0 -1" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_neg_y">
+                <!-- Red/Green -->
+                <body name="cubelet:neg_x_neg_y" pos="-0.01905 -0.01905 0.0">
+                    <geom name="cubelet:neg_x_neg_y" class="cubelet" />
+                    <geom name="sticker:neg_x_neg_y_R" class="sticker" material="sticker_R" size="0.0001 0.008 0.008" pos="-0.01 0.0 0.0" />
+                    <geom name="sticker:neg_x_neg_y_G" class="sticker" material="sticker_G" size="0.008 0.0001 0.008" pos="0.0 -0.01 0.0" />
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_neg_y"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_neg_y"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_neg_y"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_neg_y" type="slide" pos="0 0 0" axis="-1 -1 0" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_pos_z">
+                <!-- Red/Yellow -->
+                <body name="cubelet:neg_x_pos_z" pos="-0.01905 0.0 0.01905">
+                    <geom name="cubelet:neg_x_pos_z" class="cubelet" />
+                    <geom name="sticker:neg_x_pos_z_R" class="sticker" material="sticker_R" size="0.0001 0.008 0.008" pos="-0.01 0.0 0.0" />
+                    <geom name="sticker:neg_x_pos_z_Y" class="sticker" material="sticker_Y" size="0.008 0.008 0.0001" pos="0.0 0.0 0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_pos_z" type="slide" pos="0 0 0" axis="-1 0 1" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_neg_z">
+                <!-- Orange/White -->
+                <body name="cubelet:pos_x_neg_z" pos="0.01905 0.0 -0.01905">
+                    <geom name="cubelet:pos_x_neg_z" class="cubelet" />
+                    <geom name="sticker:pos_x_neg_z_O" class="sticker" material="sticker_O" size="0.0001 0.008 0.008" pos="0.01 0.0 0.0" />
+                    <geom name="sticker:pos_x_neg_z_W" class="sticker" material="sticker_W" size="0.008 0.008 0.0001" pos="0.0 0.0 -0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_neg_z" type="slide" pos="0 0 0" axis="1 0 -1" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_pos_z">
+                <!-- Orange/Yellow -->
+                <body name="cubelet:pos_x_pos_z" pos="0.01905 0.0 0.01905">
+                    <geom name="cubelet:pos_x_pos_z" class="cubelet" />
+                    <geom name="sticker:pos_x_pos_z_O" class="sticker" material="sticker_O" size="0.0001 0.008 0.008" pos="0.01 0.0 0.0" />
+                    <geom name="sticker:pos_x_pos_z_Y" class="sticker" material="sticker_Y" size="0.008 0.008 0.0001" pos="0.0 0.0 0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_pos_z" type="slide" pos="0 0 0" axis="1 0 1" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_pos_y">
+                <!-- Orange/Blue -->
+                <body name="cubelet:pos_x_pos_y" pos="0.01905 0.01905 0.0">
+                    <geom name="cubelet:pos_x_pos_y" class="cubelet" />
+                    <geom name="sticker:pos_x_pos_y_O" class="sticker" material="sticker_O" size="0.0001 0.008 0.008" pos="0.01 0.0 0.0" />
+                    <geom name="sticker:pos_x_pos_y_B" class="sticker" material="sticker_B" size="0.008 0.0001 0.008" pos="0.0 0.01 0.0" />
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_pos_y"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_pos_y"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_pos_y"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_pos_y" type="slide" pos="0 0 0" axis="1 1 0" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_neg_y">
+                <!-- Orange/Green -->
+                <body name="cubelet:pos_x_neg_y" pos="0.01905 -0.01905 0.0" >
+                    <geom name="cubelet:pos_x_neg_y" class="cubelet" />
+                    <geom name="sticker:pos_x_neg_y_O" class="sticker" material="sticker_O" size="0.0001 0.008 0.008" pos="0.01 0.0 0.0" />
+                    <geom name="sticker:pos_x_neg_y_G" class="sticker" material="sticker_G" size="0.008 0.0001 0.008" pos="0.0 -0.01 0.0" />
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_neg_y"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_neg_y"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_neg_y"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_neg_y" type="slide" pos="0 0 0" axis="1 -1 0" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_neg_y_neg_z">
+                <!-- Orange/Green/White -->
+                <body name="cubelet:pos_x_neg_y_neg_z" pos="0.01905 -0.01905 -0.01905">
+                    <geom name="cubelet:pos_x_neg_y_neg_z" class="cubelet" />
+                    <geom name="sticker:pos_x_neg_y_neg_z_O" class="sticker" material="sticker_O" size="0.0001 0.008 0.008" pos="0.01 0.0 0.0" />
+                    <geom name="sticker:pos_x_neg_y_neg_z_G" class="sticker" material="sticker_G" size="0.008 0.0001 0.008" pos="0.0 -0.01 0.0" />
+                    <geom name="sticker:pos_x_neg_y_neg_z_W" class="sticker" material="sticker_W" size="0.008 0.008 0.0001" pos="0.0 0.0 -0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_neg_y_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_neg_y_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_neg_y_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_neg_y_neg_z" type="slide" pos="0 0 0" axis="1 -1 -1" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_neg_y_pos_z">
+                <!-- Orange/Green/Yellow -->
+                <body name="cubelet:pos_x_neg_y_pos_z" pos="0.01905 -0.01905 0.01905">
+                    <geom name="cubelet:pos_x_neg_y_pos_z" class="cubelet" />
+                    <geom name="sticker:pos_x_neg_y_pos_z_O" class="sticker" material="sticker_O" size="0.0001 0.008 0.008" pos="0.01 0.0 0.0" />
+                    <geom name="sticker:pos_x_neg_y_pos_z_G" class="sticker" material="sticker_G" size="0.008 0.0001 0.008" pos="0.0 -0.01 0.0" />
+                    <geom name="sticker:pos_x_neg_y_pos_z_Y" class="sticker" material="sticker_Y" size="0.008 0.008 0.0001" pos="0.0 0.0 0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_neg_y_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_neg_y_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_neg_y_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_neg_y_pos_z" type="slide" pos="0 0 0" axis="1 -1 1" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_pos_y_neg_z">
+                <!-- Orange/Blue/White -->
+                <body name="cubelet:pos_x_pos_y_neg_z" pos="0.01905 0.01905 -0.01905">
+                    <geom name="cubelet:pos_x_pos_y_neg_z" class="cubelet" />
+                    <geom name="sticker:pos_x_pos_y_neg_z_O" class="sticker" material="sticker_O" size="0.0001 0.008 0.008" pos="0.01 0.0 0.0" />
+                    <geom name="sticker:pos_x_pos_y_neg_z_B" class="sticker" material="sticker_B" size="0.008 0.0001 0.008" pos="0.0 0.01 0.0" />
+                    <geom name="sticker:pos_x_pos_y_neg_z_W" class="sticker" material="sticker_W" size="0.008 0.008 0.0001" pos="0.0 0.0 -0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_pos_y_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_pos_y_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_pos_y_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_pos_y_neg_z" type="slide" pos="0 0 0" axis="1 1 -1" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_pos_y_pos_z">
+                <!-- Orange/Blue/Yellow -->
+                <body name="cubelet:pos_x_pos_y_pos_z" pos="0.01905 0.01905 0.01905">
+                    <geom name="cubelet:pos_x_pos_y_pos_z" class="cubelet" />
+                    <geom name="sticker:pos_x_pos_y_pos_z_O" class="sticker" material="sticker_O" size="0.0001 0.008 0.008" pos="0.01 0.0 0.0" />
+                    <geom name="sticker:pos_x_pos_y_pos_z_B" class="sticker" material="sticker_B" size="0.008 0.0001 0.008" pos="0.0 0.01 0.0" />
+                    <geom name="sticker:pos_x_pos_y_pos_z_Y" class="sticker" material="sticker_Y" size="0.008 0.008 0.0001" pos="0.0 0.0 0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_pos_y_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_pos_y_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_pos_y_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_pos_y_pos_z" type="slide" pos="0 0 0" axis="1 1 1" class="slide"/>
+            </body>
+
+            <body name="body:neg_y_neg_z">
+                <!-- Green/White -->
+                <body name="cubelet:neg_y_neg_z" pos="0.0 -0.01905 -0.01905">
+                    <geom name="cubelet:neg_y_neg_z" class="cubelet" />
+                    <geom name="sticker:neg_y_neg_z_G" class="sticker" material="sticker_G" size="0.008 0.0001 0.008" pos="0.0 -0.01 0.0" />
+                    <geom name="sticker:neg_y_neg_z_W" class="sticker" material="sticker_W" size="0.008 0.008 0.0001" pos="0.0 0.0 -0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:neg_y_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_y_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_y_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_y_neg_z" type="slide" pos="0 0 0" axis="0 -1 -1" class="slide"/>
+            </body>
+
+            <body name="body:neg_y_pos_z">
+                <!-- Green/Yellow -->
+                <body name="cubelet:neg_y_pos_z" pos="0.0 -0.01905 0.01905">
+                    <geom name="cubelet:neg_y_pos_z" class="cubelet" />
+                    <geom name="sticker:neg_y_pos_z_G" class="sticker" material="sticker_G" size="0.008 0.0001 0.008" pos="0.0 -0.01 0.0" />
+                    <geom name="sticker:neg_y_pos_z_Y" class="sticker" material="sticker_Y" size="0.008 0.008 0.0001" pos="0.0 0.0 0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:neg_y_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_y_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_y_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_y_pos_z" type="slide" pos="0 0 0" axis="0 -1 1" class="slide"/>
+            </body>
+
+            <body name="body:pos_y_neg_z">
+                <!-- Blue/White -->
+                <body name="cubelet:pos_y_neg_z" pos="0.0 0.01905 -0.01905">
+                    <geom name="cubelet:pos_y_neg_z" class="cubelet" />
+                    <geom name="sticker:pos_y_neg_z_B" class="sticker" material="sticker_B" size="0.008 0.0001 0.008" pos="0.0 0.01 0.0" />
+                    <geom name="sticker:pos_y_neg_z_W" class="sticker" material="sticker_W" size="0.008 0.008 0.0001" pos="0.0 0.0 -0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:pos_y_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_y_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_y_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_y_neg_z" type="slide" pos="0 0 0" axis="0 1 -1" class="slide"/>
+            </body>
+
+            <body name="body:pos_y_pos_z">
+                <!-- Blue/Yellow -->
+                <body name="cubelet:pos_y_pos_z" pos="0.0 0.01905 0.01905">
+                    <geom name="cubelet:pos_y_pos_z" class="cubelet" />
+                    <geom name="sticker:pos_y_pos_z_B" class="sticker" material="sticker_B" size="0.008 0.0001 0.008" pos="0.0 0.01 0.0" />
+                    <geom name="sticker:pos_y_pos_z_Y" class="sticker" material="sticker_Y" size="0.008 0.008 0.0001" pos="0.0 0.0 0.01" />
+                </body>
+
+                <joint name="cubelet:rotx:pos_y_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_y_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_y_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_y_pos_z" type="slide" pos="0 0 0" axis="0 1 1" class="slide"/>
+            </body>
+        </body>
+    </worldbody>
+</mujoco>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+	<asset>
+		<mesh file="holdouts/chess/collision/0_scad_chess_knight_20200504.stl" name="chess0"></mesh>
+		<mesh file="holdouts/chess/collision/1_scad_chess_knight_20200504.stl" name="chess1"></mesh>
+		<mesh file="holdouts/chess/collision/2_scad_chess_knight_20200504.stl" name="chess2"></mesh>
+		<mesh file="holdouts/chess/collision/3_scad_chess_knight_20200504.stl" name="chess3"></mesh>
+		<mesh file="holdouts/chess/collision/4_scad_chess_knight_20200504.stl" name="chess4"></mesh>
+		<mesh file="holdouts/chess/collision/5_scad_chess_knight_20200504.stl" name="chess5"></mesh>
+		<mesh file="holdouts/chess/collision/6_scad_chess_knight_20200504.stl" name="chess6"></mesh>
+		<mesh file="holdouts/chess/collision/7_scad_chess_knight_20200504.stl" name="chess7"></mesh>
+		<mesh file="holdouts/chess/collision/8_scad_chess_knight_20200504.stl" name="chess8"></mesh>
+		<mesh file="holdouts/chess/collision/9_scad_chess_knight_20200504.stl" name="chess9"></mesh>
+		<mesh file="holdouts/chess/collision/10_scad_chess_knight_20200504.stl" name="chess10"></mesh>
+		<mesh file="holdouts/chess/collision/11_scad_chess_knight_20200504.stl" name="chess11"></mesh>
+		<mesh file="holdouts/chess/collision/12_scad_chess_knight_20200504.stl" name="chess12"></mesh>
+		<mesh file="holdouts/chess/collision/13_scad_chess_knight_20200504.stl" name="chess13"></mesh>
+		<mesh file="holdouts/chess/collision/14_scad_chess_knight_20200504.stl" name="chess14"></mesh>
+		<mesh file="holdouts/chess/collision/15_scad_chess_knight_20200504.stl" name="chess15"></mesh>
+		<material name="block_mat" rgba="1.0 0 0 1.0" specular="0.25" shininess="0.10" reflectance="0.10"></material>
+	</asset>
+	<worldbody>
+		<body>
+			<geom type="mesh" mesh="chess0" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess1" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess2" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess3" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess4" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess5" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess6" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess7" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess8" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess9" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess10" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess11" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess12" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess13" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess14" material="block_mat"></geom>
+			<geom type="mesh" mesh="chess15" material="block_mat"></geom>
+			<joint type="free"></joint>
+		</body>
+	</worldbody>
+</mujoco>

@@ -1,0 +1,26 @@
+<mujocoinclude>
+  <default>
+    <site type='sphere' size='0.001' group='5' rgba='1 0 0 0.3'/>
+    <geom friction='.35' solimp=".99 .999 .001" solref=".01 1" rgba=".5 .5 .5 1"/>
+
+    <default class='base'>
+      <geom type='box' pos='0 0 0.0096' size='0.0159 0.0318 0.0096' contype='3' conaffinity='2' rgba='0 0 1 0.3' group='4' mass='0'/>
+    </default>
+    <default class='wall'>
+      <geom type='box' contype='4' conaffinity='0'/>
+    </default>
+    <default class='flange'>
+      <geom type='box' size='.0008 .00055 .0087' contype='4' conaffinity='0'/>
+    </default>
+    <default class='stud'>
+      <geom type='cylinder' size='.0047 .0023' density='500' margin='.0001' contype='9' conaffinity='8' group='3'/>
+    </default>
+    <default class='stud-capsule'>
+      <geom type='capsule' size='.005 .0023' density='500' group='0' mass='0' contype='0' conaffinity='4'/>
+    </default>
+    <default class='tube'>
+      <geom type='cylinder' size='.0066999 .0078' density='300' contype='4' conaffinity='0'/>
+    </default>
+  </default>
+</mujocoinclude>
+

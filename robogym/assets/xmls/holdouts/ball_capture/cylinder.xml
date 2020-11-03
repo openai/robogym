@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+    <worldbody>
+        <body>
+            <geom type="cylinder" size="0.0145 0.030"></geom>
+            <joint type="free"></joint>
+        </body>
+    </worldbody>
+</mujoco>

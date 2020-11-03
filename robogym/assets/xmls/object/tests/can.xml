@@ -1,0 +1,11 @@
+<mujoco>
+  <asset>
+      <mesh file="ycb/005_tomato_soup_can/005_tomato_soup_can1.stl" name="soup_can" />
+  </asset>
+  <worldbody>
+    <body>
+      <geom type="mesh" mesh="soup_can"/>
+      <joint type="free"/>
+    </body>
+  </worldbody>
+</mujoco>

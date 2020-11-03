@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+    <asset>
+        <mesh file="ycb/010_potted_meat_can/010_potted_meat_can1.stl" name="potted_meat_can1"></mesh>
+        <mesh file="ycb/010_potted_meat_can/010_potted_meat_can2.stl" name="potted_meat_can2"></mesh>
+        <mesh file="ycb/010_potted_meat_can/010_potted_meat_can3.stl" name="potted_meat_can3"></mesh>
+        <mesh file="ycb/010_potted_meat_can/010_potted_meat_can4.stl" name="potted_meat_can4"></mesh>
+        <mesh file="ycb/010_potted_meat_can/010_potted_meat_can5.stl" name="potted_meat_can5"></mesh>
+        <material name="block_mat" rgba="1.0 0 0 1.0" specular="0.25" shininess="0.10" reflectance="0.10"></material>
+    </asset>
+    <worldbody>
+        <body>
+            <geom type="mesh" mesh="potted_meat_can1" material="block_mat"></geom>
+            <geom type="mesh" mesh="potted_meat_can2" material="block_mat"></geom>
+            <geom type="mesh" mesh="potted_meat_can3" material="block_mat"></geom>
+            <geom type="mesh" mesh="potted_meat_can4" material="block_mat"></geom>
+            <geom type="mesh" mesh="potted_meat_can5" material="block_mat"></geom>
+            <joint type="free"></joint>
+        </body>
+    </worldbody>
+</mujoco>

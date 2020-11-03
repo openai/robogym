@@ -1,0 +1,90 @@
+<!-- See LICENSE.md for legal notices. LICENSE.md must be kept together with this file. -->
+<mujocoinclude>
+	<!-- ================ ACTUATORS:: TENDON MOTORS ====================== -->
+	<actuator> <!--force range = 'Max tendon load'-->
+		<motor class="asset_class" name="A_WRJ1r" user="2038" tendon="T_WRJ1r" gear="-145"  ctrlrange="-1 1" forcerange="0 145"/>
+		<motor class="asset_class" name="A_WRJ1l" user="2039" tendon="T_WRJ1l" gear="-145"  ctrlrange="-1 1" forcerange="0 145"/>
+		<motor class="asset_class" name="A_WRJ0u" user="2036" tendon="T_WRJ0u" gear="-145"  ctrlrange="-1 1" forcerange="0 145"/>
+		<motor class="asset_class" name="A_WRJ0d" user="2037" tendon="T_WRJ0d" gear="-145"  ctrlrange="-1 1" forcerange="0 145"/>
+		<motor class="asset_class" name="A_FFJ3r" user="2004" tendon="T_FFJ3r" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_FFJ3l" user="2005" tendon="T_FFJ3l" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_FFJ2u" user="2002" tendon="T_FFJ2u" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_FFJ2d" user="2003" tendon="T_FFJ2d" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_FFJ1u" user="2000" tendon="T_FFJ1u" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_FFJ1d" user="2001" tendon="T_FFJ1d" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_MFJ3r" user="2010" tendon="T_MFJ3r" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_MFJ3l" user="2011" tendon="T_MFJ3l" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_MFJ2u" user="2008" tendon="T_MFJ2u" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_MFJ2d" user="2009" tendon="T_MFJ2d" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_MFJ1u" user="2006" tendon="T_MFJ1u" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_MFJ1d" user="2007" tendon="T_MFJ1d" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_RFJ3r" user="2016" tendon="T_RFJ3r" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_RFJ3l" user="2017" tendon="T_RFJ3l" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_RFJ2u" user="2014" tendon="T_RFJ2u" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_RFJ2d" user="2015" tendon="T_RFJ2d" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_RFJ1u" user="2012" tendon="T_RFJ1u" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_RFJ1d" user="2013" tendon="T_RFJ1d" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_LFJ4u" user="2024" tendon="T_LFJ4u" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_LFJ4d" user="2025" tendon="T_LFJ4d" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_LFJ3r" user="2022" tendon="T_LFJ3r" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_LFJ3l" user="2023" tendon="T_LFJ3l" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_LFJ2u" user="2020" tendon="T_LFJ2u" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_LFJ2d" user="2021" tendon="T_LFJ2d" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_LFJ1u" user="2018" tendon="T_LFJ1u" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_LFJ1d" user="2019" tendon="T_LFJ1d" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_THJ4a" user="2034" tendon="T_THJ4a" gear="-90"   ctrlrange="-1 1" forcerange="0 145"/>
+		<motor class="asset_class" name="A_THJ4c" user="2035" tendon="T_THJ4c" gear="-90"   ctrlrange="-1 1" forcerange="0 145"/>
+		<motor class="asset_class" name="A_THJ3u" user="2032" tendon="T_THJ3u" gear="-90"   ctrlrange="-1 1" forcerange="0 145"/>
+		<motor class="asset_class" name="A_THJ3d" user="2033" tendon="T_THJ3d" gear="-90"   ctrlrange="-1 1" forcerange="0 145"/>
+		<motor class="asset_class" name="A_THJ2u" user="2030" tendon="T_THJ2u" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_THJ2d" user="2031" tendon="T_THJ2d" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_THJ1r" user="2028" tendon="T_THJ1r" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_THJ1l" user="2029" tendon="T_THJ1l" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_THJ0r" user="2026" tendon="T_THJ0r" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+		<motor class="asset_class" name="A_THJ0l" user="2027" tendon="T_THJ0l" gear="-90"   ctrlrange="-1 1" forcerange="0 90"/>
+	</actuator>
+
+	<sensor>
+	<!-- ======= Tendon Actuator Force Sensors ======= -->
+		<actuatorfrc name="Saf_WRJ1r" actuator="A_WRJ1r"/>
+		<actuatorfrc name="Saf_WRJ1l" actuator="A_WRJ1l"/>
+		<actuatorfrc name="Saf_WRJ0d" actuator="A_WRJ0d"/>
+		<actuatorfrc name="Saf_WRJ0u" actuator="A_WRJ0u"/>
+		<actuatorfrc name="Saf_FFJ3l" actuator="A_FFJ3l"/>
+		<actuatorfrc name="Saf_FFJ3r" actuator="A_FFJ3r"/>
+		<actuatorfrc name="Saf_FFJ2u" actuator="A_FFJ2u"/>
+		<actuatorfrc name="Saf_FFJ2d" actuator="A_FFJ2d"/>
+		<actuatorfrc name="Saf_FFJ1u" actuator="A_FFJ1u"/>
+		<actuatorfrc name="Saf_FFJ1d" actuator="A_FFJ1d"/>
+		<actuatorfrc name="Saf_MFJ3l" actuator="A_MFJ3l"/>
+		<actuatorfrc name="Saf_MFJ3r" actuator="A_MFJ3r"/>
+		<actuatorfrc name="Saf_MFJ2u" actuator="A_MFJ2u"/>
+		<actuatorfrc name="Saf_MFJ2d" actuator="A_MFJ2d"/>
+		<actuatorfrc name="Saf_MFJ1u" actuator="A_MFJ1u"/>
+		<actuatorfrc name="Saf_MFJ1d" actuator="A_MFJ1d"/>
+		<actuatorfrc name="Saf_RFJ3l" actuator="A_RFJ3l"/>
+		<actuatorfrc name="Saf_RFJ3r" actuator="A_RFJ3r"/>
+		<actuatorfrc name="Saf_RFJ2u" actuator="A_RFJ2u"/>
+		<actuatorfrc name="Saf_RFJ2d" actuator="A_RFJ2d"/>
+		<actuatorfrc name="Saf_RFJ1u" actuator="A_RFJ1u"/>
+		<actuatorfrc name="Saf_RFJ1d" actuator="A_RFJ1d"/>
+		<actuatorfrc name="Saf_LFJ4u" actuator="A_LFJ4u"/>
+		<actuatorfrc name="Saf_LFJ4d" actuator="A_LFJ4d"/>
+		<actuatorfrc name="Saf_LFJ3l" actuator="A_LFJ3l"/>
+		<actuatorfrc name="Saf_LFJ3r" actuator="A_LFJ3r"/>
+		<actuatorfrc name="Saf_LFJ2u" actuator="A_LFJ2u"/>
+		<actuatorfrc name="Saf_LFJ2d" actuator="A_LFJ2d"/>
+		<actuatorfrc name="Saf_LFJ1u" actuator="A_LFJ1u"/>
+		<actuatorfrc name="Saf_LFJ1d" actuator="A_LFJ1d"/>
+		<actuatorfrc name="Saf_THJ4a" actuator="A_THJ4a"/>
+		<actuatorfrc name="Saf_THJ4c" actuator="A_THJ4c"/>
+		<actuatorfrc name="Saf_THJ3u" actuator="A_THJ3u"/>
+		<actuatorfrc name="Saf_THJ3d" actuator="A_THJ3d"/>
+		<actuatorfrc name="Saf_THJ2u" actuator="A_THJ2u"/>
+		<actuatorfrc name="Saf_THJ2d" actuator="A_THJ2d"/>
+		<actuatorfrc name="Saf_THJ1l" actuator="A_THJ1l"/>
+		<actuatorfrc name="Saf_THJ1r" actuator="A_THJ1r"/>
+		<actuatorfrc name="Saf_THJ0l" actuator="A_THJ0l"/>
+		<actuatorfrc name="Saf_THJ0r" actuator="A_THJ0r"/>
+	</sensor>
+</mujocoinclude>

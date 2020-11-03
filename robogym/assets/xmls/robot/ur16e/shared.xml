@@ -1,0 +1,120 @@
+<mujocoinclude>
+    <compiler angle="radian"/>
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="0.44 0.85 0.56" rgb2="0.46 0.87 0.58" width="32" height="32"></texture>
+
+        <material name="floor_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1"></material>
+        <material name="table_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.93 0.93 0.93 1"></material>
+        <material name="block_mat" specular="0" shininess="0.5" reflectance="0" rgba="1 1 0 1"></material>
+
+        <!--        Table .stl exported from Solidworks-->
+        <!-- <mesh name="UR_Table_HP" file="robot/ur16e/Dual_UR_Table_Cut_v2.stl"/> -->
+
+        <!--  Current setup is such that we use simplified meshes for the table and the gripper, but keep
+              high-poly ones for the arm itself. Once the low-poly arm is verified to work with the coarse
+              collision meshes and trains with vision, we can switch these to low poly. -->
+
+        <!-- Simplified URTable -->
+        <mesh name="URTable_base_link" file="robot/ur16e/URTable_base_link.stl"/>
+        <mesh name="URTable_backsupport" file="robot/ur16e/URTable_backsupport.stl"/>
+        <mesh name="URTable_topmount" file="robot/ur16e/URTable_topmount_LPLP.stl"/>
+
+        <!--        UR16e Full Poly-->
+        <mesh name="base_link" file="robot/ur16e/base_link.stl"/>
+        <mesh name="Shoulder1" file="robot/ur16e/Shoulder1.stl"/>
+        <mesh name="Shoulder2" file="robot/ur16e/Shoulder2.stl"/>
+        <mesh name="Elbow" file="robot/ur16e/Elbow.stl"/>
+        <mesh name="Wrist1" file="robot/ur16e/Wrist1.stl"/>
+        <mesh name="Wrist2" file="robot/ur16e/Wrist2.stl"/>
+        <mesh name="Wrist3" file="robot/ur16e/Wrist3.stl"/>
+
+        <!--        UR16e Very Low Poly-->
+        <!--<mesh name="base_link_LP" file="robot/ur16e/base_link_LPLP.stl"/>-->
+        <!--<mesh name="Shoulder1_LP" file="robot/ur16e/Shoulder1_LPLP.stl"/>-->
+        <!--<mesh name="Shoulder2_LP" file="robot/ur16e/Shoulder2_LPLP.stl"/>-->
+        <!--<mesh name="Elbow_LP" file="robot/ur16e/Elbow_LPLP.stl"/>-->
+        <!--<mesh name="Wrist1_LP" file="robot/ur16e/Wrist1_LPLP.stl"/>-->
+        <!--<mesh name="Wrist2_LP" file="robot/ur16e/Wrist2_LPLP.stl"/>-->
+        <!--<mesh name="Wrist3_LP" file="robot/ur16e/Wrist3_LPLP.stl"/>-->
+
+        <!--        RobotIQ 2F-85 Full Poly -->
+        <!-- <mesh name="gripper_base_link" file="robot/robotiq_2f_85/base_link_ROT_LOCAL.stl"/>
+        <mesh name="left_outer_driver" file="robot/robotiq_2f_85/left_outer_driver_ROT_LOCAL.stl"/>
+        <mesh name="left_inner_follower" file="robot/robotiq_2f_85/left_inner_follower_ROT_LOCAL.stl"/>
+        <mesh name="left_gripper" file="robot/robotiq_2f_85/left_gripper_ROT_LOCAL.stl"/>
+        <mesh name="right_outer_driver" file="robot/robotiq_2f_85/right_outer_driver_ROT_LOCAL.stl"/>
+        <mesh name="right_inner_follower" file="robot/robotiq_2f_85/right_inner_follower_ROT_LOCAL.stl"/>
+        <mesh name="right_gripper" file="robot/robotiq_2f_85/right_gripper_ROT_LOCAL.stl"/> -->
+
+        <!--        RobotIQ 2F-85 Very Low Poly -->
+        <mesh name="gripper_base_link" file="robot/robotiq_2f_85/base_link_LPLP_ROT_LOCAL.stl"/>
+        <mesh name="left_outer_driver" file="robot/robotiq_2f_85/left_outer_driver_LPLP_ROT_LOCAL.stl"/>
+        <mesh name="left_inner_follower" file="robot/robotiq_2f_85/left_inner_follower_LPLP_ROT_LOCAL.stl"/>
+        <mesh name="left_gripper" file="robot/robotiq_2f_85/left_gripper_LPLP_ROT_LOCAL.stl"/>
+        <mesh name="right_outer_driver" file="robot/robotiq_2f_85/right_outer_driver_LPLP_ROT_LOCAL.stl"/>
+        <mesh name="right_inner_follower" file="robot/robotiq_2f_85/right_inner_follower_LPLP_ROT_LOCAL.stl"/>
+        <mesh name="right_gripper" file="robot/robotiq_2f_85/right_gripper_LPLP_ROT_LOCAL.stl"/>
+
+        <!--        RobotIQ 2F-85 IO plate -->
+        <!--        <mesh name="gripper_io_plate" file="robot/robotiq_2f_85/gripper_io_plate_simple.stl"/>-->
+        <mesh name="gripper_io_plate" file="robot/robotiq_2f_85/gripper_io_plate_simple_LP.stl"/>
+        <material name="GriMat" specular="0.9" shininess="0.5" reflectance="0" rgba="0.1 0.1 0.1 1" emission="0.1"/>
+        <material name="ur_MatColl" specular="1" shininess=".3" reflectance="0.5" rgba=".4 .5 .6 1"/>
+        <material name="ur_MatViz" specular="1" shininess=".1" reflectance="0.5" rgba=".7 .7 .7 1"/>
+        <material name="ur_MatViz2" specular="1" shininess=".1" reflectance="0.8" rgba=".4 .4 .4 1"/>
+        <material name="ur_invisible" specular="1" rgba="1 1 1 0"/>
+
+        <!-- Wrist Camera -->
+        <mesh file="robot/ur16e/wrist_cam/collision/0_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam0"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/1_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam1"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/2_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam2"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/3_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam3"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/4_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam4"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/5_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam5"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/6_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam6"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/7_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam7"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/8_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam8"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/9_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam9"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/10_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam10"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/11_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam11"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/12_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam12"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/13_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam13"></mesh>
+        <mesh file="robot/ur16e/wrist_cam/collision/14_BaslerCameraAndMount_20200725_20200725.stl" name="wrist_cam14"></mesh>
+
+    </asset>
+
+    <default>
+        <default class="ur16e_viz">
+            <geom margin="0.001" material="ur_MatViz" group="2" type="mesh" contype="3" conaffinity="8"/>
+        </default>
+
+        <default class="gripper_joint">
+            <joint armature="100" damping="2000" frictionloss="10" limited="true" range="-.04473 0"/>
+        </default>
+
+        <default class="gripper_viz">
+            <geom material="GriMat" contype="3" conaffinity="2" group="2"/>
+        </default>
+
+        <default class="table_viz">
+            <geom material="table_mat" contype="1" conaffinity="1" group="2"/>
+        </default>
+
+        <default class="backdrop_viz">
+            <geom material="table_mat" contype="1" conaffinity="1"/>
+        </default>
+
+        <default class="table_collision_plane_viz">
+            <geom material="ur_invisible" contype="0" conaffinity="2"/>
+        </default>
+
+        <default class="wrist_cam_collision_viz">
+            <geom material="ur_invisible" contype="2" conaffinity="1"/>
+        </default>
+
+        <default class="no_collision">
+            <geom material="GriMat" contype="0" conaffinity="0"/>
+        </default>
+
+    </default>
+</mujocoinclude>

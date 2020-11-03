@@ -1,0 +1,197 @@
+<!-- See LICENSE.md for legal notices. LICENSE.md must be kept together with this file. -->
+<mujocoinclude>
+    <body childclass="asset_class" name="forearm" pos="0 0.01 0" euler="0 0 0">
+        <inertial pos="0.001 -0.002 0.29" quat="0.982 -0.016 0.000 -0.188" mass="4" diaginertia="0.01 0.01 0.0075" />
+        <geom class="D_Contact" pos="0 .01 .04" name="forearm"  mesh="forearm" euler="0 0 1.57" />
+        <body pos="0.046 -0.035 0.216" euler="1.5707963267948966 0 3.141592653589793">
+            <site class="D_PhasespaceSite" name="phasespace_ref0" pos="0.007 -0.009 -0.006" />
+            <site class="D_PhasespaceSite" name="phasespace_ref1" pos="0.085 -0.009 -0.006" />
+            <site class="D_PhasespaceSite" name="phasespace_ref2" pos="0.085 -0.009 -0.084" />
+        </body>
+
+        <!-- ======= Wrist ======= -->
+        <body name="wrist" pos="0 0 0.256">
+            <inertial pos="0.003 0.000 0.016" quat="0.504 0.496 0.495 0.504" mass="0.3" diaginertia="0.001 0.001 0.001" />
+            <joint name="WRJ1" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.489 0.140" damping=".43" armature=".005" user="1123" />
+            <geom class="D_Visual" name="wrist" mesh="wrist" />
+
+            <!-- ======= Palm ======= -->
+            <body name="palm" pos="0 0 0.034">
+                <inertial pos="0.006 -0.000 0.036" quat="0.716 0.044 0.075 0.693" mass="0.3" diaginertia="0.001 0.001 0.001" />
+                <joint name="WRJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="-0.698 0.489" damping="2.0" frictionloss="0.05" armature=".005" user="1122" />
+                <geom class="D_Visual" name="palm" mesh="palm" />
+
+                <!-- ======= First Finger ======= -->
+                <body name="ffknuckle" pos="0.033 0 0.095">
+                    <inertial pos="-0.000 0.000 0.000" quat="0.520 0.854 0.006 -0.003" mass="0.008" diaginertia="0.00001 0.00001 0.00001" />
+                    <joint name="FFJ3" type="hinge" pos="0 0 0" axis="0 1 0" damping="0.15" frictionloss="0.01" range="-0.277 0.349"  user="1103" />
+                    <geom class="D_Visual" name="ffknuckle" mesh="knuckle" />
+
+                    <!-- Proximal -->
+                    <body name="ffproximal" pos="0 0 0">
+                        <inertial pos="0.000 0.000 0.023" quat="0.707 -0.004 0.004 0.707" mass="0.014" diaginertia="0.00001 0.00001 0.00001" />
+                        <joint name="FFJ2" type="hinge" pos="0 0 0" axis="1 0 0" damping="0.2" frictionloss="0.01" stiffness="0.03" range="0 1.454"  user="1102" />
+                        <geom class="D_Visual" name="ffproximal" mesh="F3" />
+
+                        <!-- Middle -->
+                        <body name="ffmiddle" pos="0 0 0.045">
+                            <inertial pos="-0.000 -0.000 0.011" quat="0.707 0.000 -0.000 0.707" mass="0.012" diaginertia="0.00001 0.00001 0.00001" />
+                            <joint name="FFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.684" damping="0.1" user="1101" />
+                            <geom class="D_Visual" name="ffmiddle" mesh="F2" />
+
+                            <!-- Distal -->
+                            <body name="ffdistal" pos="0 0 0.025">
+                                <inertial pos="0 -0.000 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.010" diaginertia="0.00001 0.00001 0.00001" />
+                                <joint name="FFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"  user="1100" springref="-1.0" stiffness="0.01" />
+                                <geom class="D_Visual" name="ffdistal" pos="0 0 0.001" mesh="F1" />
+                                <site class="D_PhasespaceSite" name="S_fftip" pos="0.000 0.004 0.027" />
+                                <site class="D_TouchVisual" name="Tch_fftip" />
+                            </body>
+                        </body>
+                    </body>
+                </body>
+                <!-- ======= First Finger End =======-->
+
+                <!-- ======= Middle Finger ======= -->
+                <body name="mfknuckle" pos="0.011 0 0.099">
+                    <inertial pos="-0.000 0.000 0.000" quat="0.520 0.854 0.006 -0.003" mass="0.008" diaginertia="0.00001 0.00001 0.00001" />
+                    <joint name="MFJ3" type="hinge" pos="0 0 0" axis="0 1 0" damping="0.15" frictionloss="0.002" range="-0.293 0.349"  user="1107" />
+                    <geom class="D_Visual" name="mfknuckle" mesh="knuckle" />
+
+                    <!-- Proximal -->
+                    <body name="mfproximal" pos="0 0 0">
+                        <inertial pos="0.000 0.000 0.023" quat="0.707 -0.004 0.004 0.707" mass="0.014" diaginertia="0.00001 0.00001 0.00001" />
+                        <joint name="MFJ2" damping="0.28" stiffness="0.03" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.435"  user="1106" />
+                        <geom class="D_Visual" name="mfproximal" mesh="F3" />
+
+                        <!-- Middle -->
+                        <body name="mfmiddle" pos="0 0 0.045">
+                            <inertial pos="-0.000 -0.000 0.012" quat="0.707 0.000 -0.000 0.707" mass="0.012" diaginertia="0.00001 0.00001 0.00001" />
+                            <joint name="MFJ1" type="hinge" pos="0 0 0" axis="1 0 0" damping="0.035" range="0 1.772"  user="1105" />
+                            <geom class="D_Visual" name="mfmiddle" mesh="F2" />
+
+                            <!-- Distal -->
+                            <body name="mfdistal" pos="0 0 0.025">
+                                <inertial pos="0 -0.000 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.010" diaginertia="0.00001 0.00001 0.00001" />
+                                <joint name="MFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1104" springref="-1.0" stiffness="0.01" />
+                                <geom class="D_Visual" name="mfdistal" mesh="F1" />
+                                <site class="D_PhasespaceSite" name="S_mftip" pos="0.000 0.004 0.027" />
+                                <site class="D_TouchVisual" name="Tch_mftip" />
+                            </body>
+                        </body>
+                    </body>
+                </body>
+                <!-- ======= Middle Finger End ======= -->
+
+                <!-- ======= Ring Finger ======= -->
+                <body name="rfknuckle" pos="-0.011 0 0.095">
+                    <inertial pos="-0.000 0.000 0.000" quat="0.520 0.854 0.006 -0.003" mass="0.008" diaginertia="0.00001 0.00001 0.00001" />
+                    <joint name="RFJ3" type="hinge" pos="0 0 0" axis="0 1 0" damping="0.19" frictionloss="0.01" range="-0.349 0.349"  user="1111" />
+                    <geom class="D_Visual" name="rfknuckle" mesh="knuckle" />
+
+                    <!-- Proximal -->
+                    <body name="rfproximal" pos="0 0 0">
+                        <inertial pos="0.000 0.000 0.023" quat="0.707 -0.004 0.004 0.707" mass="0.014" diaginertia="0.00001 0.00001 0.00001" />
+                        <joint name="RFJ2" type="hinge" pos="0 0 0" axis="1 0 0" damping="0.22" frictionloss="0.01" range="0 1.571"  user="1110" />
+                        <geom class="D_Visual" name="rfproximal" mesh="F3" />
+
+                        <!-- Middle -->
+                        <body name="rfmiddle" pos="0 0 0.045">
+                            <inertial pos="-0.000 -0.000 0.012" quat="0.707 0.000 -0.000 0.707" mass="0.012" diaginertia="0.00001 0.00001 0.00001" />
+                            <joint name="RFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"  user="1109" />
+                            <geom class="D_Visual" name="rfmiddle" mesh="F2" />
+
+                            <!-- Distal -->
+                            <body name="rfdistal" pos="0 0 0.025">
+                                <inertial pos="0 -0.000 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.010" diaginertia="0.00001 0.00001 0.00001" />
+                                <joint name="RFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.558"  user="1108" springref="-1.0" stiffness="0.01" />
+                                <geom class="D_Visual" name="rfdistal" mesh="F1" pos="0 0 .001" />
+                                <site class="D_PhasespaceSite" name="S_rftip" pos="0.000 0.004 0.027" />
+                                <site class="D_TouchVisual" name="Tch_rftip" />
+                            </body>
+                        </body>
+                    </body>
+                </body>
+                <!-- ======= Ring Finger End ======= -->
+
+                <!-- ======= Little Finger ======= -->
+                <body name="lfmetacarpal" pos="-0.017 0 0.044">
+                    <inertial pos="-0.014 0.001 0.014" quat="0.709 -0.092 -0.063 0.696" mass="0.075" diaginertia="0.00001 0.00001 0.00001" />
+                    <joint name="LFJ4" type="hinge" pos="0 0 0" axis="0.571 0 0.821" damping="0.22" frictionloss="0.01" range="0 0.785"  user="1116" />
+                    <geom class="D_Visual" name="lfmetacarpal" pos="-0.016 0.000 -0.023" mesh="lfmetacarpal" />
+
+                    <!-- Knuckle -->
+                    <body name="lfknuckle" pos="-0.017 0 0.044">
+                        <inertial pos="-0.000 0.000 0.000" quat="0.520 0.854 0.006 -0.003" mass="0.008" diaginertia="0.00001 0.00001 0.00001" />
+                        <joint name="LFJ3" type="hinge" pos="0 0 0" axis="0 1 0" damping="0.4" frictionloss="0.010" range="-0.332 0.247"  user="1115" />
+                        <geom class="D_Visual" name="lfknuckle" mesh="knuckle" />
+
+                        <!-- Proximal -->
+                        <body name="lfproximal" pos="0 0 0">
+                            <inertial pos="0.000 0.000 0.023" quat="0.707 -0.004 0.004 0.707" mass="0.014" diaginertia="0.00001 0.00001 0.00001" />
+                            <joint name="LFJ2" type="hinge" pos="0 0 0" axis="1 0 0" damping="0.33" frictionloss="0.01" range="0 1.571"  user="1114" />
+                            <geom class="D_Visual" name="lfproximal" mesh="F3" />
+
+                            <!-- Middle -->
+                            <body name="lfmiddle" pos="0 0 0.045">
+                                <inertial pos="-0.000 -0.000 0.012" quat="0.707 0.000 -0.000 0.707" mass="0.012" diaginertia="0.00001 0.00001 0.00001" />
+                                <joint name="LFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.755" damping="0.03" user="1113" />
+                                <geom class="D_Visual" name="lfmiddle" mesh="F2" />
+
+                                <!-- Distal -->
+                                <body name="lfdistal" pos="0 0 0.025">
+                                    <inertial pos="0 -0.000 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.010" diaginertia="0.00001 0.00001 0.00001" />
+                                    <joint name="LFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"  user="1112" springref="-1.0" stiffness="0.01" />
+                                    <geom class="D_Visual" name="lfdistal" mesh="F1" pos="0 0 .001" />
+                                    <site class="D_PhasespaceSite" name="S_lftip" pos="0.000 0.004 0.027" />
+                                    <site class="D_TouchVisual" name="Tch_lftip" />
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+                <!-- ======= Little Finger End ======= -->
+
+                <!-- ======= Thumb ======= -->
+                <body name="thbase" pos="0.034 -0.009 0.029" axisangle="0  1 0  0.785" >
+                    <inertial pos="0 0 0" mass="0.010" diaginertia="0.00001 0.00001 0.00001" />
+                    <joint name="THJ4" type="hinge" pos="0 0 0" axis="0 0 -1" damping="0.2" frictionloss="0.02" range="-1.0 0.5"  user="1121" />
+                    <geom class="D_Visual" name="thbase" type="box" group="1" pos="0 0 0" size="0.001 0.001 0.001" />
+
+                    <!--Proximal-->
+                    <body name="thproximal" pos="0 0 0">
+                        <inertial pos="-0.000 -0.000 0.017" quat="0.982 -0.000 0.001 0.191" mass="0.016" diaginertia="0.00001 0.00001 0.00001" />
+                        <joint name="THJ3" type="hinge" pos="0 0 0" axis="1 0 0" damping="0.2" frictionloss="0.003" range="0 1.222"  user="1120" />
+                        <geom class="D_Visual" name="thproximal" mesh="TH3_z" />
+
+                        <!-- Hub -->
+                        <body name="thhub" pos="0 0 0.038">
+                            <inertial pos="0 0 0" mass="0.002" diaginertia="0.00001 0.00001 0.00001" />
+                            <joint name="THJ2" type="hinge" pos="0 0 0" axis="1 0 0" damping="0.1" frictionloss="0.009" range="-0.209 0.155"  user="1119" />
+
+                            <!-- Middle -->
+                            <body name="thmiddle" pos="0 0 0">
+                                <inertial pos="0.000 -0.000 0.016" quat="1.000 -0.001 -0.007 0.003" mass="0.016" diaginertia="0.00001 0.00001 0.00001" />
+                                <joint name="THJ1" type="hinge" pos="0 0 0" axis="0 1 0" damping="0.2" frictionloss="0.01" range="-0.583 0.524"  user="1118" />
+                                <geom class="D_Visual" name="thmiddle" mesh="TH2_z" />
+
+                                <!-- Distal -->
+                                <body name="thdistal" pos="0 0 0.032">
+                                    <inertial pos="0.000 -0.000 0.016" quat="0.999 -0.005 -0.047 0.005" mass="0.016" diaginertia="0.00001 0.00001 0.00001" />
+                                    <joint name="THJ0" type="hinge" pos="0 0 0" axis="0 1 0" damping="0.18" frictionloss="0.01" range="-1.571 0"  user="1117" />
+                                    <geom class="D_Visual" name="thdistal" mesh="TH1_z" />
+                                    <site class="D_PhasespaceSite" name="S_thtip" pos="0.007 0.0 0.028" />
+                                    <site class="D_TouchVisual" name="Tch_thtip" />
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body> 
+                <!-- ======= Thumb End ======= -->
+            </body>
+            <!-- ======= Palm End ======= -->
+        </body>
+        <!-- ======= Wrist End ======= -->
+    </body>
+    <!-- ======= Forearm/Hand Actuation End ======= -->
+</mujocoinclude>

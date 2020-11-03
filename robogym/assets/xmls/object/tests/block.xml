@@ -1,0 +1,11 @@
+<mujoco>
+  <asset>
+    <material name="block_mat" specular="0" shininess="0.5" reflectance="0" rgba="1 0 0 1"/>
+  </asset>
+  <worldbody>
+    <body>
+      <geom type="box" size="0.02 0.02 0.02" rgba="1.0 0.0 0.0 1.0" material="block_mat" condim="4" />
+      <joint type="free"/>
+    </body>
+  </worldbody>
+</mujoco>

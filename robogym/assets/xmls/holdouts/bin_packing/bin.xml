@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+	<asset>
+		<mesh file="holdouts/bin_packing/collision/0_bin_20200804.stl" name="bin_packing0"></mesh>
+		<mesh file="holdouts/bin_packing/collision/1_bin_20200804.stl" name="bin_packing1"></mesh>
+		<mesh file="holdouts/bin_packing/collision/2_bin_20200804.stl" name="bin_packing2"></mesh>
+		<mesh file="holdouts/bin_packing/collision/3_bin_20200804.stl" name="bin_packing3"></mesh>
+		<mesh file="holdouts/bin_packing/collision/4_bin_20200804.stl" name="bin_packing4"></mesh>
+		<mesh file="holdouts/bin_packing/collision/5_bin_20200804.stl" name="bin_packing5"></mesh>
+		<mesh file="holdouts/bin_packing/collision/6_bin_20200804.stl" name="bin_packing6"></mesh>
+		<mesh file="holdouts/bin_packing/collision/7_bin_20200804.stl" name="bin_packing7"></mesh>
+		<mesh file="holdouts/bin_packing/collision/8_bin_20200804.stl" name="bin_packing8"></mesh>
+		<mesh file="holdouts/bin_packing/collision/9_bin_20200804.stl" name="bin_packing9"></mesh>
+		<material name="block_mat" rgba="1.0 0 0 1.0" specular="0.25" shininess="0.10" reflectance="0.10"></material>
+	</asset>
+	<worldbody>
+		<body>
+			<geom type="mesh" mesh="bin_packing0" material="block_mat"></geom>
+			<geom type="mesh" mesh="bin_packing1" material="block_mat"></geom>
+			<geom type="mesh" mesh="bin_packing2" material="block_mat"></geom>
+			<geom type="mesh" mesh="bin_packing3" material="block_mat"></geom>
+			<geom type="mesh" mesh="bin_packing4" material="block_mat"></geom>
+			<geom type="mesh" mesh="bin_packing5" material="block_mat"></geom>
+			<geom type="mesh" mesh="bin_packing6" material="block_mat"></geom>
+			<geom type="mesh" mesh="bin_packing7" material="block_mat"></geom>
+			<geom type="mesh" mesh="bin_packing8" material="block_mat"></geom>
+			<geom type="mesh" mesh="bin_packing9" material="block_mat"></geom>
+			<joint type="free"></joint>
+		</body>
+	</worldbody>
+</mujoco>

@@ -1,0 +1,49 @@
+<mujocoinclude>
+    <body pos="0.95125 0.60 1.1993" quat="0.383 0.924 0.0 0.0" name="robot0:base_link">
+        <geom name="robot0:base_link" type="mesh" class="ur16e_viz" rgba="0.792157 0.819608 0.933333 1" mesh="base_link"/>
+        <body name="Shoulder1" pos="0 0 0.0993" quat="0.707105 0.707108 0 0">
+            <inertial pos="-8.131e-07 0.082255 0.013094" quat="0.575029 0.818133 -7.90128e-05 4.38531e-05" mass="7.369" fullinertia="0.03351 0.03374 0.021 0.00002 -0.00001 0.00374"/>
+            <joint class="ur16e_J1" name="robot0:J1" pos="0 0 0" axis="0 1 0"/>
+            <geom name="robot0:J1" type="mesh" class="ur16e_viz" material="ur_MatViz2" mesh="Shoulder1"/>
+            <body name="Shoulder2" pos="0 0.0814 0.0946" quat="0.707105 0 0 0.707108">
+                <inertial pos="-4.978e-08 0.18974 0.081646" quat="0.707886 0.706327 -1.30904e-05 6.99582e-06" mass="10.45" fullinertia="0.02796 0.47558 0.47635 -0.0001 -0.0072 0.00003"/>
+                <joint class="ur16e_J2" name="robot0:J2" pos="0 0 0" axis="0 0 1"/>
+                <geom name="robot0:J2" type="mesh" class="ur16e_viz" mesh="Shoulder2"/>
+                <body name="Elbow" pos="0 0.4784 0">
+                    <inertial pos="-1.5433e-05 0.16483 -0.048444" quat="0.727983 0.685593 0.00104972 -0.00118007" mass="4.321" fullinertia="0.01091 0.1206 0.11714 0.00006 0.01012 0.00001"/>
+                    <joint class="ur16e_J3" name="robot0:J3" pos="0 0 0" axis="0 0 1"/>
+                    <geom name="robot0:J3" type="mesh" class="ur16e_viz" mesh="Elbow"/>
+                    <body name="Wrist1" pos="0 0.36 0" quat="0.707105 0 0 0.707108">
+                        <inertial pos="6.1842e-06 0.0015493 0.063631" quat="0.992906 -0.118901 -4.17174e-05 2.7602e-05" mass="2.18" fullinertia="0.00609 0.00245 0.00579 -0.00001 0 0.00083"/>
+                        <joint class="ur16e_J4" name="robot0:J4" pos="0 0 0" axis="0 0 1"/>
+                        <geom name="robot0:J4" type="mesh" class="ur16e_viz" material="ur_MatViz2" mesh="Wrist1" contype="1" conaffinity="1"/>
+                        <body name="Wrist2" pos="0 0.0033422 0.07955">
+                            <inertial pos="1.976e-07 0.1069 0.0017385" quat="0.987557 -0.157259 2.3055e-05 -5.48448e-05" mass="2.033" fullinertia="0.00389 0.00219 0.00363 -0.00001 0 -0.00045"/>
+                            <joint class="ur16e_J5" name="robot0:J5" pos="0 0 0" axis="0 1 0"/>
+                            <geom name="robot0:J5" type="mesh" class="ur16e_viz" material="ur_MatViz2" mesh="Wrist2" contype="1" conaffinity="1"/>
+                            <body name="Wrist3" pos="0 0.11651 0.0569">
+                                <body name="robot0:vision_cam_wrist" pos="0 -0.07 0.0">
+                                    <site name="robot0:vision_cam_wrist" pos="0 0 0.085"  size="0.003" rgba="1 0 0 1" type="sphere"/>
+                                    <camera quat="0.08715574 0.9961947 0.0 0.0" fovy="37.0" name="vision_cam_wrist" pos="0.0 0.0 0.085"/>
+                                </body>
+                                <inertial pos="5.5566e-10 -7.868e-05 0.027763" quat="0.000216829 0.707107 0.000228093 0.707107" mass="0.907" fullinertia="0.00117 0.00118 0.00084 0 0 0"/>
+                                <joint class="ur16e_J6" name="robot0:J6" pos="0 0 0" axis="0 0 1"/>
+                                <geom name="robot0:J6" type="mesh" class="ur16e_viz" material="ur_MatViz2" mesh="Wrist3"/>
+                                <site name="robot0:ur_centerplate" pos="0 0.0 0.05965"/>
+                                <body name="robot0:plate_center" pos="0 0.0 0.05965">
+                                    <geom name="robot0:" type="sphere" size="0.005" rgba="1 0.42 0.039 1"/>
+                                </body>
+                                <include file="gripper.xml"/>
+                                <include file="wrist_cam.xml"/>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+
+        <body name="robot0:vision_cam_top" pos="0 0 0">
+            <camera quat="0.1234811 0.03281631 0.9236646 0.3612743" fovy="36.392" name="vision_cam_top" pos="0.7477575 0.4143189 -0.5325117"></camera>
+        </body>
+    </body>
+</mujocoinclude>

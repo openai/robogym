@@ -1,0 +1,201 @@
+<mujoco>
+    <asset>
+        <texture name='texture000' file="cube/material000.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material000" texture="texture000" specular="1" shininess=".3"/>
+        <texture name='texture001' file="cube/material001.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material001" texture="texture001" specular="1" shininess=".3"/>
+        <texture name='texture002' file="cube/material002.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material002" texture="texture002" specular="1" shininess=".3"/>
+        <texture name='texture010' file="cube/material010.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material010" texture="texture010" specular="1" shininess=".3"/>
+        <texture name='texture011' file="cube/material011.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material011" texture="texture011" specular="1" shininess=".3"/>
+        <texture name='texture012' file="cube/material012.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material012" texture="texture012" specular="1" shininess=".3"/>
+        <texture name='texture020' file="cube/material020.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material020" texture="texture020" specular="1" shininess=".3"/>
+        <texture name='texture021' file="cube/material021.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material021" texture="texture021" specular="1" shininess=".3"/>
+        <texture name='texture022' file="cube/material022.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material022" texture="texture022" specular="1" shininess=".3"/>
+        <texture name='texture100' file="cube/material100.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material100" texture="texture100" specular="1" shininess=".3"/>
+        <texture name='texture101' file="cube/material101.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material101" texture="texture101" specular="1" shininess=".3"/>
+        <texture name='texture102' file="cube/material102.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material102" texture="texture102" specular="1" shininess=".3"/>
+        <texture name='texture110' file="cube/material110.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material110" texture="texture110" specular="1" shininess=".3"/>
+        <texture name='texture111' file="cube/material111.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material111" texture="texture111" specular="1" shininess=".3"/>
+        <texture name='texture112' file="cube/material112.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material112" texture="texture112" specular="1" shininess=".3"/>
+        <texture name='texture120' file="cube/material120.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material120" texture="texture120" specular="1" shininess=".3"/>
+        <texture name='texture121' file="cube/material121.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material121" texture="texture121" specular="1" shininess=".3"/>
+        <texture name='texture122' file="cube/material122.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material122" texture="texture122" specular="1" shininess=".3"/>
+        <texture name='texture200' file="cube/material200.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material200" texture="texture200" specular="1" shininess=".3"/>
+        <texture name='texture201' file="cube/material201.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material201" texture="texture201" specular="1" shininess=".3"/>
+        <texture name='texture202' file="cube/material202.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material202" texture="texture202" specular="1" shininess=".3"/>
+        <texture name='texture210' file="cube/material210.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material210" texture="texture210" specular="1" shininess=".3"/>
+        <texture name='texture211' file="cube/material211.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material211" texture="texture211" specular="1" shininess=".3"/>
+        <texture name='texture212' file="cube/material212.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material212" texture="texture212" specular="1" shininess=".3"/>
+        <texture name='texture220' file="cube/material220.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material220" texture="texture220" specular="1" shininess=".3"/>
+        <texture name='texture221' file="cube/material221.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material221" texture="texture221" specular="1" shininess=".3"/>
+        <texture name='texture222' file="cube/material222.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+        <material name="material222" texture="texture222" specular="1" shininess=".3"/>
+    </asset>
+
+    <worldbody>
+        <body name="middle" pos="0.03 0.03 0.03">
+
+            <geom name="core" pos="0.0 0.0 0.0" type="box" mass="1e-4" size="0.01 0.01 0.01" contype="0" conaffinity="0" rgba="0 1 0 0"/>
+
+            <body name="body_axis0_val1">
+                <geom  name="side_axis0_val1" pos="0.00 0.00 0.00" type="box" size="0.01 0.03 0.03" condim="4" contype="2" rgba="0 0 0 0"/>
+                <geom  name="side_axis0_val1:100" pos="0.00 -0.02 -0.02" type="box" size="0.01 0.01 0.01" mass="1e-4" conaffinity="0" contype="0" material="material100"/>
+                <geom  name="side_axis0_val1:101" pos="0.00 -0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material101"/>
+                <geom  name="side_axis0_val1:102" pos="0.00 -0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material102"/>
+                <geom  name="side_axis0_val1:110" pos="0.00 0.00 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material110"/>
+                <geom  name="side_axis0_val1:111" pos="0.00 0.00 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material111"/>
+                <geom  name="side_axis0_val1:112" pos="0.00 0.00 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material112"/>
+                <geom  name="side_axis0_val1:120" pos="0.00 0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material120"/>
+                <geom  name="side_axis0_val1:121" pos="0.00 0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material121"/>
+                <geom  name="side_axis0_val1:122" pos="0.00 0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material122"/>
+            </body>
+            <body name="body_axis1_val1">
+                <geom  name="side_axis1_val1" pos="0.00 0.00 0.00" type="box" size="0.03 0.01 0.03" condim="4" contype="2" rgba="0 0 0 0"/>
+                <geom  name="side_axis1_val1:010" pos="-0.02 0.00 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material010"/>
+                <geom  name="side_axis1_val1:011" pos="-0.02 0.00 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material011"/>
+                <geom  name="side_axis1_val1:012" pos="-0.02 0.00 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material012"/>
+                <geom  name="side_axis1_val1:110" pos="0.00 0.00 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material110"/>
+                <geom  name="side_axis1_val1:111" pos="0.00 0.00 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material111"/>
+                <geom  name="side_axis1_val1:112" pos="0.00 0.00 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material112"/>
+                <geom  name="side_axis1_val1:210" pos="0.02 0.00 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material210"/>
+                <geom  name="side_axis1_val1:211" pos="0.02 0.00 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material211"/>
+                <geom  name="side_axis1_val1:212" pos="0.02 0.00 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material212"/>
+            </body>
+            <body name="body_axis2_val1">
+                <geom  name="side_axis2_val1" pos="0.00 0.00 0.00" type="box" size="0.03 0.03 0.01" condim="4" contype="2" rgba="0 0 0 0"/>
+                <geom  name="side_axis2_val1:001" pos="-0.02 -0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material001"/>
+                <geom  name="side_axis2_val1:011" pos="-0.02 0.00 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material011"/>
+                <geom  name="side_axis2_val1:021" pos="-0.02 0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material021"/>
+                <geom  name="side_axis2_val1:101" pos="0.00 -0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material101"/>
+                <geom  name="side_axis2_val1:111" pos="0.00 0.00 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material111"/>
+                <geom  name="side_axis2_val1:121" pos="0.00 0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material121"/>
+                <geom  name="side_axis2_val1:201" pos="0.02 -0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material201"/>
+                <geom  name="side_axis2_val1:211" pos="0.02 0.00 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material211"/>
+                <geom  name="side_axis2_val1:221" pos="0.02 0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material221"/>
+            </body>
+            <joint name="cube_tx" type="slide" axis="1 0 0" limited="false" />
+            <joint name="cube_ty" type="slide" axis="0 1 0" limited="false" />
+            <joint name="cube_tz" type="slide" axis="0 0 1" limited="false" />
+            <joint name="cube_rot" type="ball" limited="false"/>
+
+
+            <!-- x plates -->
+            <body name="body_axis0_val0">
+                <site name="center" pos="0 0 0" rgba="1 0 0 1" size="0.01 0.01 0.01"></site>
+                <geom  name="side_axis0_val0" pos="-0.02 0.00 0.00" type="box" size="0.01 0.03 0.03" condim="4" contype="2" rgba="0 0 0 0"/>
+                <geom  name="side_axis0_val0:000" pos="-0.02 -0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material000"/>
+                <geom  name="side_axis0_val0:001" pos="-0.02 -0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material001"/>
+                <geom  name="side_axis0_val0:002" pos="-0.02 -0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material002"/>
+                <geom  name="side_axis0_val0:010" pos="-0.02 0.00 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material010"/>
+                <geom  name="side_axis0_val0:011" pos="-0.02 0.00 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material011"/>
+                <geom  name="side_axis0_val0:012" pos="-0.02 0.00 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material012"/>
+                <geom  name="side_axis0_val0:020" pos="-0.02 0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material020"/>
+                <geom  name="side_axis0_val0:021" pos="-0.02 0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material021"/>
+                <geom  name="side_axis0_val0:022" pos="-0.02 0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material022"/>
+                <joint name="joint_axis0_val0" type="hinge" axis="1 0 0" limited="false"/>
+            </body>
+
+            <body name="body_axis0_val2">
+                <geom  name="side_axis0_val2" pos="0.02 0.00 0.00" type="box" size="0.01 0.03 0.03" condim="4" contype="2" rgba="0 0 0 0"/>
+                <geom  name="side_axis0_val2:200" pos="0.02 -0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material200"/>
+                <geom  name="side_axis0_val2:201" pos="0.02 -0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material201"/>
+                <geom  name="side_axis0_val2:202" pos="0.02 -0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material202"/>
+                <geom  name="side_axis0_val2:210" pos="0.02 0.00 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material210"/>
+                <geom  name="side_axis0_val2:211" pos="0.02 0.00 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material211"/>
+                <geom  name="side_axis0_val2:212" pos="0.02 0.00 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material212"/>
+                <geom  name="side_axis0_val2:220" pos="0.02 0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material220"/>
+                <geom  name="side_axis0_val2:221" pos="0.02 0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material221"/>
+                <geom  name="side_axis0_val2:222" pos="0.02 0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material222"/>
+                <joint name="joint_axis0_val2" type="hinge" axis="1 0 0" limited="false" />
+            </body>
+
+            <!-- y plates -->
+            <body name="body_axis1_val0">
+                <geom  name="side_axis1_val0" pos="0.00 -0.02 0.00" type="box" size="0.03 0.01 0.03" condim="4" contype="2" rgba="0 0 0 0"/>
+                <geom  name="side_axis1_val0:000" pos="-0.02 -0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material000"/>
+                <geom  name="side_axis1_val0:001" pos="-0.02 -0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material001"/>
+                <geom  name="side_axis1_val0:002" pos="-0.02 -0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material002"/>
+                <geom  name="side_axis1_val0:100" pos="0.00 -0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material100"/>
+                <geom  name="side_axis1_val0:101" pos="0.00 -0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material101"/>
+                <geom  name="side_axis1_val0:102" pos="0.00 -0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material102"/>
+                <geom  name="side_axis1_val0:200" pos="0.02 -0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material200"/>
+                <geom  name="side_axis1_val0:201" pos="0.02 -0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material201"/>
+                <geom  name="side_axis1_val0:202" pos="0.02 -0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material202"/>
+                <joint name="joint_axis1_val0" type="hinge" axis="0 1 0" limited="false"/>
+            </body>
+
+            <body name="body_axis1_val2">
+                <geom  name="side_axis1_val2" pos="0.00 0.02 0.00" type="box" size="0.03 0.01 0.03" condim="4" contype="2" rgba="0 0 0 0"/>
+                <geom  name="side_axis1_val2:020" pos="-0.02 0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material020"/>
+                <geom  name="side_axis1_val2:021" pos="-0.02 0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material021"/>
+                <geom  name="side_axis1_val2:022" pos="-0.02 0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material022"/>
+                <geom  name="side_axis1_val2:120" pos="0.00 0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material120"/>
+                <geom  name="side_axis1_val2:121" pos="0.00 0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material121"/>
+                <geom  name="side_axis1_val2:122" pos="0.00 0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material122"/>
+                <geom  name="side_axis1_val2:220" pos="0.02 0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material220"/>
+                <geom  name="side_axis1_val2:221" pos="0.02 0.02 0.00" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material221"/>
+                <geom  name="side_axis1_val2:222" pos="0.02 0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material222"/>
+                <joint name="joint_axis1_val2" type="hinge" axis="0 1 0" limited="false" />
+            </body>
+
+            <!-- z plates -->
+            <body name="body_axis2_val0">
+                <geom  name="side_axis2_val0" pos="0.00 0.0 -0.02" type="box" size="0.03 0.03 0.01" condim="4" contype="2" rgba="0 0 0 0"/>
+                <geom  name="side_axis2_val0:000" pos="-0.02 -0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material000"/>
+                <geom  name="side_axis2_val0:010" pos="-0.02 0.00 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material010"/>
+                <geom  name="side_axis2_val0:020" pos="-0.02 0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material020"/>
+                <geom  name="side_axis2_val0:100" pos="0.00 -0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material100"/>
+                <geom  name="side_axis2_val0:110" pos="0.00 0.00 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material110"/>
+                <geom  name="side_axis2_val0:120" pos="0.00 0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material120"/>
+                <geom  name="side_axis2_val0:200" pos="0.02 -0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material200"/>
+                <geom  name="side_axis2_val0:210" pos="0.02 0.00 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material210"/>
+                <geom  name="side_axis2_val0:220" pos="0.02 0.02 -0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material220"/>
+                <joint name="joint_axis2_val0" type="hinge" axis="0 0 1" limited="false" />
+            </body>
+
+            <body name="body_axis2_val2">
+                <geom  name="side_axis2_val2" pos="0.00 0.0 0.02" type="box" size="0.03 0.03 0.01" condim="4" contype="2" rgba="0 0 0 0"/>
+                <geom  name="side_axis2_val2:002" pos="-0.02 -0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material002"/>
+                <geom  name="side_axis2_val2:012" pos="-0.02 0.00 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material012"/>
+                <geom  name="side_axis2_val2:022" pos="-0.02 0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material022"/>
+                <geom  name="side_axis2_val2:102" pos="0.00 -0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material102"/>
+                <geom  name="side_axis2_val2:112" pos="0.00 0.00 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material112"/>
+                <geom  name="side_axis2_val2:122" pos="0.00 0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material122"/>
+                <geom  name="side_axis2_val2:202" pos="0.02 -0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material202"/>
+                <geom  name="side_axis2_val2:212" pos="0.02 0.00 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material212"/>
+                <geom  name="side_axis2_val2:222" pos="0.02 0.02 0.02" type="box" size="0.01 0.01 0.01"  mass="1e-4" conaffinity="0" contype="0" material="material222"/>
+                <joint name="joint_axis2_val2" type="hinge" axis="0 0 1" limited="false" />
+            </body>
+        </body>
+        <body name="annotation:outer_bound" pos="0.03 0.03 0.03">
+            <geom conaffinity="0" contype="0" mass="0" pos="0 0 0" rgba="0.417022 0.720324 0.000114 0.1" size="0.03 0.03 0.03" type="box"></geom>
+        </body>
+        <body name="annotation:top_0" pos="0.03 0.03 0.07">
+            <geom conaffinity="0" contype="0" mass="0" pos="0 0 0" rgba="0.417022 0.720324 0.000114 0.0" size="0.03 0.03 0.01" type="box"></geom>
+        </body>
+    </worldbody>
+</mujoco>

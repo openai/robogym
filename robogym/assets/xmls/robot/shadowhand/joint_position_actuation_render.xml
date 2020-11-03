@@ -1,0 +1,76 @@
+<?xml version="1.0" ?><!-- See LICENSE.md for legal notices. LICENSE.md must be kept together with this file. --><mujocoinclude>
+    <tendon>
+        <fixed limited="true" name="FFT0" range="0 1.6">
+            <joint coef="1." joint="FFJ1"/>
+            <joint coef="-1." joint="FFJ0"/>
+        </fixed>
+        <fixed damping="0.1" limited="true" name="FFT1" range="0 3.14">
+            <joint coef="1.0" joint="FFJ1"/>
+            <joint coef="1.0" joint="FFJ0"/>
+        </fixed>
+
+        <fixed limited="true" name="MFT0" range="0 1.6">
+            <joint coef="1" joint="MFJ1"/>
+            <joint coef="-1" joint="MFJ0"/>
+        </fixed>
+        <fixed damping="0.1" limited="true" name="MFT1" range="0 3.14">
+            <joint coef="1" joint="MFJ1"/>
+            <joint coef="1" joint="MFJ0"/>
+        </fixed>
+
+        <fixed limited="true" name="RFT0" range="0 1.6">
+            <joint coef="1" joint="RFJ1"/>
+            <joint coef="-1" joint="RFJ0"/>
+        </fixed>
+        <fixed damping="0.1" limited="true" name="RFT1" range="0 3.14">
+            <joint coef="1" joint="RFJ1"/>
+            <joint coef="1" joint="RFJ0"/>
+        </fixed>
+
+        <fixed limited="true" name="LFT0" range="0 1.6">
+            <joint coef="1" joint="LFJ1"/>
+            <joint coef="-1" joint="LFJ0"/>
+        </fixed>
+        <fixed damping="0.1" limited="true" name="LFT1" range="0 3.14">
+            <joint coef="1" joint="LFJ1"/>
+            <joint coef="1" joint="LFJ0"/>
+        </fixed>
+    </tendon>
+    <actuator>
+        <!--ctrlrange=jointrange, forcerange=tendon_moment*max tendon load-->
+
+        <!-- ================ EQUIVALENT JOINT POSITION MOTORS ====================== -->
+        <position class="asset_class" ctrlrange="-0.470 0.117" forcerange="-0.2 0.2" joint="WRJ1" kp="2" name="A_WRJ1" user="2038"/>
+        <!-- Limited uppear ctrl due to safety (this tenden broke before). -->
+        <!--<position name="A_WRJ0" class="asset_class" user="2036" joint="WRJ0" ctrlrange="-0.698 0.489" kp="5" forcerange="-2.0 2.0"/>-->
+        <position class="asset_class" ctrlrange="-0.698 0.05" forcerange="-2 2" joint="WRJ0" kp="12" name="A_WRJ0" user="2036"/>
+
+
+        <position class="asset_class" ctrlrange="-0.277 0.330" forcerange="-0.1 0.1" joint="FFJ3" kp="0.13" name="A_FFJ3" user="2004"/>
+        <position class="asset_class" ctrlrange="0      1.454" forcerange="-0.3 0.3" joint="FFJ2" kp="0.4" name="A_FFJ2" user="2002"/>
+        <position class="asset_class" ctrllimited="true" ctrlrange="0 3.14" forcerange="-0.3 0.3" kp="0.3" name="A_FFJ1" tendon="FFT1"/>
+
+
+        <position class="asset_class" ctrlrange="-0.293 0.330" forcerange="-0.1 0.1" joint="MFJ3" kp="0.25" name="A_MFJ3" user="2010"/>
+        <position class="asset_class" ctrlrange="0      1.435" forcerange="-0.3 0.3" joint="MFJ2" kp="11" name="A_MFJ2" user="2008"/>
+        <position class="asset_class" ctrllimited="true" ctrlrange="0 3.14" forcerange="-0.3 0.3" kp="0.3" name="A_MFJ1" tendon="MFT1"/>
+
+
+        <position class="asset_class" ctrlrange="-0.300 0.343" forcerange="-0.05 0.05" joint="RFJ3" kp="1.5" name="A_RFJ3" user="2016"/>
+        <position class="asset_class" ctrlrange="0      1.510" forcerange="-0.3 0.3" joint="RFJ2" kp="2" name="A_RFJ2" user="2014"/>
+        <position class="asset_class" ctrllimited="true" ctrlrange="0 3.14" forcerange="-0.3 0.3" kp="0.18" name="A_RFJ1" tendon="RFT1"/>
+
+
+        <position class="asset_class" ctrlrange="0.030  0.775" forcerange="-0.2 0.2" joint="LFJ4" kp="4" name="A_LFJ4" user="2024"/>
+        <position class="asset_class" ctrlrange="-0.332 0.247" forcerange="-0.1 0.1" joint="LFJ3" kp="2" name="A_LFJ3" user="2022"/>
+        <position class="asset_class" ctrlrange="0      1.545" forcerange="-0.3 0.3" joint="LFJ2" kp="0.8" name="A_LFJ2" user="2020"/>
+        <position class="asset_class" ctrllimited="true" ctrlrange="0 3.14" forcerange="-0.3 0.3" kp="0.4" name="A_LFJ1" tendon="LFT1"/>
+
+
+        <position class="asset_class" ctrlrange="-1.0 0.5" forcerange="-0.2 0.2" joint="THJ4" kp="1.5" name="A_THJ4" user="2034"/>
+        <position class="asset_class" ctrlrange="0      1.210" forcerange="-0.15 0.15" joint="THJ3" kp="1.5" name="A_THJ3" user="2032"/>
+        <position class="asset_class" ctrlrange="-0.179 0.155" forcerange="-0.15 0.15" joint="THJ2" kp="0.3" name="A_THJ2" user="2030"/>
+        <position class="asset_class" ctrlrange="-0.583 0.524" forcerange="-0.18 0.18" joint="THJ1" kp="2" name="A_THJ1" user="2028"/>
+        <position class="asset_class" ctrlrange="-1.571  0" forcerange="-0.2 0.2" joint="THJ0" kp="2" name="A_THJ0" user="2026"/>
+    </actuator>
+</mujocoinclude>

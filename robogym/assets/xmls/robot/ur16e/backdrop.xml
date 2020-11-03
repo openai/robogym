@@ -1,0 +1,6 @@
+<!-- Background panel behind UR arm -->
+<mujoco model="backdrop">
+    <body pos="0.4 0.5 0.5" name="backdrop">
+        <geom class="backdrop_viz" name="backdrop" size="0.001 2.0 2.0" type="box" rgba="0.44 0.85 0.56 1.0"/>
+    </body>
+</mujoco>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+	<asset>
+		<mesh file="holdouts/tangram/collision/0_base_triangle_20200509.stl" name="tangram0"/>
+		<mesh file="holdouts/tangram/collision/1_base_triangle_20200509.stl" name="tangram1"/>
+		<material name="block_mat" rgba="1.0 0 0 1.0" specular="0.25" shininess="0.10" reflectance="0.10"/>
+	</asset>
+	<worldbody>
+		<body>
+			<geom type="mesh" euler="-0.785398 0 0" mesh="tangram0" material="block_mat"/>
+			<geom type="mesh" euler="-0.785398 0 0" mesh="tangram1" material="block_mat"/>
+			<geom pos="0 0 0.01414213" euler="0.785398 0 0" type="mesh" mesh="tangram0" material="block_mat"/>
+			<geom pos="0 0 0.01414213" euler="0.785398 0 0" type="mesh" mesh="tangram1" material="block_mat"/>
+			<joint type="free"/>
+		</body>
+	</worldbody>
+</mujoco>

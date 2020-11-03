@@ -1,0 +1,11 @@
+<mujoco model="eSeries_UR16e">
+	<include file="shared.xml"/>
+	<include file="joint_actuations.xml"/>
+    <equality>
+		<weld body1="robot0:mocap" body2="robot0:plate_center" solimp="0.9 0.95 0.001" solref="0.02 1"/>
+	</equality>
+    <worldbody>
+		<include file="tcp_mocap.xml" />
+        <include file="robot.xml"/>
+    </worldbody>
+</mujoco>

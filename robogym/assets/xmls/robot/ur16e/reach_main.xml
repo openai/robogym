@@ -1,0 +1,7 @@
+<mujoco model="eSeries_UR16e">
+	<include file="shared.xml"/>
+	<include file="joint_actuations.xml"/>
+    <worldbody>
+        <include file="robot.xml"/>
+    </worldbody>
+</mujoco>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+  <asset>
+    <material name="block_mat" rgba="1.0 0 0 1.0" specular="0.25" shininess="0.10" reflectance="0.10"></material>
+  </asset>
+  <worldbody>
+    <body name="jenga">
+      <geom type="box" size=".0125 .0375 .0075" material="block_mat" />
+      <joint type="free"/>
+    </body>
+  </worldbody>
+</mujoco>
+

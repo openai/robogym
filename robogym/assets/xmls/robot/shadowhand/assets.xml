@@ -1,0 +1,144 @@
+<!-- See LICENSE.md for legal notices. LICENSE.md must be kept together with this file. -->
+<mujocoinclude>
+
+  <size     nuserdata="1000"
+            njmax="500"
+            nconmax="100"
+            nuser_jnt="1"
+            nuser_site="1"
+            nuser_tendon="1"
+            nuser_sensor="1"
+            nuser_actuator="20"
+            nstack="600000"/>
+
+    <option timestep="0.008"
+            iterations="20"
+            apirate="200">
+    </option>
+
+    <visual>
+        <map fogstart="3" fogend="5" force="0.1"/>
+        <quality shadowsize="4096"/>
+    </visual>
+
+    <asset>
+        <mesh name="forearm"       file="robot/shadowhand/forearm_electric.stl"/>
+        <mesh name="forearm_cvx"   file="robot/shadowhand/forearm_electric_cvx.stl"/>
+        <mesh name="wrist"         scale=".001 .001 .001" file="robot/shadowhand/wrist.stl"/>
+        <mesh name="palm"          scale=".001 .001 .001" file="robot/shadowhand/palm.stl"/>
+        <mesh name="palm_1"        scale=".001 .001 .001" file="robot/shadowhand/palm_1.stl"/>
+        <mesh name="palm_2"        scale=".001 .001 .001" file="robot/shadowhand/palm_2.stl"/>
+        <mesh name="palm_3"        scale=".001 .001 .001" file="robot/shadowhand/palm_3.stl"/>
+        <mesh name="palm_4"        scale=".001 .001 .001" file="robot/shadowhand/palm_4.stl"/>
+        <mesh name="palm_a"        scale=".001 .001 .001" file="robot/shadowhand/palm_a.stl"/>
+        <mesh name="palm_b"        scale=".001 .001 .001" file="robot/shadowhand/palm_b.stl"/>
+        <mesh name="palm_c"        scale=".001 .001 .001" file="robot/shadowhand/palm_c.stl"/>
+        <mesh name="palm_d"        scale=".001 .001 .001" file="robot/shadowhand/palm_d.stl"/>
+        <mesh name="palm_e"        scale=".001 .001 .001" file="robot/shadowhand/palm_e.stl"/>
+        <mesh name="palm_f"        scale=".001 .001 .001" file="robot/shadowhand/palm_f.stl"/>
+        <mesh name="palm_g"        scale=".001 .001 .001" file="robot/shadowhand/palm_g.stl"/>
+        <mesh name="palm_h"        scale=".001 .001 .001" file="robot/shadowhand/palm_h.stl"/>
+        <mesh name="palm_i"        scale=".001 .001 .001" file="robot/shadowhand/palm_i.stl"/>
+        <mesh name="knuckle"       scale=".001 .001 .001" file="robot/shadowhand/knuckle.stl"/>
+        <mesh name="F3"            scale=".001 .001 .001" file="robot/shadowhand/F3.stl"/>
+        <mesh name="F3_a"          scale=".001 .001 .001" file="robot/shadowhand/F3_a.stl"/>
+        <mesh name="F3_b"          scale=".001 .001 .001" file="robot/shadowhand/F3_b.stl"/>
+        <mesh name="F3_c"          scale=".001 .001 .001" file="robot/shadowhand/F3_c.stl"/>
+        <mesh name="F2"            scale=".001 .001 .001" file="robot/shadowhand/F2.stl"/>
+        <mesh name="F2_a"          scale=".001 .001 .001" file="robot/shadowhand/F2_a.stl"/>
+        <mesh name="F2_b"          scale=".001 .001 .001" file="robot/shadowhand/F2_b.stl"/>
+        <mesh name="F2_c"          scale=".001 .001 .001" file="robot/shadowhand/F2_c.stl"/>
+        <mesh name="F1"            scale=".001 .001 .001" file="robot/shadowhand/F1.stl"/>
+        <mesh name="lfmetacarpal"  scale=".001 .001 .001" file="robot/shadowhand/lfmetacarpal.stl"/>
+        <mesh name="TH3_z"         scale=".001 .001 .001" file="robot/shadowhand/TH3_z.stl"/>
+        <mesh name="TH3_z_a"       scale=".001 .001 .001" file="robot/shadowhand/TH3_z_a.stl"/>
+        <mesh name="TH3_z_b"       scale=".001 .001 .001" file="robot/shadowhand/TH3_z_b.stl"/>
+        <mesh name="TH2_z"         scale=".001 .001 .001" file="robot/shadowhand/TH2_z.stl"/>
+        <mesh name="TH2_z_a"       scale=".001 .001 .001" file="robot/shadowhand/TH2_z_a.stl"/>
+        <mesh name="TH2_z_b"       scale=".001 .001 .001" file="robot/shadowhand/TH2_z_b.stl"/>
+        <mesh name="TH1_z"         scale=".001 .001 .001" file="robot/shadowhand/TH1_z.stl"/>
+
+        <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="127"
+            rgb1="0.3 0.6 0.5" rgb2="0.3 0.6 0.5" markrgb="0 0 0" random="0.01" />
+
+        <material name="MatColl" specular="1" shininess="0.3" reflectance="0.5" rgba="0.4 0.5 0.6 1" />
+        <material name="MatVisual" specular="0.75" shininess="0.1" reflectance="0.5" rgba="0.9 0.7 0.5 1" />
+        <material name="MatPhasespace" emission="4.0" rgba="1 0.0 0.0 1" />
+        <material name="MatContact" specular="0.75" shininess="0.1" reflectance="0.5" rgba="0.9 0.7 0.5 1" />
+
+        <material name='object' texture="texgeom" texuniform="false"/>
+    </asset>
+
+    <default>
+        <default class="asset_class">
+            <geom friction="1 0.005 0.001" condim="3" margin="0.0005" contype="1" conaffinity="1"/>
+            <joint limited="true" damping="0.05" armature=".001" margin="0.01" frictionloss="0.001"/>
+            <site size="0.005" rgba="0.4 0.9 0.4 1"/>
+            <!--EQUIVALENT JOINT MOTORS-->
+            <general ctrllimited="true" forcelimited="true"/>
+        </default>
+
+        <default class="D_CouplingTendon">
+            <geom type="cylinder" fromto="-0.01 0 0 0.01 0 0" rgba="1 0 0 0.5" contype="0" conaffinity="0"/>
+            <site type="sphere" size="0.002"/>
+        </default>
+
+        <!--Touch geoms-->
+        <default class="D_Touch">
+            <site type="capsule" size="0.007 0.004" pos="0 -.002 .02" rgba="0 0.5 0 0.2"/>
+        </default>
+
+        <default class="D_TouchVisual">
+            <site type="capsule" size="0.007 0.004" pos="0 -.002 .02" rgba="0 0 0 0"/>
+        </default>
+
+        <!--Meshes-->
+        <default class="D_Contact">
+            <geom material="MatContact" contype="1" conaffinity="1" group="1" type="mesh" friction="0.2 0.005 0.001" />
+        </default>
+
+        <default class="D_ContactDistal">
+            <!-- Distal geoms have higher friction because they are made out of rubber -->
+            <geom material="MatContact" contype="1" conaffinity="1" group="1" type="mesh" friction="0.8 0.025 0.005" />
+        </default>
+
+        <default class="D_Visual">
+            <geom material="MatVisual" contype="0" conaffinity="1" group="1" type="mesh" />
+        </default>
+
+        <default class="D_PhasespaceSite">
+            <site size="0.0024" type="sphere" material="MatPhasespace" />
+        </default>
+
+        <default class="free">
+            <joint type="free" damping="0" armature="0" limited="false"/>
+        </default>
+
+        <default class="D_Occlusion">
+            <geom type="box" size=".003 .006 .004" rgba="0 0 0 0"/>
+        </default>
+
+    </default>
+
+    <contact>
+        <exclude body1="forearm" body2="wrist"/>
+
+        <exclude body1="palm" body2="ffproximal"/>
+        <exclude body1="palm" body2="mfproximal"/>
+        <exclude body1="palm" body2="rfproximal"/>
+        <exclude body1="palm" body2="thproximal"/>
+
+        <exclude body1="lfmetacarpal" body2="lfproximal"/>
+        <exclude body1="thproximal" body2="thmiddle"/>
+    </contact>
+
+    <sensor>
+        <!-- ======= Touch Sensors ======= -->
+        <touch name="ST_Tch_fftip"  site="Tch_fftip"/>  <!-- index finger -->
+        <touch name="ST_Tch_mftip"  site="Tch_mftip"/>  <!-- middle finger -->
+        <touch name="ST_Tch_rftip"  site="Tch_rftip"/>  <!-- ring finger -->
+        <touch name="ST_Tch_lftip"  site="Tch_lftip"/>  <!-- little finger -->
+        <touch name="ST_Tch_thtip"  site="Tch_thtip"/>  <!-- thumb -->
+    </sensor>
+
+</mujocoinclude>

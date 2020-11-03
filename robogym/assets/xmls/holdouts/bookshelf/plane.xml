@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+    <asset>
+        <material name="wood_mat" rgba="0.88 0.8 0.6 1.0" specular="0.25" shininess="0.10" reflectance="0.10"></material>
+    </asset>
+    <worldbody>
+        <body name="plane">
+            <geom
+                type="box" name="plane0" size="0.15 0.1125 0.0075"
+                material="wood_mat">
+            </geom>
+            <geom
+                type="box" name="plane1" size="0.02 0.02 0.0075" pos="0 0 0.0075"
+                material="wood_mat">
+            </geom>
+            <joint type="free"></joint>
+        </body>
+    </worldbody>
+</mujoco>

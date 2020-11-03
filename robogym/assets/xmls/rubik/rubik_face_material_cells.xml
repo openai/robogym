@@ -1,0 +1,243 @@
+<!-- AUTO GENERATED -->
+<mujoco model="rubik-v1.50">
+	<asset>
+		<material name="MatRubik" specular="1" shininess=".3" rgba="0 0 0 1"></material>
+		<material name="RedSticker_0_0" specular="1" shininess=".3" rgba="0.4392156862745098 0.16470588235294117 0.0 1"></material>
+		<material name="BlueSticker_0_0" specular="1" shininess=".3" rgba="0.10196078431372549 0.1411764705882353 0.5098039215686274 1"></material>
+		<material name="WhiteSticker_0_0" specular="1" shininess=".3" rgba="0.7411764705882353 0.8627450980392157 0.807843137254902 1"></material>
+		<material name="OrangeSticker_0_0" specular="1" shininess=".3" rgba="0.5490196078431373 0.35294117647058826 0.0 1"></material>
+		<material name="GreenSticker_0_0" specular="1" shininess=".3" rgba="0 0.3686274509803922 0.22745098039215686 1"></material>
+		<material name="YellowSticker_0_0" specular="1" shininess=".3" rgba="0.6784313725490196 0.7137254901960784 0.10980392156862745 1"></material>
+		<material name="RedSticker_0_1" specular="1" shininess=".3" rgba="0.4392156862745098 0.16470588235294117 0.0 1"></material>
+		<material name="BlueSticker_0_1" specular="1" shininess=".3" rgba="0.10196078431372549 0.1411764705882353 0.5098039215686274 1"></material>
+		<material name="WhiteSticker_0_1" specular="1" shininess=".3" rgba="0.7411764705882353 0.8627450980392157 0.807843137254902 1"></material>
+		<material name="OrangeSticker_0_1" specular="1" shininess=".3" rgba="0.5490196078431373 0.35294117647058826 0.0 1"></material>
+		<material name="GreenSticker_0_1" specular="1" shininess=".3" rgba="0 0.3686274509803922 0.22745098039215686 1"></material>
+		<material name="YellowSticker_0_1" specular="1" shininess=".3" rgba="0.6784313725490196 0.7137254901960784 0.10980392156862745 1"></material>
+		<material name="RedSticker_0_2" specular="1" shininess=".3" rgba="0.4392156862745098 0.16470588235294117 0.0 1"></material>
+		<material name="BlueSticker_0_2" specular="1" shininess=".3" rgba="0.10196078431372549 0.1411764705882353 0.5098039215686274 1"></material>
+		<material name="WhiteSticker_0_2" specular="1" shininess=".3" rgba="0.7411764705882353 0.8627450980392157 0.807843137254902 1"></material>
+		<material name="OrangeSticker_0_2" specular="1" shininess=".3" rgba="0.5490196078431373 0.35294117647058826 0.0 1"></material>
+		<material name="GreenSticker_0_2" specular="1" shininess=".3" rgba="0 0.3686274509803922 0.22745098039215686 1"></material>
+		<material name="YellowSticker_0_2" specular="1" shininess=".3" rgba="0.6784313725490196 0.7137254901960784 0.10980392156862745 1"></material>
+		<material name="RedSticker_1_0" specular="1" shininess=".3" rgba="0.4392156862745098 0.16470588235294117 0.0 1"></material>
+		<material name="BlueSticker_1_0" specular="1" shininess=".3" rgba="0.10196078431372549 0.1411764705882353 0.5098039215686274 1"></material>
+		<material name="WhiteSticker_1_0" specular="1" shininess=".3" rgba="0.7411764705882353 0.8627450980392157 0.807843137254902 1"></material>
+		<material name="OrangeSticker_1_0" specular="1" shininess=".3" rgba="0.5490196078431373 0.35294117647058826 0.0 1"></material>
+		<material name="GreenSticker_1_0" specular="1" shininess=".3" rgba="0 0.3686274509803922 0.22745098039215686 1"></material>
+		<material name="YellowSticker_1_0" specular="1" shininess=".3" rgba="0.6784313725490196 0.7137254901960784 0.10980392156862745 1"></material>
+		<material name="RedSticker_1_1" specular="1" shininess=".3" rgba="0.4392156862745098 0.16470588235294117 0.0 1"></material>
+		<material name="BlueSticker_1_1" specular="1" shininess=".3" rgba="0.10196078431372549 0.1411764705882353 0.5098039215686274 1"></material>
+		<material name="WhiteSticker_1_1" specular="1" shininess=".3" rgba="0.7411764705882353 0.8627450980392157 0.807843137254902 1"></material>
+		<material name="OrangeSticker_1_1" specular="1" shininess=".3" rgba="0.5490196078431373 0.35294117647058826 0.0 1"></material>
+		<material name="GreenSticker_1_1" specular="1" shininess=".3" rgba="0 0.3686274509803922 0.22745098039215686 1"></material>
+		<material name="YellowSticker_1_1" specular="1" shininess=".3" rgba="0.6784313725490196 0.7137254901960784 0.10980392156862745 1"></material>
+		<material name="RedSticker_1_2" specular="1" shininess=".3" rgba="0.4392156862745098 0.16470588235294117 0.0 1"></material>
+		<material name="BlueSticker_1_2" specular="1" shininess=".3" rgba="0.10196078431372549 0.1411764705882353 0.5098039215686274 1"></material>
+		<material name="WhiteSticker_1_2" specular="1" shininess=".3" rgba="0.7411764705882353 0.8627450980392157 0.807843137254902 1"></material>
+		<material name="OrangeSticker_1_2" specular="1" shininess=".3" rgba="0.5490196078431373 0.35294117647058826 0.0 1"></material>
+		<material name="GreenSticker_1_2" specular="1" shininess=".3" rgba="0 0.3686274509803922 0.22745098039215686 1"></material>
+		<material name="YellowSticker_1_2" specular="1" shininess=".3" rgba="0.6784313725490196 0.7137254901960784 0.10980392156862745 1"></material>
+		<material name="RedSticker_2_0" specular="1" shininess=".3" rgba="0.4392156862745098 0.16470588235294117 0.0 1"></material>
+		<material name="BlueSticker_2_0" specular="1" shininess=".3" rgba="0.10196078431372549 0.1411764705882353 0.5098039215686274 1"></material>
+		<material name="WhiteSticker_2_0" specular="1" shininess=".3" rgba="0.7411764705882353 0.8627450980392157 0.807843137254902 1"></material>
+		<material name="OrangeSticker_2_0" specular="1" shininess=".3" rgba="0.5490196078431373 0.35294117647058826 0.0 1"></material>
+		<material name="GreenSticker_2_0" specular="1" shininess=".3" rgba="0 0.3686274509803922 0.22745098039215686 1"></material>
+		<material name="YellowSticker_2_0" specular="1" shininess=".3" rgba="0.6784313725490196 0.7137254901960784 0.10980392156862745 1"></material>
+		<material name="RedSticker_2_1" specular="1" shininess=".3" rgba="0.4392156862745098 0.16470588235294117 0.0 1"></material>
+		<material name="BlueSticker_2_1" specular="1" shininess=".3" rgba="0.10196078431372549 0.1411764705882353 0.5098039215686274 1"></material>
+		<material name="WhiteSticker_2_1" specular="1" shininess=".3" rgba="0.7411764705882353 0.8627450980392157 0.807843137254902 1"></material>
+		<material name="OrangeSticker_2_1" specular="1" shininess=".3" rgba="0.5490196078431373 0.35294117647058826 0.0 1"></material>
+		<material name="GreenSticker_2_1" specular="1" shininess=".3" rgba="0 0.3686274509803922 0.22745098039215686 1"></material>
+		<material name="YellowSticker_2_1" specular="1" shininess=".3" rgba="0.6784313725490196 0.7137254901960784 0.10980392156862745 1"></material>
+		<material name="RedSticker_2_2" specular="1" shininess=".3" rgba="0.4392156862745098 0.16470588235294117 0.0 1"></material>
+		<material name="BlueSticker_2_2" specular="1" shininess=".3" rgba="0.10196078431372549 0.1411764705882353 0.5098039215686274 1"></material>
+		<material name="WhiteSticker_2_2" specular="1" shininess=".3" rgba="0.7411764705882353 0.8627450980392157 0.807843137254902 1"></material>
+		<material name="OrangeSticker_2_2" specular="1" shininess=".3" rgba="0.5490196078431373 0.35294117647058826 0.0 1"></material>
+		<material name="GreenSticker_2_2" specular="1" shininess=".3" rgba="0 0.3686274509803922 0.22745098039215686 1"></material>
+		<material name="YellowSticker_2_2" specular="1" shininess=".3" rgba="0.6784313725490196 0.7137254901960784 0.10980392156862745 1"></material>
+	</asset>
+	<worldbody>
+		<body name="middle" pos=".0285 .0285 .0285">
+			<geom name="middle" type="box" size=".0285 .0285 .0095" material="MatRubik" condim="4"></geom>
+			<site name="center" pos="0 0 0" rgba="1 0 0 1" size="0.01 0.01 0.01"></site>
+			<joint name="cube_tx" type="slide" axis="1 0 0" limited="false"></joint>
+			<joint name="cube_ty" type="slide" axis="0 1 0" limited="false"></joint>
+			<joint name="cube_tz" type="slide" axis="0 0 1" limited="false"></joint>
+			<joint name="cube_rot" type="ball" limited="false"></joint>
+			<body name="top" pos="0 0 .019">
+				<geom name="top" type="box" size=".0285 .0285 .0095" material="MatRubik" condim="4"></geom>
+				<joint name="face_top" type="hinge" axis="0 0 1" damping="0" frictionloss=".1" limited="false"></joint>
+				<body name="sticker_top_0_0" pos="-0.019 -0.019 0.0095">
+					<geom name="sticker_top_0_0" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="RedSticker_0_0"></geom>
+				</body>
+				<body name="sticker_top_0_1" pos="-0.019 0.0 0.0095">
+					<geom name="sticker_top_0_1" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="RedSticker_0_1"></geom>
+				</body>
+				<body name="sticker_top_0_2" pos="-0.019 0.019 0.0095">
+					<geom name="sticker_top_0_2" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="RedSticker_0_2"></geom>
+				</body>
+				<body name="sticker_top_1_0" pos="0.0 -0.019 0.0095">
+					<geom name="sticker_top_1_0" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="RedSticker_1_0"></geom>
+				</body>
+				<body name="sticker_top_1_1" pos="0.0 0.0 0.0095">
+					<geom name="sticker_top_1_1" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="RedSticker_1_1"></geom>
+				</body>
+				<body name="sticker_top_1_2" pos="0.0 0.019 0.0095">
+					<geom name="sticker_top_1_2" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="RedSticker_1_2"></geom>
+				</body>
+				<body name="sticker_top_2_0" pos="0.019 -0.019 0.0095">
+					<geom name="sticker_top_2_0" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="RedSticker_2_0"></geom>
+				</body>
+				<body name="sticker_top_2_1" pos="0.019 0.0 0.0095">
+					<geom name="sticker_top_2_1" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="RedSticker_2_1"></geom>
+				</body>
+				<body name="sticker_top_2_2" pos="0.019 0.019 0.0095">
+					<geom name="sticker_top_2_2" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="RedSticker_2_2"></geom>
+				</body>
+				<body name="sticker_side4_0_2" pos="0.0285 -0.019 0">
+					<geom name="sticker_side4_0_2" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="BlueSticker_0_2"></geom>
+				</body>
+				<body name="sticker_side3_0_2" pos="-0.019 0.0285 0">
+					<geom name="sticker_side3_0_2" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="WhiteSticker_0_2"></geom>
+				</body>
+				<body name="sticker_side2_0_2" pos="-0.0285 -0.019 0">
+					<geom name="sticker_side2_0_2" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="GreenSticker_0_2"></geom>
+				</body>
+				<body name="sticker_side1_0_2" pos="-0.019 -0.0285 0">
+					<geom name="sticker_side1_0_2" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="YellowSticker_0_2"></geom>
+				</body>
+				<body name="sticker_side4_1_2" pos="0.0285 0.0 0">
+					<geom name="sticker_side4_1_2" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="BlueSticker_1_2"></geom>
+				</body>
+				<body name="sticker_side3_1_2" pos="0.0 0.0285 0">
+					<geom name="sticker_side3_1_2" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="WhiteSticker_1_2"></geom>
+				</body>
+				<body name="sticker_side2_1_2" pos="-0.0285 0.0 0">
+					<geom name="sticker_side2_1_2" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="GreenSticker_1_2"></geom>
+				</body>
+				<body name="sticker_side1_1_2" pos="0.0 -0.0285 0">
+					<geom name="sticker_side1_1_2" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="YellowSticker_1_2"></geom>
+				</body>
+				<body name="sticker_side4_2_2" pos="0.0285 0.019 0">
+					<geom name="sticker_side4_2_2" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="BlueSticker_2_2"></geom>
+				</body>
+				<body name="sticker_side3_2_2" pos="0.019 0.0285 0">
+					<geom name="sticker_side3_2_2" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="WhiteSticker_2_2"></geom>
+				</body>
+				<body name="sticker_side2_2_2" pos="-0.0285 0.019 0">
+					<geom name="sticker_side2_2_2" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="GreenSticker_2_2"></geom>
+				</body>
+				<body name="sticker_side1_2_2" pos="0.019 -0.0285 0">
+					<geom name="sticker_side1_2_2" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="YellowSticker_2_2"></geom>
+				</body>
+			</body>
+			<body name="bottom" pos="0 0 -.019">
+				<geom name="bottom" type="box" size=".0285 .0285 .0095" material="MatRubik" condim="4"></geom>
+				<joint name="face_bottom" type="hinge" axis="0 0 1" damping="0" frictionloss=".1" limited="false"></joint>
+				<body name="sticker_side4_0_0" pos="0.0285 -0.019 0">
+					<geom name="sticker_side4_0_0" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="BlueSticker_0_0"></geom>
+				</body>
+				<body name="sticker_side3_0_0" pos="-0.019 0.0285 0">
+					<geom name="sticker_side3_0_0" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="WhiteSticker_0_0"></geom>
+				</body>
+				<body name="sticker_side2_0_0" pos="-0.0285 -0.019 0">
+					<geom name="sticker_side2_0_0" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="GreenSticker_0_0"></geom>
+				</body>
+				<body name="sticker_side1_0_0" pos="-0.019 -0.0285 0">
+					<geom name="sticker_side1_0_0" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="YellowSticker_0_0"></geom>
+				</body>
+				<body name="sticker_side4_1_0" pos="0.0285 0.0 0">
+					<geom name="sticker_side4_1_0" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="BlueSticker_1_0"></geom>
+				</body>
+				<body name="sticker_side3_1_0" pos="0.0 0.0285 0">
+					<geom name="sticker_side3_1_0" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="WhiteSticker_1_0"></geom>
+				</body>
+				<body name="sticker_side2_1_0" pos="-0.0285 0.0 0">
+					<geom name="sticker_side2_1_0" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="GreenSticker_1_0"></geom>
+				</body>
+				<body name="sticker_side1_1_0" pos="0.0 -0.0285 0">
+					<geom name="sticker_side1_1_0" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="YellowSticker_1_0"></geom>
+				</body>
+				<body name="sticker_side4_2_0" pos="0.0285 0.019 0">
+					<geom name="sticker_side4_2_0" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="BlueSticker_2_0"></geom>
+				</body>
+				<body name="sticker_side3_2_0" pos="0.019 0.0285 0">
+					<geom name="sticker_side3_2_0" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="WhiteSticker_2_0"></geom>
+				</body>
+				<body name="sticker_side2_2_0" pos="-0.0285 0.019 0">
+					<geom name="sticker_side2_2_0" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="GreenSticker_2_0"></geom>
+				</body>
+				<body name="sticker_side1_2_0" pos="0.019 -0.0285 0">
+					<geom name="sticker_side1_2_0" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="YellowSticker_2_0"></geom>
+				</body>
+				<body name="sticker_bottom_0_0" pos="-0.019 -0.019 -0.0095">
+					<geom name="sticker_bottom_0_0" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="OrangeSticker_0_0"></geom>
+				</body>
+				<body name="sticker_bottom_0_1" pos="-0.019 0.0 -0.0095">
+					<geom name="sticker_bottom_0_1" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="OrangeSticker_0_1"></geom>
+				</body>
+				<body name="sticker_bottom_0_2" pos="-0.019 0.019 -0.0095">
+					<geom name="sticker_bottom_0_2" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="OrangeSticker_0_2"></geom>
+				</body>
+				<body name="sticker_bottom_1_0" pos="0.0 -0.019 -0.0095">
+					<geom name="sticker_bottom_1_0" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="OrangeSticker_1_0"></geom>
+				</body>
+				<body name="sticker_bottom_1_1" pos="0.0 0.0 -0.0095">
+					<geom name="sticker_bottom_1_1" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="OrangeSticker_1_1"></geom>
+				</body>
+				<body name="sticker_bottom_1_2" pos="0.0 0.019 -0.0095">
+					<geom name="sticker_bottom_1_2" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="OrangeSticker_1_2"></geom>
+				</body>
+				<body name="sticker_bottom_2_0" pos="0.019 -0.019 -0.0095">
+					<geom name="sticker_bottom_2_0" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="OrangeSticker_2_0"></geom>
+				</body>
+				<body name="sticker_bottom_2_1" pos="0.019 0.0 -0.0095">
+					<geom name="sticker_bottom_2_1" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="OrangeSticker_2_1"></geom>
+				</body>
+				<body name="sticker_bottom_2_2" pos="0.019 0.019 -0.0095">
+					<geom name="sticker_bottom_2_2" type="box" size="0.0089 0.0089 0.0001" conaffinity="0" contype="0" material="OrangeSticker_2_2"></geom>
+				</body>
+			</body>
+			<body name="sticker_side4_0_1" pos="0.0285 -0.019 0">
+				<geom name="sticker_side4_0_1" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="BlueSticker_0_1"></geom>
+			</body>
+			<body name="sticker_side3_0_1" pos="-0.019 0.0285 0">
+				<geom name="sticker_side3_0_1" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="WhiteSticker_0_1"></geom>
+			</body>
+			<body name="sticker_side2_0_1" pos="-0.0285 -0.019 0">
+				<geom name="sticker_side2_0_1" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="GreenSticker_0_1"></geom>
+			</body>
+			<body name="sticker_side1_0_1" pos="-0.019 -0.0285 0">
+				<geom name="sticker_side1_0_1" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="YellowSticker_0_1"></geom>
+			</body>
+			<body name="sticker_side4_1_1" pos="0.0285 0.0 0">
+				<geom name="sticker_side4_1_1" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="BlueSticker_1_1"></geom>
+			</body>
+			<body name="sticker_side3_1_1" pos="0.0 0.0285 0">
+				<geom name="sticker_side3_1_1" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="WhiteSticker_1_1"></geom>
+			</body>
+			<body name="sticker_side2_1_1" pos="-0.0285 0.0 0">
+				<geom name="sticker_side2_1_1" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="GreenSticker_1_1"></geom>
+			</body>
+			<body name="sticker_side1_1_1" pos="0.0 -0.0285 0">
+				<geom name="sticker_side1_1_1" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="YellowSticker_1_1"></geom>
+			</body>
+			<body name="sticker_side4_2_1" pos="0.0285 0.019 0">
+				<geom name="sticker_side4_2_1" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="BlueSticker_2_1"></geom>
+			</body>
+			<body name="sticker_side3_2_1" pos="0.019 0.0285 0">
+				<geom name="sticker_side3_2_1" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="WhiteSticker_2_1"></geom>
+			</body>
+			<body name="sticker_side2_2_1" pos="-0.0285 0.019 0">
+				<geom name="sticker_side2_2_1" type="box" size="0.0001 0.0089 0.0089" conaffinity="0" contype="0" material="GreenSticker_2_1"></geom>
+			</body>
+			<body name="sticker_side1_2_1" pos="0.019 -0.0285 0">
+				<geom name="sticker_side1_2_1" type="box" size="0.0089 0.0001 0.0089" conaffinity="0" contype="0" material="YellowSticker_2_1"></geom>
+			</body>
+		</body>
+		<body name="annotation:outer_bound" pos="0.0285 0.0285 0.0285">
+			<geom conaffinity="0" contype="0" mass="0" pos="0 0 0" rgba="0.417022 0.720324 0.000114 0.1" size="0.0285 0.0285 0.0285" type="box"></geom>
+		</body>
+	</worldbody>
+</mujoco>

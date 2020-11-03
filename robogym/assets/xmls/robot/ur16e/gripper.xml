@@ -1,0 +1,39 @@
+<mujoco>
+    <body name="robot0:gripper_io_plate" pos="0 0.0 0.06765" quat="0 0 0 1">
+        <site name="robot0:grip" pos="0.0 0 0.174" rgba="0 0 1 1" size="0.002 0.002 0.002"></site>
+        <body name="robot0:gripper_tcp" pos="0 0 0.174" ></body>
+        <geom name="robot0:gripper_io_plate_v" type="mesh" class="gripper_viz" rgba="0.79216 0.81961 0.93333 1" mesh="gripper_io_plate"/>
+        <body name="robot0:gripper_base" pos="0 0 0.011">
+            <geom name="robot0:gripper_base_geom_v" contype="4" conaffinity="1" class="gripper_viz" type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="gripper_base_link"/>
+            <body name="left_gripper" pos="-0.0252608  0  0.111806">
+                <inertial pos="0.014568 0.016496 5.0001e-05" quat="0.688711 0.688711 -0.160242 -0.160242" mass="0.014539" diaginertia="1.73287e-06 1.7058e-06 8.95029e-07"/>
+                <joint class="gripper_joint" name="robot0:l_gripper_LJ0_outer" type="slide" axis="42.655 0 13.4654"/>
+                <geom name="robot0:left_contact_v" class="gripper_viz" type="box" pos=".0221 0 .032 " euler="0 0 0" size="0.003195 0.011 0.019" condim="4" friction="1 0.05 0.01" solref="-20000 -500" solimp=".99 .999 .001" />
+                <geom name="robot0:left_contact_support_v" class="gripper_viz" type="box" pos=".01 0 .01" euler="0 0 0" size="0.01 0.0081 .019"/>
+                <body name="left_inner_follower" pos="0.012561 0 -0.050385 ">
+                    <inertial pos="0.0029392 0.029265 -5.5925e-09" quat="0.706169 0.706169 -0.0364056 -0.0364056" mass="0.010114" diaginertia="4.38469e-06 2.9648e-06 1.66211e-06"/>
+                    <geom name="robot0:left_inner_follower_v" class="gripper_viz" type="mesh" rgba="0.039216 0.039216 0.039216 1" mesh="left_inner_follower"/>
+                </body>
+                <body name="left_outer_driver" pos="-0.0053402 0 -0.056901">
+                    <inertial pos="-0.012466 0.028837 4.1747e-06" quat="0.682958 0.682426 -0.184366 -0.184046" mass="0.019227" diaginertia="5.03843e-06 4.8207e-06 2.32836e-06"/>
+                    <geom name="robot0:left_outer_driver_v" class="gripper_viz" type="mesh" rgba="0.5 0.6 0.75 1" mesh="left_outer_driver"/>
+                </body>
+            </body>
+
+            <body name="right_gripper" pos="0.0252608 0 0.111806">
+                <inertial pos="-0.014568 0.016496 -9.1992e-10" quat="0.688711 0.688711 0.160242 0.160242" mass="0.014539" diaginertia="1.73287e-06 1.7058e-06 8.95029e-07"/>
+                <joint class="gripper_joint" name="robot0:r_gripper_RJ0_outer" type="slide" axis="-42.655 0 13.4654"/>
+                <geom name="robot0:right_contact_v" class="gripper_viz" type="box" pos="-.0221 0 .032" euler="0 0 0" size="0.003195 0.011 0.019" condim="4" friction="1 0.05 0.01" solref="-20000 -500" solimp=".99 .999 .001" />
+                <geom name="robot0:right_contact_support_v" class="gripper_viz" type="box" pos="-.01 0 .01" euler="0 0 0" size="0.01 0.0081 .019"/>
+                <body name="right_inner_follower" pos="-0.012561 0 -0.050385">
+                    <inertial pos="-0.0029392 0.029265 5.5925e-09" quat="0.706169 0.706169 0.0364056 0.0364056" mass="0.010114" diaginertia="4.38469e-06 2.9648e-06 1.66211e-06"/>
+                    <geom name="robot0:right_inner_follower_v" class="gripper_viz" type="mesh" rgba="0.039216 0.039216 0.039216 1" mesh="right_inner_follower"/>
+                </body>
+                <body name="right_outer_driver" pos="0.0053402 0 -0.056901">
+                    <inertial pos="-0.012466 0.028837 4.1747e-06" quat="0.682958 0.682426 -0.184366 -0.184046" mass="0.019227" diaginertia="5.03843e-06 4.8207e-06 2.32836e-06"/>
+                    <geom name="robot0:right_outer_driver_v" class="gripper_viz" type="mesh" rgba="0.5 0.6 0.75 1" mesh="right_outer_driver"/>
+                </body>
+            </body>
+        </body>
+    </body>
+</mujoco>

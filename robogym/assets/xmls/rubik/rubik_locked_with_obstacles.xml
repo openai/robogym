@@ -1,0 +1,29 @@
+<mujoco model="rubik-v1.50">
+	<asset>
+		<texture name='rubik' file="rubik/rubik.png" gridsize="3 4" gridlayout=".U..LFRB.D.."/>
+		<material name="MatRubik" texture="rubik" specular="1" shininess=".3" reflectance="0"/>
+	</asset>
+
+	<worldbody>
+		<body name="middle" pos=".0285 .0285 .0285">
+			<geom name="middle" type="box" size=".0285 .0285 .0285" material="MatRubik" condim="4"/>
+			<site name="center" pos="0 0 0" rgba="1 0 0 1" size="0.01 0.01 0.01"></site>
+			<joint name="cube_tx" type="slide" axis="1 0 0" limited="false"/>
+			<joint name="cube_ty" type="slide" axis="0 1 0" limited="false"/>
+			<joint name="cube_tz" type="slide" axis="0 0 1" limited="false"/>
+			<joint name="cube_rot" type="ball" limited="false"/>
+			<geom  type="sphere" name="obstacle0" size="0.01" pos="-0.00895167 -0.01227946 -0.02498058" rgba="1 1 1 1" condim="4"/>
+			<geom  type="sphere" name="obstacle1" size="0.01" pos=" 0.03338414 -0.03118412  0.02498058" rgba="1 1 1 1" condim="4"/>
+			<geom  type="sphere" name="obstacle2" size="0.01" pos=" 0.03338414 -0.03118412 -0.01206404" rgba="1 1 1 1" condim="4"/>
+			<geom  type="sphere" name="obstacle3" size="0.01" pos=" 0.03338414 -0.03118412  0.02254924" rgba="1 1 1 1" condim="4"/>
+			<geom  type="sphere" name="obstacle4" size="0.01" pos=" 0.00119643  0.03118412  0.00537345" rgba="1 1 1 1" condim="4"/>
+			<geom  type="sphere" name="obstacle5" size="0.01" pos=" 0.0032461   0.03118412 -0.00059712" rgba="1 1 1 1" condim="4"/>
+			<geom  type="sphere" name="obstacle6" size="0.01" pos="-0.0080452  -0.03118412 -0.02498058" rgba="1 1 1 1" condim="4"/>
+		</body>
+
+		<body name="annotation:outer_bound" pos="0.0285 0.0285 0.0285">
+			<geom conaffinity="0" contype="0" mass="0" pos="0 0 0" rgba="0.417022 0.720324 0.000114 0.1" size="0.0285 0.0285 0.0285" type="box"></geom>
+		</body>
+	</worldbody>
+
+</mujoco>

@@ -1,0 +1,9 @@
+<mujocoinclude>
+    <equality>
+        <joint name="coupling" joint1="robot0:r_gripper_RJ0_outer" joint2="robot0:l_gripper_LJ0_outer" polycoef="0 1 0 0 0" solref="-50000 -100"/>
+    </equality>
+
+    <actuator>
+        <general gaintype="user" biastype="user" name="robot0:r_gripper_finger_joint" joint="robot0:r_gripper_RJ0_outer" ctrllimited="true" ctrlrange="-.04473 0" forcelimited="true" forcerange="-230 230" gainprm="80000 1000.0 .2 0.0094 0.1 0.00"/>
+    </actuator>
+</mujocoinclude>

@@ -1,0 +1,372 @@
+<mujoco>
+    <default>
+        <default class="cube">
+            <!-- ===== Defaults for small cubelet joints ===== -->
+
+            <!-- ===== Defaults for the cubelet/driver hinge joints ==== -->
+            <!-- Original joint damping/friction very likely to be too strong as we just have many more joints  -->
+            <!-- <joint damping='0.05' armature='0.0001' frictionloss="0.05"/> -->
+            <!-- Setting similar to the original bur probably still to strong:  -->
+            <!-- <joint damping='0.005' armature='0.0001' frictionloss="0.005"/> -->
+
+            <joint damping='0.0005' armature='0.0001' frictionloss="0.0005"/>
+
+            <!-- ===== Defaults for small cubelet geoms ===== -->
+            <!-- Original geom friction settings -->
+            <!-- <geom condim="6" density="842" friction="0.4 0.005 0.001"/> -->
+            <!-- Current settings, making a friction closer to the half of original frictions -->
+            <geom condim="6" density="521" friction="0.2 0.0025 0.0005"/>
+        </default>
+
+        <default class="cubemain">
+            <joint damping='0.0' armature='0.0' frictionloss="0"/>
+        </default>
+
+
+        <default class="slide">
+            <!-- These joints need "strong" armature to make high stiffness stable -->
+            <joint stiffness="500.0" springref="0" armature="0.01" ref="0" damping="0.005" frictionloss="0.005" limited="true" range="-0.001 0.0002"/>
+        </default>
+    </default>
+
+    <!-- Asset part -->
+    <asset>
+        <texture name='texture000' file="cube/material000.png" type="2d"/>
+        <material name="material000" texture="texture000" specular="1" shininess=".3"/>
+        <texture name='texture001' file="cube/material001.png" type="2d"/>
+        <material name="material001" texture="texture001" specular="1" shininess=".3"/>
+        <texture name='texture002' file="cube/material002.png" type="2d"/>
+        <material name="material002" texture="texture002" specular="1" shininess=".3"/>
+        <texture name='texture010' file="cube/material010.png" type="2d"/>
+        <material name="material010" texture="texture010" specular="1" shininess=".3"/>
+        <texture name='texture011' file="cube/material011.png" type="2d"/>
+        <material name="material011" texture="texture011" specular="1" shininess=".3"/>
+        <texture name='texture012' file="cube/material012.png" type="2d"/>
+        <material name="material012" texture="texture012" specular="1" shininess=".3"/>
+        <texture name='texture020' file="cube/material020.png" type="2d"/>
+        <material name="material020" texture="texture020" specular="1" shininess=".3"/>
+        <texture name='texture021' file="cube/material021.png" type="2d"/>
+        <material name="material021" texture="texture021" specular="1" shininess=".3"/>
+        <texture name='texture022' file="cube/material022.png" type="2d"/>
+        <material name="material022" texture="texture022" specular="1" shininess=".3"/>
+        <texture name='texture100' file="cube/material100.png" type="2d"/>
+        <material name="material100" texture="texture100" specular="1" shininess=".3"/>
+        <texture name='texture101' file="cube/material101.png" type="2d"/>
+        <material name="material101" texture="texture101" specular="1" shininess=".3"/>
+        <texture name='texture102' file="cube/material102.png" type="2d"/>
+        <material name="material102" texture="texture102" specular="1" shininess=".3"/>
+        <texture name='texture110' file="cube/material110.png" type="2d"/>
+        <material name="material110" texture="texture110" specular="1" shininess=".3"/>
+        <texture name='texture111' file="cube/material111.png" type="2d"/>
+        <material name="material111" texture="texture111" specular="1" shininess=".3"/>
+        <texture name='texture112' file="cube/material112.png" type="2d"/>
+        <material name="material112" texture="texture112" specular="1" shininess=".3"/>
+        <texture name='texture120' file="cube/material120.png" type="2d"/>
+        <material name="material120" texture="texture120" specular="1" shininess=".3"/>
+        <texture name='texture121' file="cube/material121.png" type="2d"/>
+        <material name="material121" texture="texture121" specular="1" shininess=".3"/>
+        <texture name='texture122' file="cube/material122.png" type="2d"/>
+        <material name="material122" texture="texture122" specular="1" shininess=".3"/>
+        <texture name='texture200' file="cube/material200.png" type="2d"/>
+        <material name="material200" texture="texture200" specular="1" shininess=".3"/>
+        <texture name='texture201' file="cube/material201.png" type="2d"/>
+        <material name="material201" texture="texture201" specular="1" shininess=".3"/>
+        <texture name='texture202' file="cube/material202.png" type="2d"/>
+        <material name="material202" texture="texture202" specular="1" shininess=".3"/>
+        <texture name='texture210' file="cube/material210.png" type="2d"/>
+        <material name="material210" texture="texture210" specular="1" shininess=".3"/>
+        <texture name='texture211' file="cube/material211.png" type="2d"/>
+        <material name="material211" texture="texture211" specular="1" shininess=".3"/>
+        <texture name='texture212' file="cube/material212.png" type="2d"/>
+        <material name="material212" texture="texture212" specular="1" shininess=".3"/>
+        <texture name='texture220' file="cube/material220.png" type="2d"/>
+        <material name="material220" texture="texture220" specular="1" shininess=".3"/>
+        <texture name='texture221' file="cube/material221.png" type="2d"/>
+        <material name="material221" texture="texture221" specular="1" shininess=".3"/>
+        <texture name='texture222' file="cube/material222.png" type="2d"/>
+        <material name="material222" texture="texture222" specular="1" shininess=".3"/>
+
+        <mesh name="rounded_cube" file="roundcube.msh" scale="0.095 0.095 0.095"/>
+    </asset>
+
+    <worldbody>
+        <body name="middle" childclass="cube" pos="0 0 0">
+            <joint name="cube:tx"  class="cubemain" type="slide" axis="1 0 0" limited="false"/>
+            <joint name="cube:ty"  class="cubemain" type="slide" axis="0 1 0" limited="false"/>
+            <joint name="cube:tz"  class="cubemain" type="slide" axis="0 0 1" limited="false"/>
+            <joint name="cube:rot" class="cubemain" type="ball" limited="false"/>
+
+            <site name="center" pos="0 0 0" rgba="1 0 0 1" size="0.01 0.01 0.01" />
+            <geom  name="center_sphere" pos="0.00 0.00 0.00" type="sphere" size="0.01 0.01 0.01" rgba="0.5 0.5 0.5 1.0"/>
+
+            <!-- 6 cubelets adjacent to center -->
+
+            <body name="body:neg_x">
+                <body name="cubelet:neg_x" pos="-0.01905 0 0">
+                    <geom name="cubelet:neg_x" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material011"/>
+                </body>
+
+                <joint name="cubelet:driver:neg_x" type="hinge" pos="0 0 0" axis="1 0 0"/>
+            </body>
+
+            <body name="body:pos_x">
+                <body name="cubelet:pos_x" pos="0.01905 0.00 0.00">
+                    <geom  name="cubelet:pos_x" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material211"/>
+                </body>
+
+                <joint name="cubelet:driver:pos_x" type="hinge" pos="0 0 0" axis="1 0 0"/>
+            </body>
+
+            <body name="body:neg_y">
+                <body name="cubelet:neg_y" pos="0.00 -0.01905 0.00">
+                    <geom name="cubelet:neg_y" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material101"/>
+                </body>
+                <joint name="cubelet:driver:neg_y" type="hinge" pos="0 0 0" axis="0 1 0"/>
+            </body>
+
+            <body name="body:pos_y">
+                <body name="cubelet:pos_y" pos="0.00 0.01905 0.00">
+                    <geom  name="cubelet:pos_y" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material121"/>
+                </body>
+
+                <joint name="cubelet:driver:pos_y" type="hinge" pos="0 0 0" axis="0 1 0"/>
+            </body>
+
+            <body name="body:neg_z">
+                <body name="cubelet:neg_z" pos="0.0 0.0 -0.01905">
+                    <geom  name="cubelet:neg_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material110"/>
+                </body>
+
+                <joint name="cubelet:driver:neg_z" type="hinge" pos="0 0 0" axis="0 0 1"/>
+            </body>
+
+            <body name="body:pos_z">
+                <body name="cubelet:pos_z" pos="0.00 0.00 0.01905">
+                    <geom  name="cubelet:pos_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material112"/>
+                </body>
+
+                <joint name="cubelet:driver:pos_z" type="hinge" pos="0 0 0" axis="0 0 1"/>
+            </body>
+
+            <!-- 20 "moveable" cubelets -->
+            <body name="body:neg_x_pos_y">
+                <body name="cubelet:neg_x_pos_y" pos="-0.01905 0.01905 0.0">
+                    <geom name="cubelet:neg_x_pos_y" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material021"/>
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_pos_y"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_pos_y"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_pos_y"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_pos_y" type="slide" pos="0 0 0" axis="-1 1 0" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_pos_y_pos_z">
+                <body name="cubelet:neg_x_pos_y_pos_z"  pos="-0.01905 0.01905 0.01905">
+                    <geom name="cubelet:neg_x_pos_y_pos_z"  type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material022"/>
+                </body>
+                <joint name="cubelet:rotx:neg_x_pos_y_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_pos_y_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_pos_y_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_pos_y_pos_z" type="slide" pos="0 0 0" axis="-1 1 1" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_pos_y_neg_z">
+                <body name="cubelet:neg_x_pos_y_neg_z" pos="-0.01905 0.01905 -0.01905">
+                    <geom name="cubelet:neg_x_pos_y_neg_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material020"/>
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_pos_y_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_pos_y_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_pos_y_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_pos_y_neg_z" type="slide" pos="0 0 0" axis="-1 1 -1" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_neg_y_pos_z" >
+                <body name="cubelet:neg_x_neg_y_pos_z" pos="-0.01905 -0.01905 0.01905">
+                    <geom name="cubelet:neg_x_neg_y_pos_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material002"/>
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_neg_y_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_neg_y_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_neg_y_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_neg_y_pos_z" type="slide" pos="0 0 0" axis="-1 -1 1" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_neg_y_neg_z">
+                <body name="cubelet:neg_x_neg_y_neg_z" pos="-0.01905 -0.01905 -0.01905">
+                    <geom name="cubelet:neg_x_neg_y_neg_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material000"/>
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_neg_y_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_neg_y_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_neg_y_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_neg_y_neg_z" type="slide" pos="0 0 0" axis="-1 -1 -1" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_neg_z">
+                <body name="cubelet:neg_x_neg_z" pos="-0.01905 0.0 -0.01905">
+                    <geom name="cubelet:neg_x_neg_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material010"/>
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_neg_z" type="slide" pos="0 0 0" axis="-1 0 -1" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_neg_y">
+                <body name="cubelet:neg_x_neg_y" pos="-0.01905 -0.01905 0.0">
+                    <geom name="cubelet:neg_x_neg_y" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material001"/>
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_neg_y"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_neg_y"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_neg_y"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_neg_y" type="slide" pos="0 0 0" axis="-1 -1 0" class="slide"/>
+            </body>
+
+            <body name="body:neg_x_pos_z">
+                <body name="cubelet:neg_x_pos_z" pos="-0.01905 0.0 0.01905">
+                    <geom name="cubelet:neg_x_pos_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material012"/>
+                </body>
+
+                <joint name="cubelet:rotx:neg_x_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_x_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_x_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_x_pos_z" type="slide" pos="0 0 0" axis="-1 0 1" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_neg_z">
+                <body name="cubelet:pos_x_neg_z" pos="0.01905 0.0 -0.01905">
+                    <geom  name="cubelet:pos_x_neg_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material210"/>
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_neg_z" type="slide" pos="0 0 0" axis="1 0 -1" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_pos_z">
+                <body name="cubelet:pos_x_pos_z" pos="0.01905 0.0 0.01905">
+                    <geom  name="cubelet:pos_x_pos_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material212"/>
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_pos_z" type="slide" pos="0 0 0" axis="1 0 1" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_pos_y">
+                <body name="cubelet:pos_x_pos_y" pos="0.01905 0.01905 0.0">
+                    <geom  name="cubelet:pos_x_pos_y"  type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material221"/>
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_pos_y"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_pos_y"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_pos_y"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_pos_y" type="slide" pos="0 0 0" axis="1 1 0" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_neg_y">
+                <body name="cubelet:pos_x_neg_y" pos="0.01905 -0.01905 0.0" >
+                    <geom type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material201"/>
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_neg_y"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_neg_y"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_neg_y"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_neg_y" type="slide" pos="0 0 0" axis="1 -1 0" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_neg_y_neg_z">
+                <body name="cubelet:pos_x_neg_y_neg_z" pos="0.01905 -0.01905 -0.01905">
+                    <geom name="cubelet:pos_x_neg_y_neg_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material200"/>
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_neg_y_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_neg_y_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_neg_y_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_neg_y_neg_z" type="slide" pos="0 0 0" axis="1 -1 -1" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_neg_y_pos_z">
+                <body name="cubelet:pos_x_neg_y_pos_z" pos="0.01905 -0.01905 0.01905">
+                    <geom  name="cubelet:pos_x_neg_y_pos_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material202"/>
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_neg_y_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_neg_y_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_neg_y_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_neg_y_pos_z" type="slide" pos="0 0 0" axis="1 -1 1" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_pos_y_neg_z">
+                <body name="cubelet:pos_x_pos_y_neg_z" pos="0.01905 0.01905 -0.01905">
+                    <geom  name="cubelet:pos_x_pos_y_neg_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material220"/>
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_pos_y_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_pos_y_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_pos_y_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_pos_y_neg_z" type="slide" pos="0 0 0" axis="1 1 -1" class="slide"/>
+            </body>
+
+            <body name="body:pos_x_pos_y_pos_z">
+                <body name="cubelet:pos_x_pos_y_pos_z" pos="0.01905 0.01905 0.01905">
+                    <geom  name="cubelet:pos_x_pos_y_pos_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material222"/>
+                </body>
+
+                <joint name="cubelet:rotx:pos_x_pos_y_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_x_pos_y_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_x_pos_y_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_x_pos_y_pos_z" type="slide" pos="0 0 0" axis="1 1 1" class="slide"/>
+            </body>
+
+            <body name="body:neg_y_neg_z">
+                <body name="cubelet:neg_y_neg_z" pos="0.0 -0.01905 -0.01905">
+                    <geom name="cubelet:neg_y_neg_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material100"/>
+                </body>
+
+                <joint name="cubelet:rotx:neg_y_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_y_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_y_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_y_neg_z" type="slide" pos="0 0 0" axis="0 -1 -1" class="slide"/>
+            </body>
+
+            <body name="body:neg_y_pos_z">
+                <body name="cubelet:neg_y_pos_z" pos="0.0 -0.01905 0.01905">
+                    <geom  name="cubelet:neg_y_pos_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material102"/>
+                </body>
+
+                <joint name="cubelet:rotx:neg_y_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:neg_y_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:neg_y_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:neg_y_pos_z" type="slide" pos="0 0 0" axis="0 -1 1" class="slide"/>
+            </body>
+
+            <body name="body:pos_y_neg_z">
+                <body name="cubelet:pos_y_neg_z" pos="0.0 0.01905 -0.01905">
+                    <geom name="cubelet:pos_y_neg_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material120"/>
+                </body>
+
+                <joint name="cubelet:rotx:pos_y_neg_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_y_neg_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_y_neg_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_y_neg_z" type="slide" pos="0 0 0" axis="0 1 -1" class="slide"/>
+            </body>
+
+            <body name="body:pos_y_pos_z">
+                <body name="cubelet:pos_y_pos_z" pos="0.0 0.01905 0.01905">
+                    <geom  name="cubelet:pos_y_pos_z" type="mesh" mesh="rounded_cube" size="0.01 0.01 0.01" material="material122"/>
+                </body>
+
+                <joint name="cubelet:rotx:pos_y_pos_z"   type="hinge" pos="0 0 0" axis="1 0 0"/>
+                <joint name="cubelet:roty:pos_y_pos_z"   type="hinge" pos="0 0 0" axis="0 1 0"/>
+                <joint name="cubelet:rotz:pos_y_pos_z"   type="hinge" pos="0 0 0" axis="0 0 1"/>
+                <joint name="cubelet:spring:pos_y_pos_z" type="slide" pos="0 0 0" axis="0 1 1" class="slide"/>
+            </body>
+        </body>
+    </worldbody>
+</mujoco>
