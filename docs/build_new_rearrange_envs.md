@@ -26,7 +26,7 @@ To create a holdout environment using teleopration, follow the steps below:
 
 ## Creating a new environment class
 
-To use the new environment in code, we need to ceate a new environment by subclassing `RearrangeEnv` in `robogym/envs/rearrange/common/base.py`. `RearrangeEnv` (and its related simulation and goal provider) provide the majority of things you’ll need (glue code, observation code, setting up a robot with a table, ...).
+To use the new environment in code, we need to create a new environment by subclassing `RearrangeEnv` in `robogym/envs/rearrange/common/base.py`. `RearrangeEnv` (and its related simulation and goal provider) provide the majority of things you’ll need (glue code, observation code, setting up a robot with a table, ...).
 
 There are two things you’ll likely need to do yourself when extending it:
 
