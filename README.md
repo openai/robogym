@@ -145,7 +145,7 @@ For rearrange environments, we also provide a variety of hold-out tasks that are
 Most robotics environments support customization by providing additional parameters via `constant`
 argument to `make_env`, you can find which constants are supported by each environment by looking
 into definition of `<EnvName>Constants` class which usually lives under the same file as `make_env`.
-Some commonly supported constats are:
+Some commonly supported constants are:
 
 - `randomize`: If true, some randomization will be applied to physics, actions and observations.
 - `mujoco_substeps`: Number of substeps per step for mujoco simulation which can be used to balance between simulation accuracy and training speed.
@@ -175,7 +175,7 @@ env = make_env(
 Robogym provides a way to intervene the environment parameters during training to support domain randomization and curriculum learning.
 
 Below shows an example of intervening the number of objects for blocks (rearrange) environment.
-You can use this intereface to define a curriculum over the number of objects:
+You can use this interface to define a curriculum over the number of objects:
 
 ```python
 from robogym.envs.rearrange.blocks import make_env
