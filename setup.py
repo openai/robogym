@@ -1,12 +1,20 @@
 #!/usr/bin/env python3
-from setuptools import find_packages, setup
+from setuptools import setup
+import os
 
+def package_files(directory):
+    paths = []
+    for (path, directories, filenames) in os.walk(directory):
+        for filename in filenames:
+            paths.append(os.path.join("..", path, filename))
+    return paths
 
 def setup_robogym():
     setup(
         name="robogym",
         version=open("ROBOGYM_VERSION").read(),
-        packages=find_packages(),
+        packages = ["robogym"],
+        package_data={"": package_files("robogym")},
         install_requires=[
             # Fixed versions
             "click==7.0",
