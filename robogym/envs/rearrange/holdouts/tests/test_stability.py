@@ -2,7 +2,7 @@ import os
 from typing import List
 
 import numpy as np
-from mujoco_py import const
+from robogym.mujoco import constants as const
 
 from robogym.robot_env import RobotEnv
 from robogym.utils.env_utils import load_env

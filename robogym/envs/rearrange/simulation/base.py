@@ -5,7 +5,7 @@ from typing import Any, Dict, Generic, List, Optional, Tuple, Type, TypeVar, Uni
 import attr
 import numpy as np
 from gym.envs.robotics import rotations
-from mujoco_py import const
+from robogym.mujoco import constants as const
 
 from robogym.envs.rearrange.common.utils import (
     PlacementArea,

@@ -1,7 +1,6 @@
 import random
 
 import numpy as np
-from mujoco_py import cymj, functions
 from numpy.random.mtrand import _rand as global_randstate
 
 from robogym.mujoco.forward_kinematics import ForwardKinematics
@@ -196,23 +195,22 @@ def test_remove_elem():
     assert ref_xml.strip() == ball_without_joint.xml_string().strip()
 
 
-def test_mj_error_callback():
-    message = None
-    called = False
+# def test_mj_error_callback():
+#     message = None
+#     called = False
 
-    def callback(msg):
-        nonlocal message
-        message = msg.decode()
-        raise RuntimeError(message)
+#     def callback(msg):
+#         nonlocal message
+#         message = msg.decode()
+#         raise RuntimeError(message)
 
-    cymj.set_error_callback(callback)
+#     cymj.set_error_callback(callback)
 
-    try:
-        with cymj.wrap_mujoco_warning():
-            functions.mju_error("error")
-    except RuntimeError as e:
-        assert e.args[0] == "error"
-        assert message == "error"
-        called = True
+#     try:
+#         with cymj.wrap_mujoco_warning():
+#     except RuntimeError as e:
+#         assert e.args[0] == "error"
+#         assert message == "error"
+#         called = True
 
-    assert called
+#     assert called

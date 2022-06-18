@@ -2,8 +2,8 @@ import itertools as it
 from typing import Dict, List
 
 import attr
-from mujoco_py import MjSimState, cymj
-
+import ctypes
+import mujoco
 from robogym.mujoco.helpers import (
     joint_qpos_ids,
     joint_qpos_ids_from_prefix,
@@ -11,6 +11,19 @@ from robogym.mujoco.helpers import (
     joint_qvel_ids_from_prefix,
 )
 from robogym.mujoco.mujoco_xml import MjSim
+from . import callbacks
+
+_callbacks = ctypes.PyDLL(callbacks.__file__)
+
+c_zero_gains = _callbacks.c_zero_gains
+c_custom_bias = _callbacks.c_custom_bias
+_callbacks.get_NUM_USER_DATA_PER_ACT.restype = ctypes.c_int
+
+NUM_USER_DATA_PER_ACT = _callbacks.get_NUM_USER_DATA_PER_ACT()
+IDX_CONTROLLER_TYPE = 0
+NUM_ACTUATOR_DATA = 1
+
+
 
 
 @attr.s(auto_attribs=True)
@@ -74,18 +87,31 @@ class SimulationInterface:
         """
         Get a nicely-interactive version of the mujoco viewer
         """
-        if self._mujoco_viewer is None:
-            # Inline import since this is only relevant on platforms
-            # which have GLFW support.
-            from mujoco_py.mjviewer import MjViewer  # noqa
+        raise NotImplementedError()
+        # if self._mujoco_viewer is None:
+        #     # Inline import since this is only relevant on platforms
+        #     # which have GLFW support.
+        #     from mujoco_py.mjviewer import MjViewer  # noqa
 
-            self._mujoco_viewer = MjViewer(self.sim)
+        #     self._mujoco_viewer = MjViewer(self.sim)
 
         return self._mujoco_viewer
 
     def enable_pid(self):
         """ Enable our custom PID controller code for the actuators with 'user' type """
-        cymj.set_pid_control(self.sim.model, self.sim.data)
+        m = self.sim.model
+        d = self.sim.data
+
+        if m.nuserdata < m.nu * NUM_USER_DATA_PER_ACT:
+            raise Exception('nuserdata is not set large enough to store PID internal states.')
+
+        if m.nuser_actuator < m.nu * NUM_ACTUATOR_DATA:
+            raise Exception('nuser_actuator is not set large enough to store controller types')
+
+        for i in range(m.nuserdata):
+            d.userdata[i] = 0.0
+        mujoco.set_mjcb_act_gain(c_zero_gains)
+        mujoco.set_mjcb_act_bias(c_custom_bias)
 
     ###############################################################################################
     # SUBCLASS REGISTRATION
@@ -151,7 +177,7 @@ class SimulationInterface:
         """ Returns copy of full sim qvel. """
         return self.sim.data.qvel.copy()
 
-    def get_state(self) -> MjSimState:
+    def get_state(self):
         return self.sim.get_state()
 
     ###############################################################################################
@@ -168,7 +194,7 @@ class SimulationInterface:
         """ Sets qpos for a given group. """
         self.sim.data.qpos[self.qpos_idxs[group_name]] += value
 
-    def set_state(self, state: MjSimState):
+    def set_state(self, state):
         self.sim.set_state(state)
 
     ###############################################################################################

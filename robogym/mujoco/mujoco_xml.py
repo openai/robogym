@@ -2,7 +2,7 @@ import os.path
 import typing
 import xml.etree.ElementTree as et
 
-import mujoco_py
+import mujoco
 import numpy as np
 
 ASSETS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../assets"))
@@ -31,28 +31,17 @@ class StaleMjSimError(Exception):
     """
     Exception indicating the MjSim instance is stale and should no longer be used.
     """
-
     pass
 
 
-class MjSim(mujoco_py.MjSim):
-    """
-    There are environments e.g. rearrange environment which recreates
-    sim after reach env reset. This can cause potential bugs caused by
-    other components still caching instance of old sim. These bugs are usually
-    quite tricky to find. This class makes it easier to find these bugs by allowing
-    invalidating the sim instance so any access to properties of stale sim instance
-    will cause error.
-    """
-
-    __slots__ = ("_stale", "_xml")
-
-    def __init__(self, model, **kwargs):
-        # Note: we don't need to call super.__init__ because MjSim use __cinit__
-        # for initialization which happens automatically before subclass __init__
-        # is called.
+class MjSim(object):
+    def __init__(self, model, data, nsubsteps=1):
         self._stale: bool = False
-        self._xml = model.get_xml()
+        self._model = model
+        self._data = data
+        self._xml = None# model.get_xml()
+        self._nsubsteps = nsubsteps
+        print(f"nsubsteps = {nsubsteps}")
 
     def get_xml(self):
         """
@@ -76,12 +65,12 @@ class MjSim(mujoco_py.MjSim):
     @property
     def data(self):
         self._ensure_not_stale()
-        return super().data
+        return self._data
 
     @property
     def model(self):
         self._ensure_not_stale()
-        return super().model
+        return self._model
 
     def _ensure_not_stale(self):
         if self._stale:
@@ -256,8 +245,9 @@ class MujocoXML:
             with open(output_filename, "wt") as f:
                 f.write(xml_string)
 
-        mj_model = mujoco_py.load_model_from_xml(xml_string)
-        return MjSim(mj_model, **kwargs)
+        mj_model = mujoco.MjModel.from_xml_string(xml_string)
+        mj_data = mujoco.MjData(mj_model)
+        return MjSim(mj_model, mj_data, **kwargs)
 
     ###############################################################################################
     # MODIFICATIONS

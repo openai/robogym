@@ -3,7 +3,7 @@ import logging
 import glfw
 import numpy as np
 from gym.spaces import MultiDiscrete
-from mujoco_py import const
+from robogym.mujoco import constants as const
 
 from robogym.robot.composite.controllers.ur_gripper_arm import (
     Direction,

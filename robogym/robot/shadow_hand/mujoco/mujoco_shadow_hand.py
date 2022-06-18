@@ -1,5 +1,5 @@
 import numpy as np
-from mujoco_py.generated import const
+from robogym.mujoco import constants as const
 
 from robogym.mujoco.simulation_interface import SimulationInterface
 from robogym.robot.shadow_hand.hand_forward_kinematics import (

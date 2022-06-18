@@ -1,8 +1,7 @@
 import itertools
 import typing
 
-import mujoco_py
-import mujoco_py.generated.const
+from robogym.mujoco import constants as const
 
 
 def joint_qpos_ids(model, joint_name: str) -> typing.List[int]:
@@ -40,13 +39,13 @@ def joint_qvel_ids_from_prefix(model, joint_prefix):
 
 
 def joint_type_name(joint_type: int) -> str:
-    if joint_type == mujoco_py.generated.const.JNT_FREE:
+    if joint_type == const.JNT_FREE:
         return "free"
-    if joint_type == mujoco_py.generated.const.JNT_BALL:
+    if joint_type == const.JNT_BALL:
         return "ball"
-    if joint_type == mujoco_py.generated.const.JNT_SLIDE:
+    if joint_type == const.JNT_SLIDE:
         return "slide"
-    if joint_type == mujoco_py.generated.const.JNT_HINGE:
+    if joint_type == const.JNT_HINGE:
         return "hinge"
 
     raise AssertionError(f"unsupported joint type: {joint_type}")

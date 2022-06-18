@@ -4,7 +4,7 @@ from datetime import datetime
 
 import glfw
 import numpy as np
-from mujoco_py import const
+from robogym.mujoco import constants as const
 
 from robogym.envs.rearrange.holdouts import STATE_DIR
 from robogym.viewer.robot_control_viewer import RobotControlViewer

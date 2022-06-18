@@ -1,5 +1,4 @@
 import numpy as np
-from mujoco_py import ignore_mujoco_warnings
 from numpy.testing import assert_allclose
 
 from robogym.envs.dactyl.common.cube_utils import on_palm
@@ -50,9 +49,9 @@ def test_locked_cube():
         )
 
         assert env.unwrapped.sim.model.joint_names == expected_joints
-        with ignore_mujoco_warnings():
-            for _ in range(20):
-                obs, _, _, _ = env.step(env.action_space.nvec // 2)
+        # with ignore_mujoco_warnings():
+        for _ in range(20):
+            obs, _, _, _ = env.step(env.action_space.nvec // 2)
 
         is_on_palm.append(on_palm(env.unwrapped.sim))
 

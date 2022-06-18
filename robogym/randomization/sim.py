@@ -3,7 +3,6 @@ import copy
 from typing import List, Union
 
 import numpy as np
-from mujoco_py import MjSim
 from numpy.random import RandomState
 
 from robogym.mujoco.constants import OPT_FIELDS, PID_GAIN_PARAMS
@@ -12,6 +11,7 @@ from robogym.randomization.parameters import (
     FloatRandomizerParameter,
     RandomizerParameter,
 )
+from robogym.mujoco.mujoco_xml import MjSim
 from robogym.utils.rotation import random_unity2
 
 

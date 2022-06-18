@@ -12,14 +12,14 @@ import _jsonnet
 import numpy as np
 import trimesh
 from collision import Poly, Vector, collide
-from mujoco_py import MjSim, const
 from numpy.random import RandomState
 
-from robogym.mujoco.mujoco_xml import ASSETS_DIR, MujocoXML
+from robogym.mujoco.mujoco_xml import MjSim, ASSETS_DIR, MujocoXML
 from robogym.utils.env_utils import InvalidSimulationError
 from robogym.utils.mesh import get_vertices_bounding_box, subdivide_mesh
 from robogym.utils.misc import robogym_path
 from robogym.utils.rotation import mat2quat, quat2mat, quat_conjugate, uniform_quat
+from robogym.mujoco import constants as const
 
 MATERIAL_DIR = robogym_path("envs", "rearrange", "materials")
 
