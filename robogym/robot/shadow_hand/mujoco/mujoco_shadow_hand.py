@@ -86,7 +86,7 @@ class MuJoCoShadowHand(Hand):
         self.simulation.register_joint_group(self.joint_group, prefix=hand_prefix)
         self._parameter_manager = MuJoCoParameterManager(self.mj_sim)
 
-        assert self.mj_sim.model.nu == len(
+        assert self.mj_sim.model.model().nu == len(
             ACTUATORS
         ), "Action space must have compatible shape"
 

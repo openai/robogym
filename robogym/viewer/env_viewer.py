@@ -6,8 +6,7 @@ import glfw
 import numpy as np
 from gym.spaces import Box, MultiDiscrete
 import robogym.mujoco.constants as const
-from mujoco_py import MjViewer
-
+from robogym.mujoco.mjviewer import MjViewer
 from robogym.utils.misc import pretty
 
 

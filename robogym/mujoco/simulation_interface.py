@@ -87,13 +87,11 @@ class SimulationInterface:
         """
         Get a nicely-interactive version of the mujoco viewer
         """
-        raise NotImplementedError()
-        # if self._mujoco_viewer is None:
-        #     # Inline import since this is only relevant on platforms
-        #     # which have GLFW support.
-        #     from mujoco_py.mjviewer import MjViewer  # noqa
-
-        #     self._mujoco_viewer = MjViewer(self.sim)
+        if self._mujoco_viewer is None:
+            # Inline import since this is only relevant on platforms
+            # which have GLFW support.
+            from .mjviewer import MjViewer  # noqa
+            self._mujoco_viewer = MjViewer(self.sim)
 
         return self._mujoco_viewer
 
@@ -102,13 +100,13 @@ class SimulationInterface:
         m = self.sim.model
         d = self.sim.data
 
-        if m.nuserdata < m.nu * NUM_USER_DATA_PER_ACT:
+        if m.model().nuserdata < m.model().nu * NUM_USER_DATA_PER_ACT:
             raise Exception('nuserdata is not set large enough to store PID internal states.')
 
-        if m.nuser_actuator < m.nu * NUM_ACTUATOR_DATA:
+        if m.model().nuser_actuator < m.model().nu * NUM_ACTUATOR_DATA:
             raise Exception('nuser_actuator is not set large enough to store controller types')
 
-        for i in range(m.nuserdata):
+        for i in range(m.model().nuserdata):
             d.userdata[i] = 0.0
         mujoco.set_mjcb_act_gain(c_zero_gains)
         mujoco.set_mjcb_act_bias(c_custom_bias)
