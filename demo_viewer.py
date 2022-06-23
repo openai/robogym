@@ -1,4 +1,5 @@
-from robogym.envs.dactyl.locked import make_env
+# from robogym.envs.dactyl.locked import make_env
+from robogym.envs.dactyl.reach import make_env
 import glfw
 import mujoco
 import numpy as np
@@ -272,6 +273,7 @@ def standalone_viewer():
         camera, mujoco.mjtCatBit.mjCAT_ALL, scene)
     i = 0
     while True and not glfw.window_should_close(window):
+        print(env.action_space.sample())
         obs, reward, done, _ = env.step(env.action_space.nvec // 2)
         mujoco.mjv_updateScene(
             env.unwrapped.mujoco_simulation.sim.model.model(), env.unwrapped.mujoco_simulation.sim.data.data(), mujoco.MjvOption(), None,
@@ -289,7 +291,7 @@ def mujoco_viewer():
     obs = env.reset()
     i = 0
     while True:
-        obs, reward, done, _ = env.step(env.action_space.nvec // 2)
+        obs, reward, done, _ = env.step(env.action_space.sample() * 0)
         env.render()
         i += 1
         if i % 100 == 0:

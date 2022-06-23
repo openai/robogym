@@ -12,9 +12,8 @@ class DictToArray(gym.Wrapper):
         super(DictToArray, self).__init__(env)
         assert isinstance(self.env.observation_space, gym.spaces.Dict), \
             f"expected wrapped env's observation space to be a gym.spaces.Dict but got {self.env.observation_space}."
-        ignored_keys = {"performed_action", "action_history", "action_delay", "randomized_phasespace", "randomized_phasespace_fingers"}
-        self._space_names = [n for n in self.env.observation_space.spaces.keys() if n not in ignored_keys]
-        self._space_shapes = [np.prod(s.shape) for n, s in self.env.observation_space.spaces.items() if n not in ignored_keys]
+        self._space_names = ["qpos", "qvel", "fingertip_pos", "goal_fingertip_pos"]
+        self._space_shapes = [np.prod(self.env.observation_space.spaces[n].shape) for n in self._space_names]
         self.observation_space = gym.spaces.Box(low=-float("inf"), high=float("inf"), shape=(sum(self._space_shapes),))
 
     def reset(self):
