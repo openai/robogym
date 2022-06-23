@@ -2,6 +2,7 @@
 from setuptools import find_packages, setup
 from distutils.extension import Extension
 from os.path import dirname, realpath, join
+import platform
 
 
 SRC_DIR = dirname(realpath(__file__))
@@ -31,6 +32,10 @@ class CallableList(object):
 
 
 def setup_robogym():
+    if platform.system() == "Windows":
+        extra_compile_args = ['/O2', '-std:c++17']
+    else:
+        extra_compile_args = ['-O3', '-std=c++17', '-Wno-#warnings', '-Wno-cpp', '-Wno-unused-function', '-Wno-deprecated-declarations']
     setup(
         name="robogym",
         version=open("ROBOGYM_VERSION").read(),
@@ -58,7 +63,7 @@ def setup_robogym():
         ext_modules=[
             Extension('robogym.mujoco.callbacks',
                     sources=[join(SRC_DIR, "robogym", "mujoco", "callbacks.cpp")],
-                    extra_compile_args=['-O3', '-std=c++17', '-Wno-#warnings', '-Wno-cpp', '-Wno-unused-function', '-Wno-deprecated-declarations'],
+                    extra_compile_args=extra_compile_args,
                     include_dirs=CallableList(),
                     language='c++')
         ]
