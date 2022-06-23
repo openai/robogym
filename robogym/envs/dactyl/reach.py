@@ -251,9 +251,9 @@ class ReachEnv(RobotEnv[ReachEnvParameters, ReachEnvConstants, ReachSimulation])
         env = util.ClipObservationWrapper(env)
         env = util.ClipRewardWrapper(env)
         env = util.PreviousActionObservationWrapper(env)
-        env = util.DiscretizeActionWrapper(
-            env, n_action_bins=self.constants.n_action_bins
-        )
+        # env = util.DiscretizeActionWrapper(
+        #     env, n_action_bins=self.constants.n_action_bins
+        # )
 
         # Note: Recording wrapper is removed here to favor simplicity.
         return env

@@ -248,6 +248,7 @@ class MjModel(object):
     stat = ModelProperty()
     ncam = ModelProperty()
     geom_rgba = ModelProperty()
+    geom_margin = ModelProperty()
 
     def get_joint_qvel_addr(self, name):
         '''
