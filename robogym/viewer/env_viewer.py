@@ -5,8 +5,8 @@ from typing import List, Union
 import glfw
 import numpy as np
 from gym.spaces import Box, MultiDiscrete
-from mujoco_py import MjViewer, const, ignore_mujoco_warnings
-
+import robogym.mujoco.constants as const
+from robogym.mujoco.mjviewer import MjViewer
 from robogym.utils.misc import pretty
 
 
@@ -124,10 +124,8 @@ class EnvViewer(MjViewer):
             self.process_events()
             self.update_sim(self.env.unwrapped.sim)
             self.add_extra_menu()
-
-            with ignore_mujoco_warnings():
-                obs, reward, done, info = self._run_step(self._get_action())
-                self.last_step_result = deepcopy((obs, reward, done, info))
+            obs, reward, done, info = self._run_step(self._get_action())
+            self.last_step_result = deepcopy((obs, reward, done, info))
 
             self.add_overlay(const.GRID_BOTTOMRIGHT, "done", str(done))
             self.render()

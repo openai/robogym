@@ -78,16 +78,11 @@ def build_randomizable_param(
     )
 
 
-class _RandomizableParam(NamedTuple, Generic[VType]):
-
+class _RandomizableParam(NamedTuple):
     name: str
-
     value_type: Type[VType]
-
     default: VType
-
     value_range: Tuple[VType, VType]
-
     parent_instance: Any
 
 

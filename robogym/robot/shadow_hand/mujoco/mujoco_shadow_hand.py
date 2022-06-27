@@ -1,5 +1,5 @@
 import numpy as np
-from mujoco_py.generated import const
+from robogym.mujoco import constants as const
 
 from robogym.mujoco.simulation_interface import SimulationInterface
 from robogym.robot.shadow_hand.hand_forward_kinematics import (
@@ -86,7 +86,7 @@ class MuJoCoShadowHand(Hand):
         self.simulation.register_joint_group(self.joint_group, prefix=hand_prefix)
         self._parameter_manager = MuJoCoParameterManager(self.mj_sim)
 
-        assert self.mj_sim.model.nu == len(
+        assert self.mj_sim.model.model().nu == len(
             ACTUATORS
         ), "Action space must have compatible shape"
 

@@ -1,8 +1,5 @@
 import collections
 import logging
-
-import mujoco_py.cymj as cymj
-
 logger = logging.getLogger(__name__)
 
 
@@ -21,7 +18,8 @@ def error_callback(message):
 
 
 # Set it once for all the processes
-cymj.set_error_callback(error_callback)
+# TODO(jonathan)??
+# cymj.set_error_callback(error_callback)
 
 
 class MjWarningBuffer:
@@ -55,10 +53,11 @@ class MjWarningBuffer:
 
     def enter(self):
         """ Enable collecting warnings """
-        if self._prev_user_callback is None:
-            self._prev_user_callback = cymj.get_warning_callback()
+        # if self._prev_user_callback is None:
+        #     self._prev_user_callback = cymj.get_warning_callback()
 
-        cymj.set_warning_callback(self._intercept_warning)
+        # cymj.set_warning_callback(self._intercept_warning)
+        pass
 
     def clear(self):
         """ Reset warning buffer """
@@ -67,7 +66,7 @@ class MjWarningBuffer:
     def exit(self):
         """ Stop collecting warnings """
         if self._prev_user_callback is not None:
-            cymj.set_warning_callback(self._prev_user_callback)
+            # cymj.set_warning_callback(self._prev_user_callback)
             self._prev_user_callback = None
 
     def __enter__(self):

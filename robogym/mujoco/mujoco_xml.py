@@ -2,7 +2,7 @@ import os.path
 import typing
 import xml.etree.ElementTree as et
 
-import mujoco_py
+import mujoco
 import numpy as np
 
 ASSETS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../assets"))
@@ -31,28 +31,74 @@ class StaleMjSimError(Exception):
     """
     Exception indicating the MjSim instance is stale and should no longer be used.
     """
-
     pass
 
 
-class MjSim(mujoco_py.MjSim):
-    """
-    There are environments e.g. rearrange environment which recreates
-    sim after reach env reset. This can cause potential bugs caused by
-    other components still caching instance of old sim. These bugs are usually
-    quite tricky to find. This class makes it easier to find these bugs by allowing
-    invalidating the sim instance so any access to properties of stale sim instance
-    will cause error.
-    """
-
-    __slots__ = ("_stale", "_xml")
-
-    def __init__(self, model, **kwargs):
-        # Note: we don't need to call super.__init__ because MjSim use __cinit__
-        # for initialization which happens automatically before subclass __init__
-        # is called.
+class MjSim(object):
+    def __init__(self, model, data, nsubsteps=1):
         self._stale: bool = False
-        self._xml = model.get_xml()
+        self._model = model
+        self._data = data
+        self._xml = None# model.get_xml()
+        self.nsubsteps = nsubsteps
+        self._udd_callback = None
+        self._substep_callback = None
+        self.render_contexts = []
+        self._render_context_offscreen = None
+        self._render_context_window = None
+
+    def substep_callback(self):
+        if self._substep_callback is not None:
+            self._substep_callback(self._model.model(), self._data.data())
+
+    def reset(self):
+        mujoco.mj_resetData(self._model.model(), self._data.data())
+        self.udd_state = None
+        self.step_udd()
+
+    def add_render_context(self, render_context):
+        self.render_contexts.append(render_context)
+        if render_context.offscreen and self._render_context_offscreen is None:
+            self._render_context_offscreen = render_context
+        elif not render_context.offscreen and self._render_context_window is None:
+            self._render_context_window = render_context
+
+    @property
+    def udd_callback(self):
+        return self._udd_callback
+
+    @udd_callback.setter
+    def udd_callback(self, value):
+        self._udd_callback = value
+        self.udd_state = None
+        self.step_udd()
+    
+    def set_constants(self):
+        """
+        Set constant fields of mjModel, corresponding to qpos0 configuration.
+        """
+        mujoco.mj_setConst(self.model.model(), self.data.data())
+
+    def step_udd(self):
+        if self._udd_callback is None:
+            self.udd_state = {}
+        else:
+            schema_example = self.udd_state
+            self.udd_state = self._udd_callback(self)
+            # Check to make sure the udd_state has consistent keys and dimension across steps
+            if schema_example is not None:
+                keys = set(schema_example.keys()) | set(self.udd_state.keys())
+                for key in keys:
+                    assert key in schema_example, "Keys cannot be added to udd_state between steps."
+                    assert key in self.udd_state, "Keys cannot be dropped from udd_state between steps."
+                    if isinstance(schema_example[key], (int, float)):
+                        assert isinstance(self.udd_state[key], (int, float)), \
+                            "Every value in udd_state must be either a number or a numpy array"
+                    else:
+                        assert isinstance(self.udd_state[key], np.ndarray), \
+                            "Every value in udd_state must be either a number or a numpy array"
+                        assert self.udd_state[key].shape == schema_example[key].shape, \
+                            "Numpy array values in udd_state must keep the same dimension across steps."
 
     def get_xml(self):
         """
@@ -76,12 +122,12 @@ class MjSim(mujoco_py.MjSim):
     @property
     def data(self):
         self._ensure_not_stale()
-        return super().data
+        return self._data
 
     @property
     def model(self):
         self._ensure_not_stale()
-        return super().model
+        return self._model
 
     def _ensure_not_stale(self):
         if self._stale:
@@ -90,6 +136,177 @@ class MjSim(mujoco_py.MjSim):
                 "by the environment."
             )
 
+    def forward(self):
+        return mujoco.mj_forward(self._model.model(), self._data.data())
+    
+    def step(self, with_udd=True):
+        if with_udd:
+            self.step_udd()
+        for _ in range(self.nsubsteps):
+            self.substep_callback()
+            mujoco.mj_step(self.model.model(), self.data.data())
+
+
+
+class DataProperty(object):
+    def __set_name__(self, owner, name):
+        self.name = name
+
+    def __get__(self, obj, objtype=None):
+        if obj is None:
+            return self
+        return getattr(obj._data, self.name)
+
+class ModelProperty(object):
+    def __set_name__(self, owner, name):
+        self.name = name
+
+    def __get__(self, obj, objtype=None):
+        if obj is None:
+            return self
+        return getattr(obj._model, self.name)
+
+    
+class MjModel(object):
+    def _extract_mj_names(self, name_adr, n, obj_type):
+        # objects don't need to be named in the XML, so name might be None
+        id2name = {i: None for i in range(n)}
+        name2id = {}
+        names = self._model.names
+        for i in range(n):
+            end = names.find(b"\x00", name_adr[i])
+            name = names[name_adr[i]:end]
+            decoded_name = name.decode()
+            if decoded_name:
+                obj_id = mujoco.mj_name2id(self._model, obj_type, name)
+                assert 0 <= obj_id < n and id2name[obj_id] is None
+                name2id[decoded_name] = obj_id
+                id2name[obj_id] = decoded_name
+
+        # sort names by increasing id to keep order deterministic
+        return tuple(id2name[id] for id in sorted(name2id.values())), name2id.__getitem__, name2id, id2name
+    
+    def __init__(self, model):
+        self._model = model
+        self.init_names()
+
+    def model(self):
+        return self._model
+
+    def init_names(self):
+        self.body_names, self.body_name2id, self._body_name2id, self._body_id2name = self._extract_mj_names(self._model.name_bodyadr, self._model.nbody, mujoco.mjtObj.mjOBJ_BODY)
+        self.joint_names, self.joint_name2id, self._joint_name2id, self._joint_id2name = self._extract_mj_names(self._model.name_jntadr, self._model.njnt, mujoco.mjtObj.mjOBJ_JOINT)
+        self.geom_names, self.geom_name2id, self._geom_name2id, self._geom_id2name = self._extract_mj_names(self._model.name_geomadr, self._model.ngeom, mujoco.mjtObj.mjOBJ_GEOM)
+        self.site_names, self.site_name2id, self._site_name2id, self._site_id2name = self._extract_mj_names(self._model.name_siteadr, self._model.nsite, mujoco.mjtObj.mjOBJ_SITE)
+        self.light_names, self.light_name2id, self._light_name2id, self._light_id2name = self._extract_mj_names(self._model.name_lightadr, self._model.nlight, mujoco.mjtObj.mjOBJ_LIGHT)
+        self.camera_names, self.camera_name2id, self._camera_name2id, self._camera_id2name = self._extract_mj_names(self._model.name_camadr, self._model.ncam, mujoco.mjtObj.mjOBJ_CAMERA)
+        self.actuator_names, self.actuator_name2id, self._actuator_name2id, self._actuator_id2name = self._extract_mj_names(self._model.name_actuatoradr, self._model.nu, mujoco.mjtObj.mjOBJ_ACTUATOR)
+        self.sensor_names, self.sensor_name2id, self._sensor_name2id, self._sensor_id2name = self._extract_mj_names(self._model.name_sensoradr, self._model.nsensor, mujoco.mjtObj.mjOBJ_SENSOR)
+        self.tendon_names, self.tendon_name2id, self._tendon_name2id, self._tendon_id2name = self._extract_mj_names(self._model.name_tendonadr, self._model.ntendon, mujoco.mjtObj.mjOBJ_TENDON)
+        self.mesh_names, self.mesh_name2id, self._mesh_name2id, self._mesh_id2name = self._extract_mj_names(self._model.name_meshadr, self._model.nmesh, mujoco.mjtObj.mjOBJ_MESH)
+    
+    def get_joint_qpos_addr(self, name):
+        '''
+        Returns the qpos address for given joint.
+        Returns:
+        - address (int, tuple): returns int address if 1-dim joint, otherwise
+            returns the a (start, end) tuple for pos[start:end] access.
+        '''
+        joint_id = self._joint_name2id[name]
+        joint_type = self._model.jnt_type[joint_id]
+        joint_addr = self._model.jnt_qposadr[joint_id]
+        if joint_type == mujoco.mjtJoint.mjJNT_FREE:
+            ndim = 7
+        elif joint_type == mujoco.mjtJoint.mjJNT_BALL:
+            ndim = 4
+        else:
+            assert joint_type in (mujoco.mjtJoint.mjJNT_HINGE, mujoco.mjtJoint.mjJNT_SLIDE)
+            ndim = 1
+
+        if ndim == 1:
+            return joint_addr
+        else:
+            return (joint_addr, joint_addr + ndim)
+
+    actuator_forcerange = ModelProperty()
+    actuator_gainprm = ModelProperty()
+    actuator_ctrlrange = ModelProperty()
+    actuator_biasprm = ModelProperty()
+    body_pos = ModelProperty()
+    geom_size = ModelProperty()
+    body_inertia = ModelProperty()
+    geom_friction = ModelProperty()
+    site_xpos = ModelProperty()
+    site_pos = ModelProperty()
+    opt = ModelProperty()
+    tendon_range = ModelProperty()
+    nv = ModelProperty()
+    jnt_range = ModelProperty()
+    dof_jntid = ModelProperty()
+    dof_damping = ModelProperty()
+    body_mass = ModelProperty()
+    stat = ModelProperty()
+    ncam = ModelProperty()
+    geom_rgba = ModelProperty()
+    geom_margin = ModelProperty()
+
+    def get_joint_qvel_addr(self, name):
+        '''
+        Returns the qvel address for given joint.
+        Returns:
+        - address (int, tuple): returns int address if 1-dim joint, otherwise
+            returns the a (start, end) tuple for vel[start:end] access.
+        '''
+        joint_id = self._joint_name2id[name]
+        joint_type = self._model.jnt_type[joint_id]
+        joint_addr = self._model.jnt_dofadr[joint_id]
+        if joint_type == mujoco.mjtJoint.mjJNT_FREE:
+            ndim = 6
+        elif joint_type == mujoco.mjtJoint.mjJNT_BALL:
+            ndim = 3
+        else:
+            assert joint_type in (mujoco.mjtJoint.mjJNT_HINGE, mujoco.mjtJoint.mjJNT_SLIDE)
+            ndim = 1
+
+        if ndim == 1:
+            return joint_addr
+        else:
+            return (joint_addr, joint_addr + ndim)
+
+
+class MjData(object):
+    def __init__(self, data, model):
+        self._data = data
+        self._model = model
+
+    def data(self):
+        return self._data
+
+    def get_joint_qpos(self, name):
+        addr = self._model.get_joint_qpos_addr(name)
+        if isinstance(addr, (int, np.int32, np.int64)):
+            return self.qpos[addr]
+        else:
+            start_i, end_i = addr
+            return self.qpos[start_i:end_i]
+
+    userdata = DataProperty()
+    actuator_force = DataProperty()
+    time = DataProperty()
+    qpos = DataProperty()
+    qvel = DataProperty()
+    ctrl = DataProperty()
+    site_xpos = DataProperty()
+    xfrc_applied = DataProperty()
+    ncon = DataProperty()
+    contact = DataProperty()
+    geom_xpos = DataProperty()
+    solver_iter = DataProperty()
+
+    def get_site_xpos(self, name):
+        id = self._model.site_name2id(name)
+        return self._data.site_xpos[id]
+        
 
 class MujocoXML:
     """
@@ -256,8 +473,9 @@ class MujocoXML:
             with open(output_filename, "wt") as f:
                 f.write(xml_string)
 
-        mj_model = mujoco_py.load_model_from_xml(xml_string)
-        return MjSim(mj_model, **kwargs)
+        mj_model = MjModel(mujoco.MjModel.from_xml_string(xml_string))
+        mj_data = MjData(mujoco.MjData(mj_model.model()), mj_model)
+        return MjSim(mj_model, mj_data, **kwargs)
 
     ###############################################################################################
     # MODIFICATIONS
