@@ -8,27 +8,17 @@ import platform
 SRC_DIR = dirname(realpath(__file__))
 
 
-class CallableList(object):
-    def __init__(self):
-        self.index = 0
+class LazyExtension(Extension):
+    """enable lazy binding of the include directory once we know that mujoco has been installed
+    and we know the right path."""
+    @property
+    def include_dirs(self):
+        import mujoco
+        return [join(mujoco.__path__[0], "include")]
 
-    def __len__(self):
-        return 1
-
-    def __getitem__(self, idx):
-        print("calling getitem!")
-        return None
-
-    def __iter__(self):
-        return self
-        
-    def __next__(self):
-        if self.index == 1:
-            raise StopIteration()
-        if self.index == 0:
-            import mujoco
-            self.index += 1
-            return join(mujoco.__path__[0], "include")
+    @include_dirs.setter
+    def include_dirs(self, value):
+        pass
 
 
 def setup_robogym():
@@ -61,11 +51,10 @@ def setup_robogym():
         description="OpenAI Robogym Robotics Environments",
         include_package_data=True,
         ext_modules=[
-            Extension('robogym.mujoco.callbacks',
-                    sources=[join(SRC_DIR, "robogym", "mujoco", "callbacks.cpp")],
-                    extra_compile_args=extra_compile_args,
-                    include_dirs=CallableList(),
-                    language='c++')
+            LazyExtension('robogym.mujoco.callbacks',
+                          sources=[join(SRC_DIR, "robogym", "mujoco", "callbacks.cpp")],
+                          extra_compile_args=extra_compile_args,
+                          language='c++')
         ]
     )
 
